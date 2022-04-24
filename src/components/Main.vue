@@ -5,7 +5,7 @@
           <div style="margin-bottom: 25px;">
             <img alt="logo" src="../assets/001.png" style="vertical-align:middle;">
             <span class="notice">通知公告</span>
-            <span class="more">更多<img src="../assets/more.png" style="vertical-align: text-bottom;"/></span>
+            <span class="more">更多<img src="../assets/more.png"  style="vertical-align:middle;height: 16px;width: 16px"/></span>
           </div>
           <div class="list">
             <ul>

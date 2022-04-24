@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 /dist
+/dist_home
 
 
 # local env files
@@ -27,3 +28,4 @@ package-lock.json
 yarn.lock
 index
 *.sw?
+.idea
