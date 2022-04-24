@@ -17,23 +17,21 @@
     </div>
     <div class="menu">
       <ul>
-        <li><a href="https://router.vuejs.org@" target="_blank" rel="noopener">首页</a></li>
-        <li><a href="https://vuex.vuejs.org@" target="_blank" rel="noopener">中心介绍</a></li>
-        <li><a href="https://github.com/vuejs/vue2-devtools#vue-devtools" target="_blank" rel="noopener">通知公告</a></li>
-        <li><a href="https://vue-loader.vuejs.org2" target="_blank" rel="noopener">中心动态</a></li>
-        <li><a href="https://github.com/vuejs/awes2ome-vue" target="_blank" rel="noopener">行业交流</a></li>
-        <li><a href="https://github.com/vuejs/aweso2m2e-vue" target="_blank" rel="noopener">名家观点</a></li>
-        <li><a href="https://github.com/vuejs/awes2o2me-vue" target="_blank" rel="noopener">职业风采</a></li>
-        <li><a href="https://github.com/vuejs/awe2som2e-vue" target="_blank" rel="noopener">考试指南</a></li>
-        <li><a href="https://github.com/vuejs/awesom2e2-vue" target="_blank" rel="noopener">考试系统</a></li>
-        <li><a href="https://github.com/vuejs/awesome-2vue" target="_blank" rel="noopener">联系我们</a></li>
+        <li><a href="#"  @click.prevent="changeComp('Home')" :class="{'active':compName==='Home'}">首页</a></li>
+        <li><a href="#"  @click.prevent="changeComp('CenterIntro')" :class="{'active':compName==='CenterIntro'}">中心介绍</a></li>
+        <li><a href="#"  @click.prevent="changeComp('Notice')" :class="{'active':compName==='Notice'}">通知公告</a></li>
+        <li><a href="#"  @click.prevent="changeComp('CenterDynamics')" :class="{'active':compName==='CenterDynamics'}">中心动态</a></li>
+        <li><a href="#"  @click.prevent="changeComp('IndustryExchanges')" :class="{'active':compName==='IndustryExchanges'}">行业交流</a></li>
+        <li><a href="#"  @click.prevent="changeComp('FamousPoint')" :class="{'active':compName==='FamousPoint'}">名家观点</a></li>
+        <li><a href="#"  @click.prevent="changeComp('JobLook')" :class="{'active':compName==='JobLook'}">职业风采</a></li>
+        <li><a href="#"  @click.prevent="changeComp('TestGuide')" :class="{'active':compName==='TestGuide'}">考试指南</a></li>
+        <li><a href="#"  @click.prevent="changeComp('TestSys')" :class="{'active':compName==='TestSys'}">考试系统</a></li>
+        <li><a href="#"  @click.prevent="changeComp('ContactUs')" :class="{'active':compName==='ContactUs'}">联系我们</a></li>
       </ul>
     </div>
   </div>
-  <Banner></Banner>
-  <div class="main">
-    <Main></Main>
-  </div>
+  <!-- <Home></Home> -->
+  <component :is="compName"></component>
   <Footer></Footer>
   <el-backtop :bottom="100">
     <div class="backtop">
@@ -44,15 +42,46 @@
 
 <script>
 import Banner from './components/Banner.vue'
-import Footer from './components/Footer.vue'
+import Footer from './components/Common/Footer.vue'
 import Main from './components/Main.vue'
+import Home from './components/Pages/Home.vue' // 首页
+import CenterIntro from './components/Pages/CenterIntro.vue' // 中心介绍
+import Notice from './components/Pages/Notice.vue' // 通知公告
+import CenterDynamics from './components/Pages/CenterDynamics.vue' // 中心动态
+import IndustryExchanges from './components/Pages/IndustryExchanges.vue' // 行业交流
+import FamousPoint from './components/Pages/FamousPoint.vue' // 名家观点
+import JobLook from './components/Pages/JobLook.vue' // 职业风采
+import TestGuide from './components/Pages/TestGuide.vue' // 考试指南
+import TestSys from './components/Pages/TestSys.vue' // 考试系统
+import ContactUs from './components/Pages/ContactUs.vue' //  联系我们
 import {Top} from '@element-plus/icons-vue'
+
 export default {
   name: 'App',
+    data () {
+    return {
+      compName: 'Home', // 默认展示首页
+    }
+  },
+  methods: {
+    changeComp(name) {
+      this.compName = name;
+    }
+   },
   components: {
     Top,
     Banner,
     Main,
+    Home,// 首页
+    CenterIntro, // 中心介绍
+    CenterDynamics,
+    FamousPoint,
+    JobLook,
+    TestGuide,
+    IndustryExchanges,
+    TestSys,
+    Notice,
+    ContactUs,
     Footer
   }
 }
