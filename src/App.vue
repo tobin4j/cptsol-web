@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="header-container">
+    <div class="header-container clearfix">
       <div class="logo">
         <div class="logo-container">
           <img alt="logo" src="./assets/logo.png" style="height:100%;width:100%;">
@@ -45,10 +45,10 @@ import Banner from './components/Banner.vue'
 import Footer from './components/Common/Footer.vue'
 import Main from './components/Main.vue'
 import Home from './components/Pages/Home.vue' // 首页
-import CenterIntro from './components/Pages/CenterIntro.vue' // 中心介绍
-import Notice from './components/Pages/Notice.vue' // 通知公告
-import CenterDynamics from './components/Pages/CenterDynamics.vue' // 中心动态
-import IndustryExchanges from './components/Pages/IndustryExchanges.vue' // 行业交流
+import CenterIntro from './components/Pages/CenterIntro/CenterIntro.vue' // 中心介绍
+import Notice from './components/Pages/Notice/Notice.vue' // 通知公告
+import CenterDynamics from './components/Pages/CenterDynamics/CenterDynamics.vue' // 中心动态
+import IndustryExchanges from './components/Pages/IndustryExchanges/IndustryExchanges.vue' // 行业交流
 import FamousPoint from './components/Pages/FamousPoint.vue' // 名家观点
 import JobLook from './components/Pages/JobLook.vue' // 职业风采
 import TestGuide from './components/Pages/TestGuide.vue' // 考试指南
@@ -61,6 +61,7 @@ export default {
     data () {
     return {
       compName: 'Home', // 默认展示首页
+      title: ''
     }
   },
   methods: {
