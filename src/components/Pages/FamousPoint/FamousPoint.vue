@@ -3,14 +3,22 @@
   <!-- <p class="tab">{{title}}</p> -->
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-    <el-tab-pane label="中心介绍" name="centerIntro" class="tab-content">
-      <div class="center-intro">
-        <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
-       </div>
-      <div class="intro-content">
-        <p>{{content}}</p>
-      </div>
-    </el-tab-pane>
+        <el-tab-pane label="名家观点" name="famousPoint" class="tab-content">
+        <div class="center-intro">
+            <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
+        </div>
+        <div class="intro-content">
+            <p>{{content}}</p>
+        </div>
+        </el-tab-pane>
+        <el-tab-pane label="名家团队" name="famousTeam" class="tab-content">
+        <div class="center-intro">
+            <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
+        </div>
+        <div class="intro-content">
+            <p>{{content}}</p>
+        </div>
+        </el-tab-pane>
   </el-tabs>
  </div>
 </template>
@@ -26,7 +34,7 @@ export default {
        title:'中心介绍',
        total: 10,
        content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
-       activeName:'centerIntro'
+       activeName:'famousPoint'
     }
    },
   setup() {

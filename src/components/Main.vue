@@ -3,9 +3,15 @@
       <div class="cards-item">
         <el-card shadow="always" style="margin-right:16px;"> 
           <div style="margin-bottom: 25px;">
-            <img alt="logo" src="../assets/001.png" style="vertical-align:middle;">
+            <span class="icon">
+              <img alt="logo" src="../assets/001.png">
+            </span>
             <span class="notice">通知公告</span>
-            <span class="more">更多<img src="../assets/more.png"  style="vertical-align:middle;height: 16px;width: 16px"/></span>
+            <span class="more">更多
+              <span class="more-icon">
+                <img src="../assets/more.png"/>
+              </span>
+            </span>
           </div>
           <div class="list">
             <ul>
@@ -20,9 +26,13 @@
       <div class="cards-item">
         <el-card shadow="always" style="margin-right:16px;"> 
           <div style="margin-bottom: 25px;">
-            <img alt="logo" src="../assets/002.png" style="vertical-align:middle;">
+            <img alt="logo" src="../assets/002.png" style="vertical-align:middle">
             <span class="trends">中心动态</span>
-            <span class="more">更多<img src="../assets/more.png" style="vertical-align: text-bottom;"/></span>
+            <span class="more">更多
+              <span class="more-icon">
+                <img src="../assets/more.png"/>
+              </span>
+            </span>
           </div>
           <div class="list">
             <ul>
@@ -39,9 +49,15 @@
       <div class="cards-item" >
         <el-card shadow="always" style="margin-right:16px;"> 
           <div style="margin-bottom: 25px;">
-            <img alt="logo" src="../assets/003.png"  style="vertical-align:middle;">
+            <span class="icon">
+              <img alt="logo" src="../assets/003.png">
+            </span>
             <span class="jooblook">职业风采</span>
-            <span class="more">更多<img src="../assets/more.png" style="vertical-align: text-bottom;"/></span>
+            <span class="more">更多
+              <span class="more-icon">
+                <img src="../assets/more.png"/>
+              </span>
+            </span>
           </div>
           <div class="list">
             <ul>
@@ -56,7 +72,7 @@
       <div class="cards-item col">
           <el-card shadow="always" style="margin-right:16px;">
             <div style="margin-bottom: 25px;">
-            <img alt="logo" src="../assets/004.png" style="vertical-align:middle;">
+              <img alt="logo" src="../assets/004.png" style="vertical-align:bottom;">
             <span class="application">合作申请</span>
             </div>
             <p class="content_intro">{{content}}</p>
@@ -66,7 +82,9 @@
           </el-card>
           <el-card shadow="always" style="margin-right:16px; margin-top:16px;" class="last-one">
             <div style="margin-bottom: 25px;" >
-            <img alt="logo" src="../assets/005.png" style="vertical-align:middle;">
+               <span class="icon">
+                  <img alt="logo" src="../assets/005.png" style="vertical-align:middle;">
+               </span>
             <span class="agency-query">机构查询</span>
             </div>
             <div style="margin-bottom: 0px;">
@@ -85,9 +103,15 @@
   <div class="main-cards" style="margin-top:66px;">
       <div class="cards-item">
           <div>
-            <img alt="logo" src="../assets/006.png" style="vertical-align:middle;padding-left:24px;">
+            <span class="icon">
+              <img alt="logo" src="../assets/006.png" style="vertical-align:middle">
+            </span>
             <span class="cooperation-show">合作展示</span>
-            <span class="more">更多<img src="../assets/more.png" style="vertical-align: text-bottom;"/></span>
+            <span class="more">更多
+              <span class="more-icon">
+                <img src="../assets/more.png"/>
+              </span>
+            </span>
             <div class="pics">
              <div  v-for="(item,index) in articleList"
              @mouseenter="enters(index)"
@@ -104,7 +128,9 @@
   <div class="main-cards" style="margin-top:64px;">
       <div class="cards-item">
           <div style="margin-bottom: 65px;">
-            <img alt="logo" src="../assets/007.png" style="vertical-align:middle;padding-left:24px;">
+            <span>
+              <img alt="logo" src="../assets/007.png" style="vertical-align:middle;padding-left:24px;">
+            </span>
             <span class="friendly-link">友情链接</span>
              <div class="pics container" style="margin-top: 25px;">
                  <div class="pic-item" v-for="item in imgList" :key="item">
@@ -201,7 +227,15 @@ export default {
 
 <style scoped>
   @import '@/styles/main.css';
-  /* .cards-item >>>.el-card__body {
-    padding: unset;
-  } */
+  .icon{
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+  }
+  .icon img {
+    vertical-align:middle;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
 </style>

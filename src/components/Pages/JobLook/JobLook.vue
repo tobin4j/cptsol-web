@@ -3,14 +3,38 @@
   <!-- <p class="tab">{{title}}</p> -->
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-    <el-tab-pane label="中心介绍" name="centerIntro" class="tab-content">
-      <div class="center-intro">
-        <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
-       </div>
-      <div class="intro-content">
-        <p>{{content}}</p>
-      </div>
-    </el-tab-pane>
+        <el-tab-pane label="职业风采" name="jobLook" class="tab-content">
+        <div class="center-intro">
+            <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
+        </div>
+        <div class="intro-content">
+            <p>{{content}}</p>
+        </div>
+        </el-tab-pane>
+        <el-tab-pane label="就业信息" name="jobMsg" class="tab-content">
+        <div class="center-intro">
+            <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
+        </div>
+        <div class="intro-content">
+            <p>{{content}}</p>
+        </div>
+        </el-tab-pane>
+        <el-tab-pane label="教学分享" name="teachShare" class="tab-content">
+        <div class="center-intro">
+            <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
+        </div>
+        <div class="intro-content">
+            <p>{{content}}</p>
+        </div>
+        </el-tab-pane>
+        <el-tab-pane label="合作展示" name="cooperateShow" class="tab-content">
+        <div class="center-intro">
+            <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
+        </div>
+        <div class="intro-content">
+            <p>{{content}}</p>
+        </div>
+        </el-tab-pane>
   </el-tabs>
  </div>
 </template>
@@ -26,7 +50,7 @@ export default {
        title:'中心介绍',
        total: 10,
        content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
-       activeName:'centerIntro'
+       activeName:'jobLook'
     }
    },
   setup() {

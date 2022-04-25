@@ -39,15 +39,26 @@
   }
   .main-cards .cards-item span.more {
     float: right;
-    font-size: 14px;
+    font-size: 18px;
     font-family: "PingFangSC-Regular", "PingFang SC";
     font-weight: 400;
     color: #2F318B;
-    line-height: 20px;
+    line-height: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-  
+  }
+  .more-icon{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+  }
+  .main-cards .cards-item span.more img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    padding-left: 2px;
+    vertical-align: text-top;
   }
   .list ul  li{
     list-style:none;

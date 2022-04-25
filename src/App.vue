@@ -49,11 +49,11 @@ import CenterIntro from './components/Pages/CenterIntro/CenterIntro.vue' // 中�
 import Notice from './components/Pages/Notice/Notice.vue' // 通知公告
 import CenterDynamics from './components/Pages/CenterDynamics/CenterDynamics.vue' // 中心动态
 import IndustryExchanges from './components/Pages/IndustryExchanges/IndustryExchanges.vue' // 行业交流
-import FamousPoint from './components/Pages/FamousPoint.vue' // 名家观点
-import JobLook from './components/Pages/JobLook.vue' // 职业风采
-import TestGuide from './components/Pages/TestGuide.vue' // 考试指南
-import TestSys from './components/Pages/TestSys.vue' // 考试系统
-import ContactUs from './components/Pages/ContactUs.vue' //  联系我们
+import FamousPoint from './components/Pages/FamousPoint/FamousPoint.vue' // 名家观点
+import JobLook from './components/Pages/JobLook/JobLook.vue' // 职业风采
+import TestGuide from './components/Pages/TestGuide/TestGuide.vue' // 考试指南
+import TestSys from './components/Pages/TestSys/TestSys.vue' // 考试系统
+import ContactUs from './components/Pages/ContactUs/ContactUs.vue' //  联系我们
 import {Top} from '@element-plus/icons-vue'
 
 export default {
