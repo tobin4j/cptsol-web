@@ -3,15 +3,24 @@
   <!-- <p class="tab">{{title}}</p> -->
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-    <el-tab-pane label="中心介绍" name="centerIntro" class="tab-content">
-      <div class="content" v-html="content"></div>
-    </el-tab-pane>
+        <el-tab-pane label="名家观点" name="famousPoint">
+         <FamousPoint></FamousPoint>
+        </el-tab-pane>
+        <el-tab-pane label="名家团队" name="famousTeam" class="tab-content">
+        <div class="center-intro">
+            <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
+        </div>
+        <div class="intro-content">
+            <p>{{content}}</p>
+        </div>
+        </el-tab-pane>
   </el-tabs>
  </div>
 </template>
 
 <script>
 import SearchKey from '@/components/Common/SearchKey'
+import FamousPoint from './FamousPoint.vue'
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 export default {
@@ -20,27 +29,28 @@ export default {
     return {
        title:'中心介绍',
        total: 10,
-       // content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
-       activeName:'centerIntro'
+       content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
+       activeName:'famousPoint'
     }
    },
   setup() {
     const state = reactive({
-      content: [],
+      noticeList: [],
       isvisible: false,
       isShow: false,
       articleList:[] // 合作展示、文章列表
     })
     onMounted(async () => {
-      var noticeUrl="https://api.cptsol.cn/api/open/articleDetail?type=1";
+      var noticeUrl="https://api.cptsol.cn/api/open/adList?type=2";
       (async function () {
         const res = await axios.get(noticeUrl) //返回 {id:0}
-        state.content = res.data.content;
+        state.noticeList = res.data;
       })();
     })
     return state;
   },
   components: {
+    FamousPoint,
     SearchKey
   }
 }
@@ -83,16 +93,11 @@ export default {
 .tab-content {
     padding-left: 20px; 
     margin-top: 32px;
-    text-indent: 0;
 }
-.tab-content .content {
-  text-indent: 0;
-  padding-left: 20px;
-}
-/* .center-intro{
+.center-intro{
   width: 1200px;
   height: 436px;
-} */
+}
 .center-intro img {
   height: 100%;
   width: 100%;

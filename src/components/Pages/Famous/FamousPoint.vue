@@ -1,44 +1,39 @@
 <template>
   <!-- 通知公告 -->
-  <SearchKey  v-if="!showDetails" :title="title" @search="search" ></SearchKey>
+  <SearchKey :title="title" @search="search"></SearchKey>
   <div class="listitem clearfix"> 
-    <div v-for="(item,index) in noticeList" :key="index" class="list-container" v-show="!showDetails">
+    <div v-for="(item,index) in dataList" :key="index" class="list-container">
       <span class="list-left">
         <span class="dot"></span>
-        <a @click="goDetails(item.articleId)">{{item.title}}</a>
+        {{item.title}}
       </span>
       <span class="list-right">
         「{{item.createTime.substring(0,10)}}」
       </span>
     </div>
-    <Details v-show="showDetails" :content="content" :title="title" @showList="showList"></Details>
   </div>
-  <div class="page-container" v-show="!showDetails">
+  <div class="page-container">
     <el-pagination background layout="prev, pager, next" 
-    :total="total"
+    :total="total" 
     @currentChange = "onCurrentChange"
     @prevClick = "prevClick"
     @nextClick = "nextClick"
-     class="page"/>
+    class="page"/>
     <span style="padding-left:8px;">共{{total}}条，10条每页</span>
   </div>
 </template>
 
 <script>
-
 import SearchKey from '@/components/Common/SearchKey'
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
-import Details from '@/components/Common/Details'
 export default {
-  name: 'Notice',
+  name: 'CenterDynamics',
    data () {
     return {
-       title:'通知公告',
-       keyWord: '', // 搜索关键字
-       pageNum: 1,
-       content:'',
-       showDetails: false
+       title:'',
+       keyWord:'',
+       pageNum: 1
     }
    },
    methods: {
@@ -66,47 +61,33 @@ export default {
       this.keyWord = key;
       this.getDataList();
     },
-    goDetails(id) {
-      this.showDetails = true;
-      let noticeUrl=`https://api.cptsol.cn/api/open/articleDetail?type=2&page=${this.pageNum}&size=10&id=${id}`;
-      axios.get(noticeUrl).then((res)=>{
-        this.content = res.data.content;
-      })
-    },
-    showList() {
-      this.showDetails = false;
-    },
     getDataList() {
-      let noticeUrl=`https://api.cptsol.cn/api/open/articleList?type=2&page=${this.pageNum}&size=10&title=${this.keyWord}`;
+      let noticeUrl=`https://api.cptsol.cn/api/open/articleList?type=5&page=${this.pageNum}&size=10&title=${this.keyWord}`;
       axios.get(noticeUrl).then((res)=>{
-        this.noticeList = res.data.data;
+        this.dataList = res.data.data;
       })
     }
   },
-  setup(props,context) {
-    let state = reactive({
-      noticeList: [],
-      list:[],
+  setup() {
+    const state = reactive({
+      dataList: [],
+      total: '',
       isvisible: false,
-      // isShow: false,
-      total:'',
+      isShow: false,
       articleList:[] // 合作展示、文章列表
     })
     onMounted(async () => {
-      // https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10
-      var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10";
+      var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=5&page=1&size=10";
       (async function () {
         const res = await axios.get(noticeUrl) //返回 {id:0}
-        state.noticeList = res.data.data;
-        state.list = res.data.data;
+        state.dataList = res.data.data;
         state.total = res.data.total;
       })();
     })
     return state;
   },
   components: {
-    SearchKey,
-    Details
+    SearchKey
   }
 }
 </script>
@@ -120,5 +101,5 @@ export default {
     border-radius: 4px 0px 0px 4px;
     border: 1px solid #D4D9E0;
     margin: 0!important;
- }
+}
 </style>

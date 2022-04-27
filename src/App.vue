@@ -12,7 +12,7 @@
       </div>
       <div class="code">
         <img alt="微信公众号" src="./assets/WxCode.png" style="height:110px;width:110px;">
-        <p>微信公众号</p>
+        <p style="text-align:center;">微信公众号</p>
       </div>
     </div>
     <div class="menu">
@@ -22,7 +22,7 @@
         <li><a href="#"  @click.prevent="changeComp('Notice')" :class="{'active':compName==='Notice'}">通知公告</a></li>
         <li><a href="#"  @click.prevent="changeComp('CenterDynamics')" :class="{'active':compName==='CenterDynamics'}">中心动态</a></li>
         <li><a href="#"  @click.prevent="changeComp('IndustryExchanges')" :class="{'active':compName==='IndustryExchanges'}">行业交流</a></li>
-        <li><a href="#"  @click.prevent="changeComp('FamousPoint')" :class="{'active':compName==='FamousPoint'}">名家观点</a></li>
+        <li><a href="#"  @click.prevent="changeComp('Famous')" :class="{'active':compName==='Famous'}">名家观点</a></li>
         <li><a href="#"  @click.prevent="changeComp('JobLook')" :class="{'active':compName==='JobLook'}">职业风采</a></li>
         <li><a href="#"  @click.prevent="changeComp('TestGuide')" :class="{'active':compName==='TestGuide'}">考试指南</a></li>
         <li><a href="#"  @click.prevent="changeComp('TestSys')" :class="{'active':compName==='TestSys'}">考试系统</a></li>
@@ -49,7 +49,7 @@ import CenterIntro from './components/Pages/CenterIntro/CenterIntro.vue' // 中�
 import Notice from './components/Pages/Notice/Notice.vue' // 通知公告
 import CenterDynamics from './components/Pages/CenterDynamics/CenterDynamics.vue' // 中心动态
 import IndustryExchanges from './components/Pages/IndustryExchanges/IndustryExchanges.vue' // 行业交流
-import FamousPoint from './components/Pages/FamousPoint/FamousPoint.vue' // 名家观点
+import Famous from './components/Pages/Famous/Famous.vue' // 名家观点
 import JobLook from './components/Pages/JobLook/JobLook.vue' // 职业风采
 import TestGuide from './components/Pages/TestGuide/TestGuide.vue' // 考试指南
 import TestSys from './components/Pages/TestSys/TestSys.vue' // 考试系统
@@ -76,7 +76,7 @@ export default {
     Home,// 首页
     CenterIntro, // 中心介绍
     CenterDynamics,
-    FamousPoint,
+    Famous,
     JobLook,
     TestGuide,
     IndustryExchanges,

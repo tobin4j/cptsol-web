@@ -2,7 +2,7 @@
   <el-carousel :interval="3000" arrow="always" class="swiper" v-if="isShow">
     <el-carousel-item v-for="item in list" :key="item">
       <a :href="item.redirectUrl"  target="_blank">
-       <img :src="item.imgUrl" style="width:100%;"/>
+       <img :src="item.imgUrl" style="width:100%;height:100%;"/>
       </a>
     </el-carousel-item>
   </el-carousel>

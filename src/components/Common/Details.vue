@@ -1,47 +1,32 @@
 <template>
-  <!-- 中心介绍 -->
-  <!-- <p class="tab">{{title}}</p> -->
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-    <el-tab-pane label="中心介绍" name="centerIntro" class="tab-content">
+    <el-tab-pane :label="title" name="centerIntro" class="tab-content">
       <div class="content" v-html="content"></div>
     </el-tab-pane>
-  </el-tabs>
+    </el-tabs>
+    <span @click="goBack" class="back">返回列表</span>
  </div>
 </template>
 
 <script>
-import SearchKey from '@/components/Common/SearchKey'
-import axios from 'axios'
-import { reactive, onMounted } from 'vue'
 export default {
   name: 'Notice',
+  //  propos:['examId ','courseId']  // 多参
+   props:['content','title'],
    data () {
     return {
-       title:'中心介绍',
        total: 10,
        // content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
        activeName:'centerIntro'
     }
    },
-  setup() {
-    const state = reactive({
-      content: [],
-      isvisible: false,
-      isShow: false,
-      articleList:[] // 合作展示、文章列表
-    })
-    onMounted(async () => {
-      var noticeUrl="https://api.cptsol.cn/api/open/articleDetail?type=1";
-      (async function () {
-        const res = await axios.get(noticeUrl) //返回 {id:0}
-        state.content = res.data.content;
-      })();
-    })
-    return state;
-  },
+   methods: {
+    goBack(){
+      this.$parent.showList();
+    }
+   },
   components: {
-    SearchKey
   }
 }
 </script>
@@ -57,6 +42,7 @@ export default {
   font-weight: 600;
   color: #454545;
   line-height: 22px;
+  position: relative;
 }
 /* .intro-content {
     width: 1200px;
@@ -118,6 +104,16 @@ export default {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+}
+.back {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  font-size: 16px;
+  font-family: "PingFangSC-Semibold", "PingFang SC";
+  font-weight: 600;
+  color: #2F318B;
+  line-height: 22px;
 }
 
 </style>

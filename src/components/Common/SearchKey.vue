@@ -3,11 +3,11 @@
     <p class="title">{{title}}</p>
     <el-form :inline="true" :model="formInline" class="serach-form">
     <el-form-item>
-      <el-input v-model="searchForm.keyWord" placeholder="" class="input"/>
+      <el-input v-model.trim="searchForm.keyWord" placeholder="" class="input"/>
     </el-form-item>
     <el-form-item>
-    <el-button  @click="onSubmit" class="search">搜索</el-button>
-    <img alt="logo" src="../../assets/refresh.png" />
+    <el-button class="search"  @click="onSearch" >搜索</el-button>
+    <img alt="logo" src="../../assets/refresh.png" @click="reset"/>
     </el-form-item>
     </el-form>
 </template>
@@ -15,6 +15,7 @@
 <script>
 import Banner from '../Banner.vue'
 import Main from '../Main.vue'
+import { defineComponent } from 'vue';
 export default {
   name: 'SearchKey',
    props:{
@@ -30,11 +31,15 @@ export default {
        }
     }
    },
-   
   methods: {
     // 方法
-    onSubmit() {
-      console.log('submit!');
+    onSearch() {
+       this.$parent.search(this.searchForm.keyWord);
+      // 参数：菜单名、关键字
+    },
+    reset() {
+      this.searchForm.keyWord = '';
+      this.$parent.search(this.searchForm.keyWord);
     }
   },
   components: {
