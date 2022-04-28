@@ -1,8 +1,10 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 .main-cards {
     display: flex;
-    justify-content: space-between;
-    
-    
+    justify-content: space-between;   
   }
   .main-cards .cards-item{
     flex: 1;
@@ -40,11 +42,11 @@
   }
   .main-cards .cards-item span.more {
     float: right;
-    font-size: 18px;
+    font-size: 14px;
     font-family: "PingFangSC-Regular", "PingFang SC";
     font-weight: 400;
     color: #2F318B;
-    line-height: 25px;
+    line-height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;

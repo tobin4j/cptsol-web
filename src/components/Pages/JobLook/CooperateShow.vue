@@ -66,7 +66,7 @@ export default {
     },
     goDetails(id) {
       this.showDetails = true;
-      let noticeUrl=`https://api.cptsol.cn/api/open/articleDetail?type=6&page=${this.pageNum}&size=10&id=${id}`;
+      let noticeUrl=`https://api.cptsol.cn/api/open/articleDetail?type=10&page=${this.pageNum}&size=10&id=${id}`;
       axios.get(noticeUrl).then((res)=>{
         this.content = res.data.content;
       })
@@ -79,7 +79,7 @@ export default {
       this.showDetails = false;
     },
     getDataList() {
-      let noticeUrl=`https://api.cptsol.cn/api/open/articleList?type=6&page=${this.pageNum}&size=10&title=${this.keyWord}`;
+      let noticeUrl=`https://api.cptsol.cn/api/open/articleList?type=10&page=${this.pageNum}&size=10&title=${this.keyWord}`;
       axios.get(noticeUrl).then((res)=>{
         this.dataList = res.data.data;
       })
@@ -95,7 +95,7 @@ export default {
     })
     onMounted(async () => {
       // https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10
-      var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=6&page=1&size=10";
+      var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=10&page=1&size=10";
       (async function () {
         const res = await axios.get(noticeUrl) //返回 {id:0}
         state.dataList = res.data.data;

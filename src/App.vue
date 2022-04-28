@@ -17,7 +17,7 @@
     </div>
     <div class="menu">
       <ul>
-        <li style="text-indent: 32px;"><a href="#"  @click.prevent="changeComp('Home')" :class="{'active':compName==='Home'}">首页</a></li>
+        <li style="text-indent: 32px;"><a href="#"  @click.prevent="changeComp('Main')" :class="{'active':compName==='Main'}">首页</a></li>
         <li><a href="#"  @click.prevent="changeComp('CenterIntro')" :class="{'active':compName==='CenterIntro'}">中心介绍</a></li>
         <li><a href="#"  @click.prevent="changeComp('Notice')" :class="{'active':compName==='Notice'}">通知公告</a></li>
         <li><a href="#"  @click.prevent="changeComp('CenterDynamics')" :class="{'active':compName==='CenterDynamics'}">中心动态</a></li>
@@ -41,10 +41,10 @@
 </template>
 
 <script>
-import Banner from './components/Banner.vue'
+// import Banner from './components/Banner.vue'
 import Footer from './components/Common/Footer.vue'
 import Main from './components/Main.vue'
-import Home from './components/Pages/Home.vue' // 首页
+// import Home from './components/Pages/Home.vue' // 首页
 import CenterIntro from './components/Pages/CenterIntro/CenterIntro.vue' // 中心介绍
 import Notice from './components/Pages/Notice/Tab.vue' // 通知公告
 import CenterDynamics from './components/Pages/CenterDynamics/Tab.vue' // 中心动态
@@ -60,7 +60,7 @@ export default {
   name: 'App',
     data () {
     return {
-      compName: 'Home', // 默认展示首页
+      compName: 'Main', // 默认展示首页
       title: '',
       menu:'',
       showList: false
@@ -77,9 +77,9 @@ export default {
    },
   components: {
     Top,
-    Banner,
+    // Banner,
     Main,
-    Home,// 首页
+    // Home,// 首页
     CenterIntro, // 中心介绍
     CenterDynamics,
     Famous,

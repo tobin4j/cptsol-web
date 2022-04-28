@@ -1,51 +1,53 @@
 <template>
+<Banner></Banner>
+<div class="main">
   <div class="main-cards" style="margin-top:32px;">
-      <div class="cards-item">
-        <el-card shadow="always" style="margin-right:16px;"> 
-          <div style="margin-bottom: 25px;">
-            <span class="icon">
-              <img alt="logo" src="../assets/001.png">
+    <div class="cards-item">
+      <el-card shadow="always" style="margin-right:16px;"> 
+        <div style="margin-bottom: 25px;">
+          <span class="icon">
+            <img alt="logo" src="../assets/001.png">
+          </span>
+          <span class="notice">通知公告</span>
+          <span class="more" @click="lookMore">更多
+            <span class="more-icon">
+              <img src="../assets/more.png"/>
             </span>
-            <span class="notice">通知公告</span>
-            <span class="more">更多
-              <span class="more-icon">
-                <img src="../assets/more.png"/>
-              </span>
+          </span>
+        </div>
+        <div class="list">
+          <ul>
+            <li v-for="(item,index) in list" :key="index">
+              <span class="msg-title"><span class="dot"></span>{{ item.title }}</span>
+            <span class="date">
+            「{{item.createTime.substring(0,10)}}」
             </span>
-          </div>
-          <div class="list">
-            <ul>
-              <li v-for="(item,index) in list" :key="index">
-               <span class="msg-title"><span class="dot"></span>{{ item.title }}</span>
-              <span class="date">
-              「{{item.createTime.substring(0,10)}}」
-              </span>
-              </li>
-            </ul>
-          </div>
-        </el-card>
-      </div>
-      <div class="cards-item">
-        <el-card shadow="always" style="margin-right:16px;"> 
-          <div style="margin-bottom: 25px;">
-            <img alt="logo" src="../assets/002.png" style="vertical-align:middle">
-            <span class="trends">中心动态</span>
-            <span class="more">更多
-              <span class="more-icon">
-                <img src="../assets/more.png"/>
-              </span>
+            </li>
+          </ul>
+        </div>
+      </el-card>
+    </div>
+    <div class="cards-item">
+      <el-card shadow="always"> 
+        <div style="margin-bottom: 25px;">
+          <img alt="logo" src="../assets/002.png" style="vertical-align:middle">
+          <span class="trends">中心动态</span>
+          <span class="more" @click="lookMore">更多
+            <span class="more-icon">
+              <img src="../assets/more.png"/>
             </span>
-          </div>
-          <div class="list">
-            <ul>
-              <li v-for="(item,index) in centerList" :key="index">
-               <span class="msg-title"><span class="dot"></span>{{ item.title }}</span>
-               <span class="date">「{{item.createTime.substring(0,10)}}」</span>
-              </li>
-            </ul>
-          </div>
-        </el-card>
-      </div>
+          </span>
+        </div>
+        <div class="list">
+          <ul>
+            <li v-for="(item,index) in centerList" :key="index">
+              <span class="msg-title"><span class="dot"></span>{{ item.title }}</span>
+              <span class="date">「{{item.createTime.substring(0,10)}}」</span>
+            </li>
+          </ul>
+        </div>
+      </el-card>
+    </div>
   </div>
   <div class="main-cards" style="margin-top:10px;">
       <div class="cards-item" >
@@ -55,7 +57,7 @@
               <img alt="logo" src="../assets/003.png">
             </span>
             <span class="jooblook">职业风采</span>
-            <span class="more">更多
+            <span class="more" @click="lookMore">更多
               <span class="more-icon">
                 <img src="../assets/more.png"/>
               </span>
@@ -72,7 +74,7 @@
         </el-card>
       </div>
       <div class="cards-item col">
-          <el-card shadow="always" style="margin-right:16px;">
+          <el-card shadow="always">
             <div style="margin-bottom: 25px;">
               <img alt="logo" src="../assets/004.png" style="vertical-align:bottom;">
             <span class="application">合作申请</span>
@@ -82,7 +84,7 @@
               <el-button style="margin: 0 auto;">立即申请</el-button>
             </div>
           </el-card>
-          <el-card shadow="always" style="margin-right:16px; margin-top:16px;" class="last-one">
+          <el-card shadow="always" style="margin-top:16px;" class="last-one">
             <div style="margin-bottom: 25px;" >
                <span class="icon">
                   <img alt="logo" src="../assets/005.png" style="vertical-align:middle;">
@@ -109,7 +111,7 @@
               <img alt="logo" src="../assets/006.png" style="vertical-align:middle">
             </span>
             <span class="cooperation-show">合作展示</span>
-            <span class="more">更多
+            <span class="more" @click="lookMore">更多
               <span class="more-icon">
                 <img src="../assets/more.png"/>
               </span>
@@ -142,12 +144,15 @@
           </div>
       </div>
   </div>
+</div>
 </template>
 
 <script>
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
+import Banner from './Banner.vue'
 export default {
+  components: { Banner },
   name: 'Main',
   data () {
     return {
@@ -157,25 +162,6 @@ export default {
         region: ''
       },
      content:'近几年，随着中国经济快速发展，全球汉语学习热潮正在兴起，国际中文教师的缺口数量逐年增加，鉴于目前参加考试的人数逐年增加，为了满足广大参考人员的要求，国际中文教师考试委员会为了完善全球考试中心布局，现启动培训中心合作计划。',
-      // list: [
-      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
-      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
-      // ],
-      // list2: [
-      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
-      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
-      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
-      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
-      // ]
     }
   },
   setup() {
@@ -219,7 +205,6 @@ export default {
       (async function () {
         const res = await axios.get(jobLookUrl) //职业风采
         state.jobLookList = res.data.data;
-        console.log(state.jobLookList,'你')
       })();
     })
     return state;
@@ -239,6 +224,9 @@ export default {
     leaver(){
       this.current = null;
       this.isvisible = false;
+    },
+    lookMore(){
+      // alert('12')
     }
   },
   created () {

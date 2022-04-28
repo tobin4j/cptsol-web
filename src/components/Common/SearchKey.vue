@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Banner from '../Banner.vue'
+// import Banner from '../Banner.vue'
 import Main from '../Main.vue'
 import { defineComponent } from 'vue';
 export default {
@@ -43,7 +43,7 @@ export default {
     }
   },
   components: {
-    Banner,
+    // Banner,
     Main
   }
 }

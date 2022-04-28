@@ -146,6 +146,7 @@ export default {
     object-fit: cover;
 }
 .list-container .list-right {
+    width: calc(100% - 210px);
     margin-left: 214px;
     text-indent: 0;
 }
@@ -155,6 +156,10 @@ export default {
     color: #454545;
     font-family: "PingFangSC-Semibold", "PingFang SC";
     line-height: 35px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-line-clamp: 3;
 }
 .list-right .list-title{
     font-size: 18px;
@@ -163,6 +168,10 @@ export default {
     color: #454545;
     line-height: 25px;
     margin-bottom: 22px;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow:ellipsis;
 }
 /* .list-container.clearfix:after{
      content: '';

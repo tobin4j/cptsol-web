@@ -4,36 +4,16 @@
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
         <el-tab-pane label="职业风采" name="jobLook" class="tab-content">
-        <div class="center-intro">
-            <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
-        </div>
-        <div class="intro-content">
-            <p>{{content}}</p>
-        </div>
+          <JobStyle ></JobStyle>
         </el-tab-pane>
         <el-tab-pane label="就业信息" name="jobMsg" class="tab-content">
-        <div class="center-intro">
-            <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
-        </div>
-        <div class="intro-content">
-            <p>{{content}}</p>
-        </div>
+          <JobInfo></JobInfo>
         </el-tab-pane>
         <el-tab-pane label="教学分享" name="teachShare" class="tab-content">
-        <div class="center-intro">
-            <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
-        </div>
-        <div class="intro-content">
-            <p>{{content}}</p>
-        </div>
+          <TeachShare></TeachShare>
         </el-tab-pane>
         <el-tab-pane label="合作展示" name="cooperateShow" class="tab-content">
-        <div class="center-intro">
-            <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
-        </div>
-        <div class="intro-content">
-            <p>{{content}}</p>
-        </div>
+          <CooperateShow></CooperateShow>
         </el-tab-pane>
   </el-tabs>
  </div>
@@ -41,6 +21,10 @@
 
 <script>
 import SearchKey from '@/components/Common/SearchKey'
+import JobStyle from './JobStyle.vue'
+import JobInfo from './JobInfo.vue'
+import TeachShare from './TeachShare.vue'
+import CooperateShow from './CooperateShow.vue'
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 export default {
@@ -70,7 +54,11 @@ export default {
     return state;
   },
   components: {
-    SearchKey
+    SearchKey,
+    TeachShare,
+    CooperateShow,
+    JobInfo,
+    JobStyle 
   }
 }
 </script>
