@@ -17,7 +17,7 @@
     </div>
     <div class="menu">
       <ul>
-        <li><a href="#"  @click.prevent="changeComp('Home')" :class="{'active':compName==='Home'}">首页</a></li>
+        <li style="text-indent: 32px;"><a href="#"  @click.prevent="changeComp('Home')" :class="{'active':compName==='Home'}">首页</a></li>
         <li><a href="#"  @click.prevent="changeComp('CenterIntro')" :class="{'active':compName==='CenterIntro'}">中心介绍</a></li>
         <li><a href="#"  @click.prevent="changeComp('Notice')" :class="{'active':compName==='Notice'}">通知公告</a></li>
         <li><a href="#"  @click.prevent="changeComp('CenterDynamics')" :class="{'active':compName==='CenterDynamics'}">中心动态</a></li>
@@ -25,13 +25,13 @@
         <li><a href="#"  @click.prevent="changeComp('Famous')" :class="{'active':compName==='Famous'}">名家观点</a></li>
         <li><a href="#"  @click.prevent="changeComp('JobLook')" :class="{'active':compName==='JobLook'}">职业风采</a></li>
         <li><a href="#"  @click.prevent="changeComp('TestGuide')" :class="{'active':compName==='TestGuide'}">考试指南</a></li>
-        <li><a href="#"  @click.prevent="changeComp('TestSys')" :class="{'active':compName==='TestSys'}">考试系统</a></li>
+        <li><a href="https://ks.cptsol.cn" target="_blank" @click="goLink" :class="{'active':menu==='TestSys'}">考试系统</a></li>
         <li><a href="#"  @click.prevent="changeComp('ContactUs')" :class="{'active':compName==='ContactUs'}">联系我们</a></li>
       </ul>
     </div>
   </div>
   <!-- <Home></Home> -->
-  <component :is="compName"></component>
+  <component :is="compName" :showList="showList"></component>
   <Footer></Footer>
   <el-backtop :bottom="100">
     <div class="backtop">
@@ -46,9 +46,9 @@ import Footer from './components/Common/Footer.vue'
 import Main from './components/Main.vue'
 import Home from './components/Pages/Home.vue' // 首页
 import CenterIntro from './components/Pages/CenterIntro/CenterIntro.vue' // 中心介绍
-import Notice from './components/Pages/Notice/Notice.vue' // 通知公告
-import CenterDynamics from './components/Pages/CenterDynamics/CenterDynamics.vue' // 中心动态
-import IndustryExchanges from './components/Pages/IndustryExchanges/IndustryExchanges.vue' // 行业交流
+import Notice from './components/Pages/Notice/Tab.vue' // 通知公告
+import CenterDynamics from './components/Pages/CenterDynamics/Tab.vue' // 中心动态
+import IndustryExchanges from './components/Pages/IndustryExchanges/Tab.vue' // 行业交流
 import Famous from './components/Pages/Famous/Famous.vue' // 名家观点
 import JobLook from './components/Pages/JobLook/JobLook.vue' // 职业风采
 import TestGuide from './components/Pages/TestGuide/TestGuide.vue' // 考试指南
@@ -61,12 +61,18 @@ export default {
     data () {
     return {
       compName: 'Home', // 默认展示首页
-      title: ''
+      title: '',
+      menu:'',
+      showList: false
     }
   },
   methods: {
     changeComp(name) {
       this.compName = name;
+      this.menu = "";
+    },
+    goLink() {
+      this.menu = "TestSys"
     }
    },
   components: {

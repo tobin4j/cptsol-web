@@ -1,6 +1,6 @@
 <template>
   <!-- 搜索 -->
-    <p class="title">{{title}}</p>
+    <!-- <p class="title">{{title}}</p> -->
     <el-form :inline="true" :model="formInline" class="serach-form">
     <el-form-item>
       <el-input v-model.trim="searchForm.keyWord" placeholder="" class="input"/>
@@ -61,7 +61,7 @@ export default {
   line-height: 22px;
 }
  .serach-form {
-   width: 1200px;
+   /* width: 1200px; */
    margin: 0 auto;
    justify-content: end;
    height: 40px;

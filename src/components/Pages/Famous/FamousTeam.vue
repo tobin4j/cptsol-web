@@ -1,131 +1,230 @@
 <template>
-  <!-- 中心介绍 -->
-  <!-- <p class="tab">{{title}}</p> -->
-  <div class="tab">
-    <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-        <el-tab-pane label="名家观点" name="famousPoint" class="tab-content">
-        <div class="center-intro">
-            <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
+<SearchKey v-if="!showDetails" :title="title" @search="search"></SearchKey>
+<div v-show="!showDetails">
+   <!-- <el-form :inline="true" :model="formInline" class="serach-form">
+    <el-form-item>
+      <el-input v-model.trim="searchForm.keyWord" placeholder="" class="input"/>
+    </el-form-item>
+    <el-form-item>
+    <el-button class="search"  @click="onSearch" >搜索</el-button>
+    <img alt="logo" src="../../assets/refresh.png" @click="reset"/>
+    </el-form-item>
+    </el-form> -->
+    <div class="list-container clearfix" v-for="(item,index) in dataList" :key="index" @click="goDetails(item.articleId)">
+        <div class="list-left">
+            <img :src="item.imgUrl"/>
         </div>
-        <div class="intro-content">
-            <p>{{content}}</p>
+        <div class="list-right">
+            <p class="list-title">{{item.title}}</p>
+            <p class="list-brief">{{intro}}</p>
         </div>
-        </el-tab-pane>
-        <el-tab-pane label="名家团队" name="famousTeam" class="tab-content">
-        <div class="center-intro">
-            <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
-        </div>
-        <div class="intro-content">
-            <p>{{content}}</p>
-        </div>
-        </el-tab-pane>
-  </el-tabs>
- </div>
+    </div>
+</div>
+<Details :isShow="showDetails"  :content="content" :title="title" @showList="showList"></Details>
 </template>
 
 <script>
-import SearchKey from '@/components/Common/SearchKey'
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
+import Details from '@/components/Common/Details'
+import SearchKey from '@/components/Common/SearchKey'
 export default {
-  name: 'Notice',
+  name: 'ContactUs',
+  // props:['dataList'],
    data () {
     return {
        title:'中心介绍',
        total: 10,
-       content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
-       activeName:'famousPoint'
+       pageNum: 1,
+       intro:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名',
+       searchForm: {
+        keyWord: '',
+       },
+       content:'',
+       showDetails: false,
+       activeName:'contactUS'
     }
    },
-  setup() {
-    const state = reactive({
-      noticeList: [],
+   methods: {
+    // goBack(){
+    //   this.$parent.showList();
+    // },
+    onCurrentChange(pageNum){
+      this.pageNum = pageNum;
+       this.getDataList();
+    },
+    prevClick(pageNum) {
+      this.pageNum = pageNum;
+      this.getDataList();
+    },
+    nextClick(pageNum) {
+     this.pageNum = pageNum;
+      this.getDataList();
+    },
+    enters(index){
+      this.current = index;
+      this.isvisible = true;
+    },
+    leaver(){
+      this.current = null;
+      this.isvisible = false;
+    },
+    search(key) {
+      this.keyWord = key;
+      this.getDataList();
+    },
+    goDetails(id) {
+      this.showDetails = true;
+      let noticeUrl=`https://api.cptsol.cn/api/open/articleDetail?type=6&page=${this.pageNum}&size=10&id=${id}`;
+      axios.get(noticeUrl).then((res)=>{
+        this.content = res.data.content;
+      })
+    },
+    onSearch() {
+    //    this.$parent.search(this.searchForm.keyWord);
+      // 参数：菜单名、关键字
+    },
+    showList() {
+      this.showDetails = false;
+    },
+    getDataList() {
+      let noticeUrl=`https://api.cptsol.cn/api/open/articleList?type=6&page=${this.pageNum}&size=10&title=${this.keyWord}`;
+      axios.get(noticeUrl).then((res)=>{
+        this.dataList = res.data.data;
+      })
+    }
+  },
+  setup(props,context) {
+    let state = reactive({
+      dataList: [],
+      list:[],
       isvisible: false,
-      isShow: false,
+      total:'',
       articleList:[] // 合作展示、文章列表
     })
     onMounted(async () => {
-      var noticeUrl="https://api.cptsol.cn/api/open/adList?type=2";
+      // https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10
+      var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=6&page=1&size=10";
       (async function () {
         const res = await axios.get(noticeUrl) //返回 {id:0}
-        state.noticeList = res.data;
+        state.dataList = res.data.data;
+        state.list = res.data.data;
+        state.total = res.data.total;
       })();
     })
     return state;
   },
   components: {
-    SearchKey
+      Details,
+      SearchKey
   }
 }
 </script>
 
 <style scoped>
-.tab {
-  width: 1200px;
-  margin: 0 auto;
-  margin: 15px auto;
-  text-indent: 20px;
+*,p{
+    margin: 0;
+    padding: 0;
+}
+.list-container{
+    /* border: 1px solid red; */
+    position: relative;
+    height: 170px;
+    margin-top: 40px;
+}
+.list-container .list-left{
+    width: 170px;
+    height: 170px;
+    position: absolute;
+    left: 0;
+    padding-right: 20px;
+    box-shadow: 0px 1px 4px 1px rgba(211, 211, 211, 0.5);
+}
+.list-container .list-left img{
+    border-radius: 4px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.list-container .list-right {
+    margin-left: 214px;
+    text-indent: 0;
+}
+.list-right .list-brief{
+    font-size: 14px;
+    font-weight: 400;
+    color: #454545;
+    font-family: "PingFangSC-Semibold", "PingFang SC";
+    line-height: 35px;
+}
+.list-right .list-title{
+    font-size: 18px;
+    font-family: "PingFangSC-Semibold", "PingFang SC";
+    font-weight: 600;
+    color: #454545;
+    line-height: 25px;
+    margin-bottom: 22px;
+}
+/* .list-container.clearfix:after{
+     content: '';
+     display: block;
+     height: 0;
+     clear: both;
+     visibility: hidden;
+  } */
+.title {
+  /* width: 1200px;
+  margin: 26px auto; */
+  text-indent: 40px;
   font-size: 16px;
   font-family: "PingFangSC-Semibold", "PingFang SC";
   font-weight: 600;
   color: #454545;
   line-height: 22px;
 }
-/* .intro-content {
-    width: 1200px;
-    margin: 0 auto;
-} */
-.tab >>>.el-tabs__header {
-    margin: 0;
+ .serach-form {
+   margin: 0 auto;
+   justify-content: end;
+   height: 40px;
+   margin-top: 16px;
+   margin-bottom: 24px;
+ }
+ .serach-form >>>.el-form-item {
+   margin-right: 0;
+ }
+ .serach-form >>>.el-form-item:nth-child(1){
+   width: 508px;
+   margin-right: 32px;
+ }
+ .serach-form >>>.el-form-item:nth-child(2){
+   width:150px;
+ }
+ .input >>>input{
+    width: 508px;
+    height: 40px;
+    background: #FFFFFF;
+    border-radius: 4px;
+    border: 1px solid #D4D9E0;
+ }
+ .search {
+    width: 100px;
+    height: 32px;
+    background: #2F318B;
+    border-radius: 4px;
+    font-family: "PingFangSC-Regular", "PingFang SC";
+    font-weight: 400;
+    color: #FFFFFF;
+    line-height: 20px;
+    margin-right: 24px;
+ }
+.back {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  font-size: 16px;
+  font-family: "PingFangSC-Semibold", "PingFang SC";
+  font-weight: 600;
+  color: #2F318B;
+  line-height: 22px;
 }
-.tab >>>.el-tabs__active-bar {
-    left: 20px;
-    height: 3px;
-    width: 65px!important;
-    background-color: #2F318B;
-}
-.tab >>>.el-tabs__item.is-active {
-    font-size: 16px;
-    font-family: "PingFangSC-Semibold", "PingFang SC";
-    font-weight: 600;
-    color: #454545;
-}
-.tab >>>.el-tabs__nav-wrap::after {
-      position: static !important;
-}
-.tab-content {
-    padding-left: 20px; 
-    margin-top: 32px;
-}
-.center-intro{
-  width: 1200px;
-  height: 436px;
-}
-.center-intro img {
-  height: 100%;
-  width: 100%;
-  object-fit: fill;
-  border-radius: 6px;
-  border: 1px solid #979797;
-}
- .intro-content{
-  margin-top: 24px;
-  margin-bottom: 92px;
-}
-.intro-content p {
-    font-size: 16px;
-    font-family: "PingFangSC-Semibold", "PingFang SC";
-    font-weight: 600;
-    color: #454545;
-    line-height: 22px;
-    padding-left: 20px;
-    text-indent: 0;
-    text-align: justify;
-    overflow: hidden;
-    -webkit-line-clamp: 3;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-}
-
 </style>

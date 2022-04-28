@@ -1,11 +1,11 @@
 <template>
-  <div class="tab">
-    <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-    <el-tab-pane :label="title" name="centerIntro" class="tab-content">
+  <div class="tab" v-show="isShow">
+    <!-- <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+    <el-tab-pane :label="title" name="centerIntro" class="tab-content"> -->
       <div class="content" v-html="content"></div>
-    </el-tab-pane>
-    </el-tabs>
-    <span @click="goBack" class="back">返回列表</span>
+      <span @click="goBack" class="back">返回列表</span>
+    <!-- </el-tab-pane>
+    </el-tabs> -->
  </div>
 </template>
 
@@ -13,7 +13,7 @@
 export default {
   name: 'Notice',
   //  propos:['examId ','courseId']  // 多参
-   props:['content','title'],
+   props:['content','title','isShow'],
    data () {
     return {
        total: 10,
@@ -42,7 +42,7 @@ export default {
   font-weight: 600;
   color: #454545;
   line-height: 22px;
-  position: relative;
+  /* position: relative; */
 }
 /* .intro-content {
     width: 1200px;
@@ -115,5 +115,4 @@ export default {
   color: #2F318B;
   line-height: 22px;
 }
-
 </style>

@@ -24,6 +24,11 @@ export default {
        activeName:'centerIntro'
     }
    },
+  methods: {
+    goBack(){
+      this.$refs.notice.showList();
+    }
+   },
   setup() {
     const state = reactive({
       content: [],

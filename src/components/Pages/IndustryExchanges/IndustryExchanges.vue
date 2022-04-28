@@ -87,7 +87,6 @@ export default {
       dataList: [],
       total: '',
       isvisible: false,
-      isShow: false,
       articleList:[] // 合作展示、文章列表
     })
     onMounted(async () => {

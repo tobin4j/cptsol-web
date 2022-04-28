@@ -1,23 +1,24 @@
 <template>
+  <!-- 中心介绍 -->
+  <!-- <p class="tab">{{title}}</p> -->
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-        <el-tab-pane label="名家观点" name="famousPoint">
-         <FamousPoint ref="child"></FamousPoint>
-        </el-tab-pane>
-        <el-tab-pane label="名家团队" name="famousTeam" class="tab-content">
-          <FamousTeam :dataList="dataList"></FamousTeam>
+        <el-tab-pane label="通知公告" name="famousPoint">
+         <Notice ref="notice"></Notice>
         </el-tab-pane>
   </el-tabs>
+  <!-- <span @click="goBack" class="back" >返回列表</span> -->
  </div>
 </template>
 
 <script>
-import FamousTeam from './FamousTeam.vue'
-import FamousPoint from './FamousPoint.vue'
+import SearchKey from '@/components/Common/SearchKey'
+import Notice from './Notice.vue'
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 export default {
-  name: 'Notice',
+  name: 'Tab',
+  props:['showList'],
    data () {
     return {
        title:'中心介绍',
@@ -26,41 +27,30 @@ export default {
        activeName:'famousPoint'
     }
    },
-  methods: {
+   methods: {
     goBack(){
-      this.$refs.child.showList();
+      this.$refs.notice.showList();
     }
    },
   setup() {
     const state = reactive({
       noticeList: [],
-      dataList:[],
       isvisible: false,
       isShow: false,
       articleList:[] // 合作展示、文章列表
     })
     onMounted(async () => {
-      // https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10
-      var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10";
-      var famousTeamUrl="https://api.cptsol.cn/api/open/articleList?type=6&page=1&size=10";
+      var noticeUrl="https://api.cptsol.cn/api/open/adList?type=2";
       (async function () {
         const res = await axios.get(noticeUrl) //返回 {id:0}
-        state.noticeList = res.data.data;
-        state.list = res.data.data;
-        state.total = res.data.total;
+        state.noticeList = res.data;
       })();
-      (async function () {
-        const res = await axios.get(famousTeamUrl) //返回 {id:0}
-        state.dataList = res.data.data;
-        // state.list = res.data.data;
-        state.total = res.data.total;
-      })();
-      })
+    })
     return state;
   },
   components: {
-    FamousPoint,
-    FamousTeam
+    Notice,
+    SearchKey
   }
 }
 </script>
@@ -68,8 +58,7 @@ export default {
 <style scoped>
 .tab {
   width: 1200px;
-  margin: 0 auto;
-  margin: 15px auto;
+  margin: 32px auto;
   text-indent: 20px;
   font-size: 16px;
   font-family: "PingFangSC-Semibold", "PingFang SC";
@@ -137,7 +126,7 @@ export default {
 .back {
   position: absolute;
   right: 0;
-  top: 20px;
+  top: 0;
   font-size: 16px;
   font-family: "PingFangSC-Semibold", "PingFang SC";
   font-weight: 600;

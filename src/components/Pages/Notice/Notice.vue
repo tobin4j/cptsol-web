@@ -11,7 +11,7 @@
         「{{item.createTime.substring(0,10)}}」
       </span>
     </div>
-    <Details v-show="showDetails" :content="content" :title="title" @showList="showList"></Details>
+    <Details v-show="showDetails"  :content="content" :title="title" :showDetails="showDetails"></Details>
   </div>
   <div class="page-container" v-show="!showDetails">
     <el-pagination background layout="prev, pager, next" 
@@ -88,7 +88,6 @@ export default {
       noticeList: [],
       list:[],
       isvisible: false,
-      // isShow: false,
       total:'',
       articleList:[] // 合作展示、文章列表
     })

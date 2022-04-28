@@ -1,18 +1,19 @@
 <template>
   <!-- 通知公告 -->
-  <SearchKey :title="title" @search="search"></SearchKey>
+  <SearchKey v-if="!showDetails" :title="title" @search="search"></SearchKey>
   <div class="listitem clearfix"> 
-    <div v-for="(item,index) in dataList" :key="index" class="list-container">
+    <div v-for="(item,index) in dataList" :key="index" class="list-container" v-show="!showDetails">
       <span class="list-left">
         <span class="dot"></span>
-        {{item.title}}
+        <a @click="goDetails(item.articleId)">{{item.title}}</a>
       </span>
       <span class="list-right">
         「{{item.createTime.substring(0,10)}}」
       </span>
     </div>
+    <Details v-show="showDetails"  :content="content" :title="title" @showList="showList"></Details>
   </div>
-  <div class="page-container">
+  <div class="page-container" v-show="!showDetails">
     <el-pagination background layout="prev, pager, next" 
     :total="total" 
     @currentChange = "onCurrentChange"
@@ -25,6 +26,7 @@
 
 <script>
 import SearchKey from '@/components/Common/SearchKey'
+import Details from '@/components/Common/Details'
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 export default {
@@ -33,7 +35,9 @@ export default {
     return {
        title:'',
        keyWord:'',
-       pageNum: 1
+       pageNum: 1,
+       content:'',
+       showDetails: false
     }
    },
    methods: {
@@ -61,6 +65,16 @@ export default {
       this.keyWord = key;
       this.getDataList();
     },
+    goDetails(id) {
+      this.showDetails = true;
+      let noticeUrl=`https://api.cptsol.cn/api/open/articleDetail?type=5&page=${this.pageNum}&size=10&id=${id}`;
+      axios.get(noticeUrl).then((res)=>{
+        this.content = res.data.content;
+      })
+    },
+    showList() {
+      this.showDetails = false;
+    },
     getDataList() {
       let noticeUrl=`https://api.cptsol.cn/api/open/articleList?type=5&page=${this.pageNum}&size=10&title=${this.keyWord}`;
       axios.get(noticeUrl).then((res)=>{
@@ -73,7 +87,6 @@ export default {
       dataList: [],
       total: '',
       isvisible: false,
-      isShow: false,
       articleList:[] // 合作展示、文章列表
     })
     onMounted(async () => {
@@ -87,7 +100,8 @@ export default {
     return state;
   },
   components: {
-    SearchKey
+    SearchKey,
+    Details
   }
 }
 </script>

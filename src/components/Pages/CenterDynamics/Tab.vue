@@ -1,19 +1,18 @@
 <template>
+  <!-- 中心介绍 -->
+  <!-- <p class="tab">{{title}}</p> -->
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-        <el-tab-pane label="名家观点" name="famousPoint">
-         <FamousPoint ref="child"></FamousPoint>
-        </el-tab-pane>
-        <el-tab-pane label="名家团队" name="famousTeam" class="tab-content">
-          <FamousTeam :dataList="dataList"></FamousTeam>
+        <el-tab-pane label="行业交流" name="famousPoint">
+         <CenterDynamics ref="child"></CenterDynamics>
         </el-tab-pane>
   </el-tabs>
  </div>
 </template>
 
 <script>
-import FamousTeam from './FamousTeam.vue'
-import FamousPoint from './FamousPoint.vue'
+import SearchKey from '@/components/Common/SearchKey'
+import CenterDynamics from './CenterDynamics.vue'
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 export default {
@@ -26,41 +25,30 @@ export default {
        activeName:'famousPoint'
     }
    },
-  methods: {
-    goBack(){
-      this.$refs.child.showList();
-    }
-   },
   setup() {
     const state = reactive({
       noticeList: [],
-      dataList:[],
       isvisible: false,
       isShow: false,
       articleList:[] // 合作展示、文章列表
     })
     onMounted(async () => {
-      // https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10
-      var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10";
-      var famousTeamUrl="https://api.cptsol.cn/api/open/articleList?type=6&page=1&size=10";
+      var noticeUrl="https://api.cptsol.cn/api/open/adList?type=2";
       (async function () {
         const res = await axios.get(noticeUrl) //返回 {id:0}
-        state.noticeList = res.data.data;
-        state.list = res.data.data;
-        state.total = res.data.total;
+        state.noticeList = res.data;
       })();
-      (async function () {
-        const res = await axios.get(famousTeamUrl) //返回 {id:0}
-        state.dataList = res.data.data;
-        // state.list = res.data.data;
-        state.total = res.data.total;
-      })();
-      })
+    })
     return state;
   },
+  methods: {
+    goBack(){
+      this.$refs.child.showList();
+    }
+   },
   components: {
-    FamousPoint,
-    FamousTeam
+    CenterDynamics,
+    SearchKey
   }
 }
 </script>
