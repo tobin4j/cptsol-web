@@ -16,8 +16,10 @@
           <div class="list">
             <ul>
               <li v-for="(item,index) in list" :key="index">
-               <span class="msg-title"><span class="dot"></span>{{ item.message }}</span>
-              <span class="date">{{item.date}}</span>
+               <span class="msg-title"><span class="dot"></span>{{ item.title }}</span>
+              <span class="date">
+              「{{item.createTime.substring(0,10)}}」
+              </span>
               </li>
             </ul>
           </div>
@@ -36,9 +38,9 @@
           </div>
           <div class="list">
             <ul>
-              <li v-for="(item,index) in list" :key="index">
-               <span class="msg-title"><span class="dot"></span>{{ item.message }}</span>
-               <span class="date">{{item.date}}</span>
+              <li v-for="(item,index) in centerList" :key="index">
+               <span class="msg-title"><span class="dot"></span>{{ item.title }}</span>
+               <span class="date">「{{item.createTime.substring(0,10)}}」</span>
               </li>
             </ul>
           </div>
@@ -61,9 +63,9 @@
           </div>
           <div class="list">
             <ul>
-              <li v-for="(item,index) in list2" :key="index">
-                <span class="msg-title"><span class="dot"></span>{{ item.message }}</span>
-              <span class="date">{{item.date}}</span>
+              <li v-for="(item,index) in jobLookList" :key="index">
+                <span class="msg-title"><span class="dot"></span>{{ item.title}}</span>
+              <span class="date">「{{item.createTime.substring(0,10)}}」</span>
               </li>
             </ul>
           </div>
@@ -154,33 +156,36 @@ export default {
         user: '',
         region: ''
       },
-      content:'近几年，随着中国经济快速发展，全球汉语学习热潮正在兴起，国际中文教师的缺口数量逐年增加，鉴于目前参加考试的人数逐年增加，为了满足广大参考人员的要求，国际中文教师考试委员会为了完善全球考试中心布局，现启动培训中心合作计划。',
-      list: [
-        { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-        { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
-        { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-        { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-        { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
-      ],
-      list2: [
-        { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-        { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
-        { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-        { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-        { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
-        { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-        { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
-        { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-        { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
-        { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
-      ]
+     content:'近几年，随着中国经济快速发展，全球汉语学习热潮正在兴起，国际中文教师的缺口数量逐年增加，鉴于目前参加考试的人数逐年增加，为了满足广大参考人员的要求，国际中文教师考试委员会为了完善全球考试中心布局，现启动培训中心合作计划。',
+      // list: [
+      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
+      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
+      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
+      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
+      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
+      // ],
+      // list2: [
+      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
+      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
+      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
+      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
+      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
+      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
+      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
+      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
+      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......' ,date: '「2022-05-05」'},
+      //   { message: '某某公告 | 2022年第一期国际中文执业能力考试报名......',date: '「2022-05-05」' },
+      // ]
     }
   },
   setup() {
     const state = reactive({
       imgList: [],
+      jobLookList:[],
       isvisible: false,
       isShow: false,
+      centerList:[], // 中心动态
+      list:[],// 通知公告
       articleList:[] // 合作展示、文章列表
     })
     onMounted(async () => {
@@ -188,13 +193,33 @@ export default {
       var bannerUrl="https://api.cptsol.cn/api/open/adList?type=2";
       // 合作展示即文章列表
       var joinShowUrl="https://api.cptsol.cn/api/open/articleList?type=10&page=1&size=4";
+      var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=5";
+      var centerUrl="https://api.cptsol.cn/api/open/articleList?type=3&page=1&size=5";
+      var jobLookUrl="https://api.cptsol.cn/api/open/articleList?type=7&page=1&size=10";
       (async function () {
         const res = await axios.get(bannerUrl) //返回 {id:0}
         state.imgList = res.data;
       })();
-       (async function () {
+      (async function () {
         const res = await axios.get(joinShowUrl) //返回 {id:0}
         state.articleList = res.data.data;
+      })();
+      (async function () {
+        const res = await axios.get(bannerUrl) //返回 {id:0}
+        state.imgList = res.data;
+      })();
+      (async function () {
+        const res = await axios.get(noticeUrl) //通知公告
+        state.list = res.data.data;
+      })();
+      (async function () {
+        const res = await axios.get(centerUrl) //中心动态
+        state.centerList = res.data.data;
+      })();
+      (async function () {
+        const res = await axios.get(jobLookUrl) //职业风采
+        state.jobLookList = res.data.data;
+        console.log(state.jobLookList,'你')
       })();
     })
     return state;
@@ -222,6 +247,7 @@ export default {
   computed: {
     // 计算属性
   }
+  
 }
 </script>
 

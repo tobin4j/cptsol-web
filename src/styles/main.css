@@ -6,6 +6,7 @@
   }
   .main-cards .cards-item{
     flex: 1;
+    width: 50%;
   }
   .main-cards .col{
     display: flex;
