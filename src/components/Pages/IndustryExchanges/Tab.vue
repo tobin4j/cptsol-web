@@ -2,12 +2,11 @@
   <!-- 中心介绍 -->
   <!-- <p class="tab">{{title}}</p> -->
   <div class="tab">
-    <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-        <el-tab-pane label="行业交流" name="famousPoint">
+    <el-tabs v-model="activeName"  @tab-click="handleClick" >
+        <el-tab-pane label="行业交流" name="famousPoint"  style="margin-top:32px;">
          <IndustryExchanges ref="child"></IndustryExchanges>
         </el-tab-pane>
   </el-tabs>
-   <!-- <span @click="goBack" class="back">返回列表</span> -->
  </div>
 </template>
 
@@ -57,7 +56,6 @@ export default {
 <style scoped>
 .tab {
   width: 1200px;
-  margin: 0 auto;
   margin: 15px auto;
   text-indent: 20px;
   font-size: 16px;
@@ -122,15 +120,5 @@ export default {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-}
-.back {
-  position: absolute;
-  right: 0;
-  top: 20px;
-  font-size: 16px;
-  font-family: "PingFangSC-Semibold", "PingFang SC";
-  font-weight: 600;
-  color: #2F318B;
-  line-height: 22px;
 }
 </style>

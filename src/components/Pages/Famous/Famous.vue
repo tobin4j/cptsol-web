@@ -1,7 +1,7 @@
 <template>
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-        <el-tab-pane label="名家观点" name="famousPoint">
+        <el-tab-pane label="名家观点" name="famousPoint" class="tab-content">
          <FamousPoint ref="child"></FamousPoint>
         </el-tab-pane>
         <el-tab-pane label="名家团队" name="famousTeam" class="tab-content">
@@ -133,15 +133,5 @@ export default {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-}
-.back {
-  position: absolute;
-  right: 0;
-  top: 20px;
-  font-size: 16px;
-  font-family: "PingFangSC-Semibold", "PingFang SC";
-  font-weight: 600;
-  color: #2F318B;
-  line-height: 22px;
 }
 </style>

@@ -3,7 +3,7 @@
   <!-- <p class="tab">{{title}}</p> -->
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-        <el-tab-pane label="行业交流" name="famousPoint">
+        <el-tab-pane label="行业交流" name="famousPoint" style="margin-top:32px;">
          <CenterDynamics ref="child"></CenterDynamics>
         </el-tab-pane>
   </el-tabs>
@@ -121,15 +121,5 @@ export default {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-}
-.back {
-  position: absolute;
-  right: 0;
-  top: 20px;
-  font-size: 16px;
-  font-family: "PingFangSC-Semibold", "PingFang SC";
-  font-weight: 600;
-  color: #2F318B;
-  line-height: 22px;
 }
 </style>

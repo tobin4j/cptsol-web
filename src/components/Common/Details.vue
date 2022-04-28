@@ -108,7 +108,7 @@ export default {
 .back {
   position: absolute;
   right: 0;
-  top: 20px;
+  top: 0!important;
   font-size: 16px;
   font-family: "PingFangSC-Semibold", "PingFang SC";
   font-weight: 600;

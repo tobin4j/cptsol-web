@@ -3,11 +3,10 @@
   <!-- <p class="tab">{{title}}</p> -->
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-        <el-tab-pane label="通知公告" name="famousPoint">
+        <el-tab-pane label="通知公告" name="famousPoint" style="margin-top:32px;">
          <Notice ref="notice"></Notice>
         </el-tab-pane>
   </el-tabs>
-  <!-- <span @click="goBack" class="back" >返回列表</span> -->
  </div>
 </template>
 
@@ -58,7 +57,7 @@ export default {
 <style scoped>
 .tab {
   width: 1200px;
-  margin: 32px auto;
+  margin: 15px auto;
   text-indent: 20px;
   font-size: 16px;
   font-family: "PingFangSC-Semibold", "PingFang SC";
@@ -122,15 +121,5 @@ export default {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-}
-.back {
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-size: 16px;
-  font-family: "PingFangSC-Semibold", "PingFang SC";
-  font-weight: 600;
-  color: #2F318B;
-  line-height: 22px;
 }
 </style>

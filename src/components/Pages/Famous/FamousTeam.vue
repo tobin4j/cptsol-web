@@ -217,14 +217,4 @@ export default {
     line-height: 20px;
     margin-right: 24px;
  }
-.back {
-  position: absolute;
-  right: 0;
-  top: 20px;
-  font-size: 16px;
-  font-family: "PingFangSC-Semibold", "PingFang SC";
-  font-weight: 600;
-  color: #2F318B;
-  line-height: 22px;
-}
 </style>
