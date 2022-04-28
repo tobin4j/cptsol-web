@@ -1,7 +1,6 @@
 .listitem{
-    width: 1200px;
-    margin: 0 auto;
     text-indent: 40px;
+    /* border: 10px solid red; */
   }
    .listitem .list-container{
      overflow: hidden;

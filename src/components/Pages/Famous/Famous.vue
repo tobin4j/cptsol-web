@@ -105,7 +105,7 @@ export default {
     margin-top: 32px;
 }
 .center-intro{
-  width: 1200px;
+  /* width: 1200px; */
   height: 436px;
 }
 .center-intro img {
