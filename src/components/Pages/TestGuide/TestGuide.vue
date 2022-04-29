@@ -15,7 +15,9 @@
             <CertificateClaimProcess v-if="activeName==='CertificateClaimProcess'"></CertificateClaimProcess>
           </template>
           <template v-else>
-            hhahahhaaah
+            <TestBook v-if="activeName==='testBook'"></TestBook>
+            <QExample v-if="activeName==='qExample'"></QExample>
+            <TestStandard v-if="activeName==='testStandard'"></TestStandard>
           </template>
         </el-tab-pane>
   </el-tabs>
@@ -30,7 +32,9 @@ import Details from '@/components/Common/Details'
 import RegisterProcess from './RegisterProcess.vue';
 import TestProcess from './TestProcess.vue';
 import CertificateClaimProcess from './CertificateClaimProcess.vue';
-
+import TestBook from './TestBook.vue';
+import QExample from './QExample.vue';
+import TestStandard from './TestStandard.vue';
 export default {
   name: 'Notice',
    data () {
@@ -119,8 +123,10 @@ export default {
     SearchKey,
     RegisterProcess,
     TestProcess,
-    CertificateClaimProcess
-    
+    CertificateClaimProcess,
+    TestBook,
+    QExample,
+    TestStandard
   }
 }
 </script>
