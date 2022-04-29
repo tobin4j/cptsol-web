@@ -1,11 +1,7 @@
 <template>
   <div class="tab" v-show="isShow">
-    <!-- <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-    <el-tab-pane :label="title" name="centerIntro" class="tab-content"> -->
       <div class="content" v-html="content"></div>
       <span @click="goBack" class="back">返回列表</span>
-    <!-- </el-tab-pane>
-    </el-tabs> -->
  </div>
 </template>
 

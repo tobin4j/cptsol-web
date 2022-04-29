@@ -1,15 +1,22 @@
 <template>
-  <!-- 中心介绍 -->
-  <!-- <p class="tab">{{title}}</p> -->
   <div class="tab">
-    <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-        <el-tab-pane :label="item" name="contactUS" class="tab-content" v-for="(item,index) in tabs" :key="index">
-        <div class="center-intro">
-            <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
-        </div>
-        <div class="intro-content">
-            <p>{{content}}</p>
-        </div>
+    <el-tabs v-model="activeName" class="demo-tabs" @tab-change="handleClick">
+        <el-tab-pane :label="item.label" :name="item.name" class="tab-content" v-for="(item,index) in tabs" :key="index">
+          <template v-if="activeName ==='testIntro' 
+            || activeName ==='testRangle'
+            || activeName ==='testStruce'" > 
+            <div v-html="introContent" class="tab-content"></div>
+          </template>
+          <template v-else-if="activeName ==='registerProcess' 
+            || activeName ==='testProcess'
+            || activeName ==='CertificateClaimProcess'">
+            <RegisterProcess v-if="activeName==='registerProcess'"></RegisterProcess>
+            <TestProcess v-if="activeName==='testProcess'"></TestProcess>
+            <CertificateClaimProcess v-if="activeName==='CertificateClaimProcess'"></CertificateClaimProcess>
+          </template>
+          <template v-else>
+            hhahahhaaah
+          </template>
         </el-tab-pane>
   </el-tabs>
  </div>
@@ -19,35 +26,101 @@
 import SearchKey from '@/components/Common/SearchKey'
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
+import Details from '@/components/Common/Details'
+import RegisterProcess from './RegisterProcess.vue';
+import TestProcess from './TestProcess.vue';
+import CertificateClaimProcess from './CertificateClaimProcess.vue';
+
 export default {
   name: 'Notice',
    data () {
     return {
-       tabs: ['考试介绍','考试范围','考试结构','考试范围','考试标准','真题实例','考试用书','报名流程','考试流程','证书申领流程'],
+       label:'国际中文教师职业能力证书考试报名流程',
+       tabs: [{label:'考试介绍',name:'testIntro'},
+       {label: '考试范围',name:'testRangle'},
+       {label: '考试结构',name:'testStruce'},
+       {label: '考试标准',name:'testStandard'},
+       {label: '真题实例',name:'qExample'},
+       {label: '考试用书',name:'testBook'},
+       {label: '报名流程',name:'registerProcess'},
+       {label: '考试流程',name:'testProcess'},
+       {label: '证书申领流程',name:'CertificateClaimProcess'}],
        title:'中心介绍',
        total: 10,
        content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
-       activeName:'contactUS'
+       activeName:'testIntro'
     }
    },
+  methods: {
+    // 方法
+    onSubmit() {
+      console.log('submit!');
+    },
+    getContent(typeVal) {
+      let noticeUrl=`https://api.cptsol.cn/api/open/articleDetail?type=${typeVal}`;
+      axios.get(noticeUrl).then((res)=>{
+        this.introContent = res.data.content;
+      })
+    },
+    handleClick(name){
+      let typeVal = 11;
+      this.activeName = name;
+      if(name==='testIntro') {
+        typeVal = 11;
+        this.getContent(typeVal);
+      }
+      if(name === "testRangle") {
+        typeVal = 12;
+        this.getContent(typeVal);
+      }
+      if(name === 'testStruce') {
+        typeVal = 13;
+        this.getContent(typeVal);
+      } 
+      if(name === 'testStandard') {
+        typeVal = 14;
+      } 
+      if(name === 'qExample') {
+        typeVal = 15;
+      } 
+      if(name === "testBook") {
+        typeVal = 16
+        this.getContent(typeVal);
+      } 
+      if(name === 'registerProcess') {
+        this.label = '国际中文教师职业能力证书考试报名流程';
+      } 
+      if(name === 'testProcess') {
+        this.label = '国际中文教师职业能力证书考试流程';
+      } 
+      if(name === "CertificateClaimProcess") {
+        this.label = '国际中文教师职业能力证书申领流程'
+      } 
+    }
+  },
   setup() {
     const state = reactive({
-      noticeList: [],
+      introContent: [],
       isvisible: false,
       isShow: false,
       articleList:[] // 合作展示、文章列表
     })
     onMounted(async () => {
-      var noticeUrl="https://api.cptsol.cn/api/open/adList?type=2";
+      var noticeUrl="https://api.cptsol.cn/api/open/articleDetail?type=11";
       (async function () {
         const res = await axios.get(noticeUrl) //返回 {id:0}
-        state.noticeList = res.data;
+        state.introContent =  res.data.content;
       })();
     })
     return state;
   },
   components: {
-    SearchKey
+    Details,
+    SearchKey,
+    RegisterProcess,
+    TestProcess,
+    CertificateClaimProcess
+    
   }
 }
 </script>
@@ -89,6 +162,7 @@ export default {
 .tab-content {
     padding-left: 20px; 
     margin-top: 32px;
+    text-indent: 0;
 }
 .center-intro{
   width: 1200px;
