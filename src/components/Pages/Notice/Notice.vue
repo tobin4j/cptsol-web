@@ -32,6 +32,7 @@ import { reactive, onMounted } from 'vue'
 import Details from '@/components/Common/Details'
 export default {
   name: 'Notice',
+  props:['id'],
    data () {
     return {
        title:'通知公告',
@@ -40,6 +41,19 @@ export default {
        content:'',
        showDetails: false
     }
+   },
+   watch:{
+     id:{
+       immediate:true,
+       deep:true,
+       handler: function(val) {
+        if(val){
+          this.goDetails(val)
+        } else {
+          this.showDetails = false;
+        }
+       }
+     }
    },
    methods: {
     onCurrentChange(pageNum){
@@ -75,6 +89,9 @@ export default {
     },
     showList() {
       this.showDetails = false;
+    },
+    goDetailsLink() {
+      this.showDetails = true;
     },
     getDataList() {
       let noticeUrl=`https://api.cptsol.cn/api/open/articleList?type=2&page=${this.pageNum}&size=10&title=${this.keyWord}`;

@@ -4,7 +4,7 @@
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
         <el-tab-pane label="通知公告" name="famousPoint" style="margin-top:32px;">
-         <Notice ref="notice"></Notice>
+         <Notice ref="notice" :id="id"></Notice>
         </el-tab-pane>
   </el-tabs>
  </div>
@@ -17,18 +17,31 @@ import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 export default {
   name: 'Tab',
-  props:['showList'],
+  props:['showList','articleId'],
    data () {
     return {
        title:'中心介绍',
        total: 10,
        content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
-       activeName:'famousPoint'
+       activeName:'famousPoint',
+       id: this.articleId
     }
+   },
+   watch:{
+     articleId:{
+       immediate:true,
+       deep:true,
+       handler: function(val) {
+        this.id  = val;
+       }
+     }
    },
    methods: {
     goBack(){
       this.$refs.notice.showList();
+    },
+    goDetailsLink(){
+      this.$refs.notice.goDetailsLink();
     }
    },
   setup() {

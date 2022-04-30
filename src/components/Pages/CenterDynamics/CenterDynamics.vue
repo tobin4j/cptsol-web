@@ -30,6 +30,7 @@ import Details from '@/components/Common/Details'
 import { reactive, onMounted } from 'vue'
 export default {
   name: 'CenterDynamics',
+  props:['id'],
    data () {
     return {
        title:'中心动态',
@@ -38,6 +39,20 @@ export default {
        content:'',
        showDetails: false
     }
+   },
+   watch:{
+     id:{
+       immediate:true,
+       deep:true,
+       handler: function(val) {
+        if(val){
+          console.log(val,'伊欧治')
+          this.goDetails(val)
+        } else {
+          this.showDetails = false;
+        }
+       }
+     }
    },
    methods: {
     onCurrentChange(pageNum){

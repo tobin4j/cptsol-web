@@ -4,7 +4,7 @@
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
         <el-tab-pane label="职业风采" name="jobLook" class="tab-content">
-          <JobStyle ></JobStyle>
+          <JobStyle :id="id" ></JobStyle>
         </el-tab-pane>
         <el-tab-pane label="就业信息" name="jobMsg" class="tab-content">
           <JobInfo></JobInfo>
@@ -29,16 +29,24 @@ import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 export default {
   name: 'Notice',
-  props:['activeTabName'],
+  props:['activeTabName','articleId'],
    data () {
     return {
        title:'中心介绍',
        total: 10,
        content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
-       activeName:'jobLook'
+       activeName:'jobLook',
+       id: this.articleId
     }
    },
    watch:{
+     articleId:{
+       immediate:true,
+       deep:true,
+       handler: function(val) {
+           this.id = val;
+       }
+     },
      activeTabName:{
        immediate:true,
        deep:true,

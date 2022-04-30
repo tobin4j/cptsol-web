@@ -1,5 +1,4 @@
 <template>
-{
   <el-carousel :interval="3000" arrow="always" class="swiper" v-if="isShow">
     <el-carousel-item v-for="item in list" :key="item">
       <a :href="item.redirectUrl"  target="_blank">
@@ -60,7 +59,6 @@ export default {
         const res = await axios.get(api) //返回 {id:0}
         console.log(res.data)
         state.list = res.data
-        console.log(state.list,'哈哈')
         state.isShow = true
       })();
     })

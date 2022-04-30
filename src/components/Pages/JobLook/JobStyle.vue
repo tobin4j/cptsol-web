@@ -31,6 +31,7 @@ import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 export default {
   name: 'JobStyle',
+  props:['id'],
    data () {
     return {
        title:'',
@@ -39,6 +40,19 @@ export default {
        content:'',
        showDetails: false
     }
+   },
+   watch:{
+     id:{
+       immediate:true,
+       deep:true,
+       handler: function(val) {
+        if(val){
+          this.goDetails(val)
+        } else {
+          this.showDetails = false;
+        }
+       }
+     }
    },
    methods: {
     onCurrentChange(pageNum){

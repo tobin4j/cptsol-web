@@ -31,7 +31,7 @@
     </div>
   </div>
   <!-- <Home></Home> -->
-  <component :is="compName" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName"></component>
+  <component :is="compName" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName" :articleId="articleId"></component>
   <Footer></Footer>
   <el-backtop :bottom="100">
     <div class="backtop">
@@ -64,7 +64,9 @@ export default {
       title: '',
       menu:'',
       showList: false,
-      activeTabName:0
+      activeTabName:0,
+      isFromHome: false,
+      articleId:''
     }
   },
   methods: {
@@ -72,6 +74,11 @@ export default {
       this.compName = name;
       this.menu = "";
       this.activeTabName = 0;
+    },
+    lookDetails(name,id){
+      this.compName = name;
+      this.isFromHome = true;
+      this.articleId = id;
     },
     goLink() {
       this.menu = "TestSys"

@@ -67,6 +67,7 @@
   .list ul  li{
     list-style:none;
     margin-top: 16px;
+    cursor: pointer;
   }
   .dot{
     width: 5px;
