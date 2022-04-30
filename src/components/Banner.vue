@@ -1,4 +1,5 @@
 <template>
+{
   <el-carousel :interval="3000" arrow="always" class="swiper" v-if="isShow">
     <el-carousel-item v-for="item in list" :key="item">
       <a :href="item.redirectUrl"  target="_blank">
@@ -48,21 +49,7 @@ export default {
      window.location.href="http:baidu"
    }
   },
-   
-  // setup(props) {
-  //   console.log(props,'嗯')
-  //     var api="https://api.cptsol.cn/api/open/adList?type=1";
-  //     //2.使用axios 进行get请求
-  //     axios.get(api).then((res)=>{
-  //       //请求成功的回调函数
-  //       console.log(res,'成功了吗')
-  //       this.list = res.data
-  //     }).catch((err)=>{
-  //       //请求失败的回调函数
-  //       console.log(err)
-  //     })
-  // },
-    setup() {
+  setup() {
     const state = reactive({
       list: [],
       isShow: false
@@ -73,6 +60,7 @@ export default {
         const res = await axios.get(api) //返回 {id:0}
         console.log(res.data)
         state.list = res.data
+        console.log(state.list,'哈哈')
         state.isShow = true
       })();
     })

@@ -138,7 +138,9 @@
             <span class="friendly-link">友情链接</span>
              <div class="pics container" style="margin-top: 25px;">
                  <div class="pic-item" v-for="item in imgList" :key="item">
-                   <img alt="logo" :src="item.imgUrl" />
+                   <a :href="item.imgUrl" target="_blank">
+                     <img alt="logo" :src="item.imgUrl" />
+                   </a>
                 </div>
              </div>
           </div>
