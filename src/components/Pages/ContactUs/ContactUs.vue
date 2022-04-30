@@ -1,6 +1,5 @@
 <template>
-  <!-- 中心介绍 -->
-  <!-- <p class="tab">{{title}}</p> -->
+  <!-- 联系我们 -->
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
         <el-tab-pane label="联系我们" name="contactUS" class="tab-content">
@@ -8,12 +7,6 @@
         </el-tab-pane>
         <el-tab-pane label="合作申请" name="coopApply" class="tab-content">
           <div class="content" v-html="coopApplyDetails"></div>
-        <!-- <div class="center-intro">
-            <img src="https://www.keaidian.com/uploads/allimg/190424/24110307_19.jpg"/>
-        </div>
-        <div class="intro-content">
-            <p>{{content}}</p>
-        </div> -->
         </el-tab-pane>
   </el-tabs>
  </div>
@@ -24,12 +17,27 @@ import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 export default {
   name: 'ContactUs',
+  props:['activeTabName'],
    data () {
     return {
        title:'中心介绍',
        total: 10,
        activeName:'contactUS'
     }
+   },
+   watch:{
+     activeTabName:{
+       immediate:true,
+       deep:true,
+       handler: function(val) {
+         console.log(val,'@')
+         if(val === 0) {
+           this.activeName = 'contactUS';
+         } else {
+           this.activeName = 'coopApply';
+         }
+       }
+     }
    },
   setup() {
     const state = reactive({

@@ -9,7 +9,7 @@
             <img alt="logo" src="../assets/001.png">
           </span>
           <span class="notice">通知公告</span>
-          <span class="more" @click="lookMore">更多
+          <span class="more" @click="goPage('Notice')">更多
             <span class="more-icon">
               <img src="../assets/more.png"/>
             </span>
@@ -32,7 +32,7 @@
         <div style="margin-bottom: 25px;">
           <img alt="logo" src="../assets/002.png" style="vertical-align:middle">
           <span class="trends">中心动态</span>
-          <span class="more" @click="lookMore">更多
+          <span class="more" @click="goPage('CenterDynamics')">更多
             <span class="more-icon">
               <img src="../assets/more.png"/>
             </span>
@@ -57,7 +57,7 @@
               <img alt="logo" src="../assets/003.png">
             </span>
             <span class="jooblook">职业风采</span>
-            <span class="more" @click="lookMore">更多
+            <span class="more" @click="goPage('JobLook')">更多
               <span class="more-icon">
                 <img src="../assets/more.png"/>
               </span>
@@ -81,7 +81,7 @@
             </div>
             <p class="content_intro">{{content}}</p>
             <div class="apply">
-              <el-button style="margin: 0 auto;">立即申请</el-button>
+              <el-button style="margin: 0 auto;" @click="goPage('ContactUs',1)">立即申请</el-button>
             </div>
           </el-card>
           <el-card shadow="always" style="margin-top:16px;" class="last-one">
@@ -111,7 +111,7 @@
               <img alt="logo" src="../assets/006.png" style="vertical-align:middle">
             </span>
             <span class="cooperation-show">合作展示</span>
-            <span class="more" @click="lookMore">更多
+            <span class="more" @click="goPage('JobLook',3)">更多
               <span class="more-icon">
                 <img src="../assets/more.png"/>
               </span>
@@ -227,6 +227,9 @@ export default {
     },
     lookMore(){
       // alert('12')
+    },
+    goPage(compName,activeTab){
+      this.$parent.changeMenu(compName,activeTab)
     }
   },
   created () {

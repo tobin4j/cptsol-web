@@ -50,6 +50,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
   .more-icon{
     display: inline-block;

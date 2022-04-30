@@ -29,6 +29,7 @@ import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 export default {
   name: 'Notice',
+  props:['activeTabName'],
    data () {
     return {
        title:'中心介绍',
@@ -36,6 +37,17 @@ export default {
        content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
        activeName:'jobLook'
     }
+   },
+   watch:{
+     activeTabName:{
+       immediate:true,
+       deep:true,
+       handler: function(val) {
+         if(val === 3) {
+           this.activeName = 'cooperateShow';
+         }
+       }
+     }
    },
   setup() {
     const state = reactive({

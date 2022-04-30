@@ -31,7 +31,7 @@
     </div>
   </div>
   <!-- <Home></Home> -->
-  <component :is="compName" :showList="showList"></component>
+  <component :is="compName" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName"></component>
   <Footer></Footer>
   <el-backtop :bottom="100">
     <div class="backtop">
@@ -63,16 +63,22 @@ export default {
       compName: 'Main', // 默认展示首页
       title: '',
       menu:'',
-      showList: false
+      showList: false,
+      activeTabName:0
     }
   },
   methods: {
     changeComp(name) {
       this.compName = name;
       this.menu = "";
+      this.activeTabName = 0;
     },
     goLink() {
       this.menu = "TestSys"
+    },
+    changeMenu(name,activeIndex){
+      this.compName = name;
+      this.activeTabName = activeIndex;
     }
    },
   components: {

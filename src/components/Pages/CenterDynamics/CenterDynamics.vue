@@ -1,5 +1,4 @@
 <template>
-  <!-- 通知公告 -->
   <SearchKey v-if="!showDetails" :title="title" @search="search"></SearchKey>
   <div class="listitem clearfix"> 
     <div v-for="(item,index) in dataList" :key="index" class="list-container" v-show="!showDetails">
