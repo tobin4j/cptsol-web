@@ -142,22 +142,7 @@ export default {
     })
     return state;
   },
-          // if(state.dataList.length>0){
-        //   console.log(res.data.data,'哈哈哈2')
-        //   let fisrtITem = res.data.data[0];
-        //   (async function () {
-        //   const res = await axios.get(`https://api.cptsol.cn/api/open/articleDetail?type=16&title=firstItem`) //返回 {id:0}
-        //   state.content =  res.data.content;
-        //   })();
-        // }
   components: {
-    // Details,
-    // SearchKey,
-    // RegisterProcess,
-    // TestProcess,
-    // CertificateClaimProcess,
-    // TestBook
-    
   }
 }
 </script>

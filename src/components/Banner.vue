@@ -56,8 +56,7 @@ export default {
     onMounted(async () => {
       var api="https://api.cptsol.cn/api/open/adList?type=1";
       (async function () {
-        const res = await axios.get(api) //返回 {id:0}
-        console.log(res.data)
+        const res = await axios.get(api)
         state.list = res.data
         state.isShow = true
       })();

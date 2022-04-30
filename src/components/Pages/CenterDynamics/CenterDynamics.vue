@@ -46,7 +46,6 @@ export default {
        deep:true,
        handler: function(val) {
         if(val){
-          console.log(val,'伊欧治')
           this.goDetails(val)
         } else {
           this.showDetails = false;
