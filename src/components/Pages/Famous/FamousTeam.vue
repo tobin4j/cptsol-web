@@ -7,7 +7,7 @@
         </div>
         <div class="list-right">
             <p class="list-title">{{item.title}}</p>
-            <p class="list-brief">{{intro}}</p>
+            <p class="list-brief">{{item.summary}}</p>
         </div>
     </div>
 </div>
