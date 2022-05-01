@@ -18,7 +18,7 @@
         <div class="list">
           <ul>
             <li v-for="(item,index) in list" :key="index" @click="goDetails('Notice',item.articleId)">
-              <span class="msg-title"><span class="dot"></span>{{ item.title }}</span>
+              <span class="msg-title" :title="item.title"><span class="dot"></span>{{ item.title }}</span>
             <span class="date">
             「{{item.createTime.substring(0,10)}}」
             </span>
@@ -41,7 +41,7 @@
         <div class="list">
           <ul>
             <li v-for="(item,index) in centerList" :key="index"  @click="goDetails('CenterDynamics',item.articleId)">
-              <span class="msg-title"><span class="dot"></span>{{ item.title }}</span>
+              <span class="msg-title" :title="item.title"><span class="dot"></span>{{ item.title }}</span>
               <span class="date">「{{item.createTime.substring(0,10)}}」</span>
             </li>
           </ul>
@@ -66,7 +66,7 @@
           <div class="list">
             <ul>
               <li v-for="(item,index) in jobLookList" :key="index" @click="goDetails('JobLook',item.articleId)">
-                <span class="msg-title"><span class="dot"></span>{{ item.title}}</span>
+                <span class="msg-title" :title="item.title"><span class="dot"></span>{{ item.title}}</span>
               <span class="date">「{{item.createTime.substring(0,10)}}」</span>
               </li>
             </ul>

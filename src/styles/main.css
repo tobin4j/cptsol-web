@@ -91,6 +91,9 @@
     line-height: 20px;
     color: #333333;
   }
+  .msg-title:hover{
+    color: #066EF3;
+  }
   .date{
     display: inline-block;
     width: 35%;
