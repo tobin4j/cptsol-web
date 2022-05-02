@@ -4,7 +4,7 @@
     <div v-for="(item,index) in dataList" :key="index" class="list-container" v-show="!showDetails">
       <span class="list-left">
         <span class="dot"></span>
-        <a @click="goDetails(item.articleId)">{{item.title}}</a>
+        <a @click="goDetails(item.articleId)" class="a-details">{{item.title}}</a>
       </span>
       <span class="list-right">
         「{{item.createTime.substring(0,10)}}」

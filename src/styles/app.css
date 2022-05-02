@@ -110,3 +110,6 @@
     align-items: center;
     justify-content: center;
 }
+.a-details:hover{
+  color: #066EF3;
+}
