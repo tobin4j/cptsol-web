@@ -20,7 +20,7 @@
     @prevClick = "prevClick"
     @nextClick = "nextClick"
     class="page"/>
-    <span style="padding-left:8px;">共{{total}}条，10条每页</span>
+    <span>共{{total}}条，10条每页</span>
   </div>
 </template>
 
@@ -112,8 +112,14 @@ export default {
     width: 32px;
     height: 32px;
     background: #FFFFFF;
-    border-radius: 4px 0px 0px 4px;
+    /* border-radius: 4px 0px 0px 4px; */
     border: 1px solid #D4D9E0;
     margin: 0!important;
-}
+    padding: 0!important;
+    text-indent: 0;
+ }
+ .el-pagination >>> ul li.is-active {
+   border: 1px solid #D4D9E0!important;
+   background: #2F318B!important;
+ }
 </style>
