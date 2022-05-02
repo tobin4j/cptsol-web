@@ -17,7 +17,7 @@
     </div>
     <div class="menu">
       <ul>
-        <li style="text-indent: 32px;"><a href="#"  @click.prevent="changeComp('Main')" :class="{'active':compName==='Main'}">首页</a></li>
+        <li style="text-indent: 40px;text-align:justify;"><a href="#"  @click.prevent="changeComp('Main')" :class="{'active':compName==='Main'}">首页</a></li>
         <li><a href="#"  @click.prevent="changeComp('CenterIntro')" :class="{'active':compName==='CenterIntro'}">中心介绍</a></li>
         <li><a href="#"  @click.prevent="changeComp('Notice')" :class="{'active':compName==='Notice'}">通知公告</a></li>
         <li><a href="#"  @click.prevent="changeComp('CenterDynamics')" :class="{'active':compName==='CenterDynamics'}">中心动态</a></li>

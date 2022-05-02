@@ -78,10 +78,6 @@ export default {
   line-height: 22px;
   position: relative;
 }
-/* .intro-content {
-    width: 1200px;
-    margin: 0 auto;
-} */
 .tab >>>.el-tabs__header {
     margin: 0;
 }
@@ -92,10 +88,14 @@ export default {
     background-color: #2F318B;
 }
 .tab >>>.el-tabs__item.is-active {
-    font-size: 16px;
-    font-family: "PingFangSC-Semibold", "PingFang SC";
     font-weight: 600;
+}
+.tab >>>.el-tabs__item{
+    font-size: 16px!important;
+    font-family: "PingFangSC-Regular", "PingFang SC";
+    font-weight: 400;
     color: #454545;
+    line-height: 22px;
 }
 .tab >>>.el-tabs__nav-wrap::after {
       position: static !important;

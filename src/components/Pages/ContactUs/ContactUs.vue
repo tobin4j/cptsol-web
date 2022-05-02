@@ -88,11 +88,15 @@ export default {
     width: 65px!important;
     background-color: #2F318B;
 }
-.tab >>>.el-tabs__item.is-active {
-    font-size: 16px;
-    font-family: "PingFangSC-Semibold", "PingFang SC";
-    font-weight: 600;
+.tab >>>.el-tabs__item{
+    font-size: 16px!important;
+    font-family: "PingFangSC-Regular", "PingFang SC";
+    font-weight: 400;
     color: #454545;
+    line-height: 22px;
+}
+.tab >>>.el-tabs__item.is-active {
+    font-weight: 600;
 }
 .tab >>>.el-tabs__nav-wrap::after {
       position: static !important;
