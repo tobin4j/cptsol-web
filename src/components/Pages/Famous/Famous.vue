@@ -33,7 +33,6 @@ export default {
    },
   setup() {
     const state = reactive({
-      noticeList: [],
       dataList:[],
       isvisible: false,
       isShow: false,
@@ -42,19 +41,18 @@ export default {
     onMounted(async () => {
       // https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10
       var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10";
-      var famousTeamUrl="https://api.cptsol.cn/api/open/articleList?type=6&page=1&size=10";
+      // var famousTeamUrl="https://api.cptsol.cn/api/open/articleList?type=6&page=1&size=10";
       (async function () {
         const res = await axios.get(noticeUrl) //返回 {id:0}
-        state.noticeList = res.data.data;
         state.list = res.data.data;
         state.total = res.data.total;
       })();
-      (async function () {
-        const res = await axios.get(famousTeamUrl) //返回 {id:0}
-        state.dataList = res.data.data;
-        // state.list = res.data.data;
-        state.total = res.data.total;
-      })();
+      // (async function () {
+      //   const res = await axios.get(famousTeamUrl) //返回 {id:0}
+      //   state.dataList = res.data.data;
+      //   // state.list = res.data.data;
+      //   state.total = res.data.total;
+      // })();
       })
     return state;
   },

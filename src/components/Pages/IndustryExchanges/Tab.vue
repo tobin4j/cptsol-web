@@ -38,11 +38,6 @@ export default {
       articleList:[] // 合作展示、文章列表
     })
     onMounted(async () => {
-      var noticeUrl="https://api.cptsol.cn/api/open/adList?type=2";
-      (async function () {
-        const res = await axios.get(noticeUrl) //返回 {id:0}
-        state.noticeList = res.data;
-      })();
     })
     return state;
   },

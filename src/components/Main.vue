@@ -108,7 +108,7 @@
       <div class="cards-item">
           <div>
             <span class="icon">
-              <img alt="logo" src="../assets/006.png" style="vertical-align:middle">
+              <img alt="logo" src="../assets/006.png" style="vertical-align:middle;padding-left:24px;">
             </span>
             <span class="cooperation-show">合作展示</span>
             <span class="more" @click="goPage('JobLook',3)">更多
@@ -193,10 +193,6 @@ export default {
         state.articleList = res.data.data;
       })();
       (async function () {
-        const res = await axios.get(bannerUrl) //返回 {id:0}
-        state.imgList = res.data;
-      })();
-      (async function () {
         const res = await axios.get(noticeUrl) //通知公告
         state.list = res.data.data;
       })();
@@ -217,7 +213,7 @@ export default {
       console.log('submit!');
     },
     go(){
-      alert('嘿嘿，想看详情页嘛，还没加~~')
+      
     },
     enters(index){
       this.current = index;
