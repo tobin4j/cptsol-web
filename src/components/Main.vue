@@ -110,7 +110,7 @@
             <span class="icon">
               <img alt="logo" src="../assets/006.png" style="vertical-align:middle;padding-left:24px;">
             </span>
-            <span class="cooperation-show">合作展示</span>
+            <span class="cooperation-show" style="padding-left:32px;">合作展示</span>
             <span class="more" @click="goPage('JobLook',3)">更多
               <span class="more-icon">
                 <img src="../assets/more.png"/>
