@@ -90,6 +90,7 @@ export default {
 .tab-content {
     padding-left: 20px; 
     margin-top: 32px;
+    padding-right: 20px;
 }
 .center-intro{
   width: 1200px;

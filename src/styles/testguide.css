@@ -1,0 +1,96 @@
+
+.register{
+    background: #2F318B;
+    height: 182px;
+    line-height: 182px;
+    text-align: center;
+}
+.register-title{
+    font-size: 50px;
+    font-family: "PingFangSC-Semibold", "PingFang SC";
+    font-weight: 600;
+    color: #FFFFFF;
+}
+.register-kind{
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
+    margin-top: 80px;
+}
+.register-kind span:first-child{
+    margin-right: 79px;
+}
+.switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 162px;
+    flex: 1;
+    position: relative;
+} 
+.switch .arrowIconleft,.switch .arrowIconright {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+}
+.switch .arrowIconleft{
+    position: absolute;
+    left: 100px;
+}
+.switch .arrowIconright{
+    position: absolute;
+    right: 100px;
+}
+.switch .step1{
+    margin: 0 361px;
+    text-align: center;
+}
+.switch .step1 .mark1 {
+    font-size: 28px;
+    font-family: "PingFangSC-Regular", "PingFang SC";
+    font-weight: 400;
+    color: #2E2E2E;
+    line-height: 40px;
+    margin-top: 14px;
+}
+.switch .step1 .mark2 {
+    font-size: 16px;
+    font-family: "PingFangSC-Regular", "PingFang SC";
+    font-weight: 400;
+    color: #2E2E2E;
+    line-height: 22px;
+    margin-top: 18px;
+}
+.switch .step1 img {
+    height: 110px;
+    width: 110px;
+}
+.steps {
+    width: 835px;
+    margin: 116px auto;
+}
+.tips .tip,.mark-tips .tip{
+    text-align: center;
+    font-size: 14px;
+    font-family: "PingFangSC-Regular", "PingFang SC";
+    font-weight: 400;
+    color: #2E2E2E;
+    line-height: 20px;
+    margin-bottom: 120px;
+    margin-top: 58px;
+}
+.mark-tips {
+    padding:0 30px;
+}
+.mark-tips .tip:nth-child(1){
+    text-align: left;
+}
+.mark-tips .tip.center{
+    text-align: center
+}
+.mark-tips .tip .nth6,.mark-tips .tip .nth5{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

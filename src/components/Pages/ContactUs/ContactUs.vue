@@ -104,6 +104,7 @@ export default {
 .tab-content {
     padding-left: 20px; 
     margin-top: 32px;
+    padding-right: 20px;
 }
 .content {
   text-indent: 0;

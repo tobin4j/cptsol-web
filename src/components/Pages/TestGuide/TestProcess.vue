@@ -6,7 +6,9 @@
      <span @click="changeTab(item.index)"  v-for="(item,index) in tabName" :key="index" :class="{'test2':index === activeTab}">{{item.name}}</span>
  </div>
  <div class="switch">
-     <img src="../../../assets/register/arrowleft.png" style="height:44px;width:24px" @click="onLast"/>
+     <span class="arrowIconleft" @click="onLast">
+         <img src="../../../assets/register/arrowleft.png" style="height:44px;width:24px"/>
+     </span>
      <template v-if="activeTab===0">
         <div class="step1">
          <img src="../../../assets/register/013.png" v-show="activeStep===1"/>
@@ -85,7 +87,9 @@
          </div>
         </div>
      </template>
-     <img src="../../../assets/register/arrowright.png" style="height:44px;width:24px" @click="onNext"/>
+      <span class="arrowIconright" @click="onNext" >
+        <img src="../../../assets/register/arrowright.png" style="height:44px;width:24px" />
+      </span>
  </div>
  <div class="steps">
 
@@ -165,60 +169,13 @@ export default {
       this.$refs.child.showList();
     }
    },
-  // setup() {
-  //   const state = reactive({
-  //     noticeList: [],
-  //     dataList:[],
-  //     isvisible: false,
-  //     isShow: false,
-  //     articleList:[] // 合作展示、文章列表
-  //   })
-  //   onMounted(async () => {
-  //     // https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10
-  //     var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10";
-  //     var famousTeamUrl="https://api.cptsol.cn/api/open/articleList?type=6&page=1&size=10";
-  //     (async function () {
-  //       const res = await axios.get(noticeUrl) //返回 {id:0}
-  //       state.noticeList = res.data.data;
-  //       state.list = res.data.data;
-  //       state.total = res.data.total;
-  //     })();
-  //     (async function () {
-  //       const res = await axios.get(famousTeamUrl) //返回 {id:0}
-  //       state.dataList = res.data.data;
-  //       // state.list = res.data.data;
-  //       state.total = res.data.total;
-  //     })();
-  //     })
-  //   return state;
-  // },
   components: {
   }
 }
 </script>
 
 <style scoped>
-.register{
-    background: #2F318B;
-    height: 182px;
-    line-height: 182px;
-    text-align: center;
-}
-.register-title{
-    font-size: 50px;
-    font-family: "PingFangSC-Semibold", "PingFang SC";
-    font-weight: 600;
-    color: #FFFFFF;
-}
-.register-kind{
-    margin: 0 auto;
-    width: 300px;
-    text-align: center;
-    margin-top: 80px;
-}
-.register-kind span:first-child{
-    margin-right: 79px;
-}
+@import '@/styles/testguide.css';
 .register-kind span.test2 {
     display: inline-block;
     padding-bottom: 12px;
@@ -226,65 +183,20 @@ export default {
     border-bottom-left-radius: 3px;  /* 左下角 */
     border-bottom-right-radius: 3px; /* 右下角 */
 }
-.switch {
-    width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 162px;
-    flex: 1;
-}
-.switch .step1{
-    margin: 0 361px;
-    text-align: center;
-}
-.switch .step1 .mark1 {
-    font-size: 28px;
-    font-family: "PingFangSC-Regular", "PingFang SC";
-    font-weight: 400;
-    color: #2E2E2E;
-    line-height: 40px;
-    margin-top: 14px;
-}
-.switch .step1 .mark2 {
-    font-size: 16px;
-    font-family: "PingFangSC-Regular", "PingFang SC";
-    font-weight: 400;
-    color: #2E2E2E;
-    line-height: 22px;
-    margin-top: 18px;
-}
-.switch .step1 img {
-    height: 110px;
-    width: 110px;
-}
-.steps {
-    width: 800px;
-    margin: 0 auto;
-    margin-top: 116px;
-    padding-left: 120px;
+.steps >>>.el-step:last-child {
+    flex-basis:0px!important;
 }
 .steps >>>.el-step .el-step__line{
     border: none;
     border-bottom: 1px dashed #2F318B;
     background-color: unset;
     top: 18px;
-    left: 2px;
+    left: 37px;
 }
-.tip{
-    text-align: center;
-    font-size: 14px;
-    font-family: "PingFangSC-Regular", "PingFang SC";
-    font-weight: 400;
-    color: #2E2E2E;
-    line-height: 20px;
-    margin-bottom: 120px;
-    margin-top: 58px;
-}
+
 .test >>>.el-step__icon{
     background-color: #2F318B;
-    color: #fff;
+    color: #fff!important;
     font-size: 16px;
     width: 39px;
     height: 39px;
@@ -294,5 +206,11 @@ export default {
 >>>.el-step__icon.is-text{
     width: 39px;
     height: 39px;
+    font-size: 16px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #2F318B;
+    line-height: 22px;
+    border: 1px dashed #2F318B;
 }
 </style>

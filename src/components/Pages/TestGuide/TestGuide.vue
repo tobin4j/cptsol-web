@@ -173,6 +173,7 @@ export default {
     padding-left: 20px; 
     margin-top: 32px;
     text-indent: 0;
+    padding-right: 20px;
 }
 .center-intro{
   width: 1200px;

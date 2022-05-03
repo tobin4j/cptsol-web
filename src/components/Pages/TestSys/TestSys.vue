@@ -53,7 +53,8 @@ export default {
 </script>
 
 <style scoped>
-.tab {
+@import '@/styles/testguide.css';
+/* .tab {
   width: 1200px;
   margin: 0 auto;
   margin: 15px auto;
@@ -63,7 +64,7 @@ export default {
   font-weight: 600;
   color: #454545;
   line-height: 22px;
-}
+} */
 /* .intro-content {
     width: 1200px;
     margin: 0 auto;
@@ -89,6 +90,7 @@ export default {
 .tab-content {
     padding-left: 20px; 
     margin-top: 32px;
+    padding-right: 20px;
 }
 .center-intro{
   width: 1200px;
