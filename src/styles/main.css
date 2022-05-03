@@ -90,6 +90,7 @@
     font-weight: 400;
     line-height: 20px;
     color: #333333;
+    cursor: pointer;
   }
   .msg-title:hover{
     color: #066EF3;

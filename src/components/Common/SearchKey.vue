@@ -1,21 +1,17 @@
 <template>
   <!-- 搜索 -->
-    <!-- <p class="title">{{title}}</p> -->
     <el-form :inline="true" :model="formInline" class="serach-form">
     <el-form-item>
-      <el-input v-model.trim="searchForm.keyWord" placeholder="" class="input"/>
+      <el-input v-model.trim="searchForm.keyWord"  class="input" placeholder="请输入关键字搜索"/>
     </el-form-item>
     <el-form-item>
     <el-button class="search"  @click="onSearch" >搜索</el-button>
-    <img alt="logo" src="../../assets/refresh.png" @click="reset"/>
+    <img alt="logo" src="../../assets/refresh.png" @click="reset" style="margin-top:4px;"/>
     </el-form-item>
     </el-form>
 </template>
 
 <script>
-// import Banner from '../Banner.vue'
-import Main from '../Main.vue'
-import { defineComponent } from 'vue';
 export default {
   name: 'SearchKey',
    props:{
@@ -25,7 +21,6 @@ export default {
    },
    data () {
     return {
-      //  title: title,
        searchForm: {
         keyWord: '',
        }
@@ -34,17 +29,16 @@ export default {
   methods: {
     // 方法
     onSearch() {
-       this.$parent.search(this.searchForm.keyWord);
-      // 参数：菜单名、关键字
+        if(this.searchForm.keyWord) {
+         this.$parent.search(this.searchForm.keyWord);
+        }
     },
     reset() {
       this.searchForm.keyWord = '';
-      this.$parent.search(this.searchForm.keyWord);
+      this.$parent.search(this.searchForm.keyWord,'reset');
     }
   },
   components: {
-    // Banner,
-    Main
   }
 }
 </script>
@@ -95,5 +89,6 @@ export default {
     color: #FFFFFF;
     line-height: 20px;
     margin-right: 24px;
+    margin-top: 4px;
  }
 </style>

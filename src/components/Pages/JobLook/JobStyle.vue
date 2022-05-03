@@ -75,8 +75,11 @@ export default {
       this.current = null;
       this.isvisible = false;
     },
-    search(key) {
+    search(key,type) {
       this.keyWord = key;
+      if(type=='reset') {
+        this.pageNum = 1;
+      }
       this.getDataList();
     },
     goDetails(id) {
@@ -93,6 +96,7 @@ export default {
       let noticeUrl=`https://api.cptsol.cn/api/open/articleList?type=7&page=${this.pageNum}&size=10&title=${this.keyWord}`;
       axios.get(noticeUrl).then((res)=>{
         this.dataList = res.data.data;
+        this.total = res.data.total;
       })
     }
   },

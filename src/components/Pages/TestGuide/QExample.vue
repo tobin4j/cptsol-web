@@ -181,6 +181,7 @@ export default {
     padding: 6px 19px;
     white-space:nowrap;
     overflow:hidden;
+    cursor: pointer;
     text-overflow:ellipsis;
 }
 .menu li.checked {

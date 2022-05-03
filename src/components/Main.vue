@@ -19,9 +19,9 @@
           <ul>
             <li v-for="(item,index) in list" :key="index" @click="goDetails('Notice',item.articleId)">
               <span class="msg-title" :title="item.title"><span class="dot"></span>{{ item.title }}</span>
-            <span class="date">
-            「{{item.createTime.substring(0,10)}}」
-            </span>
+              <span class="date">
+              「{{item.createTime.substring(0,10)}}」
+              </span>
             </li>
           </ul>
         </div>

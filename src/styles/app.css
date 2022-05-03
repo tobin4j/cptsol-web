@@ -110,6 +110,9 @@
     align-items: center;
     justify-content: center;
 }
+.a-details{
+  cursor: pointer;
+}
 .a-details:hover{
   color: #066EF3;
 }

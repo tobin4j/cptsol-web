@@ -89,7 +89,6 @@ export default {
       articleList:[] // 合作展示、文章列表
     })
     onMounted(async () => {
-      // https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10
       var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10";
       var famousTeamUrl="https://api.cptsol.cn/api/open/articleList?type=6&page=1&size=10";
       (async function () {
@@ -101,7 +100,6 @@ export default {
       (async function () {
         const res = await axios.get(famousTeamUrl) //返回 {id:0}
         state.dataList = res.data.data;
-        // state.list = res.data.data;
         state.total = res.data.total;
       })();
       })

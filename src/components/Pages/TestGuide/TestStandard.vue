@@ -176,6 +176,7 @@ export default {
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
+    cursor: pointer;
 }
 .menu li.checked {
   background: #ffffff29;
@@ -185,7 +186,6 @@ export default {
 }
 .menu li:hover{
   background: #ffffff29;
-  /* opacity: 0.19; */
 }
 .menu li.title:before{
   content: '';

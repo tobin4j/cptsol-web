@@ -93,26 +93,6 @@ export default {
       })
     }
   },
-//   setup(props,context) {
-//     let state = reactive({
-//       noticeList: [],
-//       list:[],
-//       isvisible: false,
-//       total:'',
-//       articleList:[] // 合作展示、文章列表
-//     })
-//     onMounted(async () => {
-//       // https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10
-//       var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=6&page=1&size=10";
-//       (async function () {
-//         const res = await axios.get(noticeUrl) //返回 {id:0}
-//         state.noticeList = res.data.data;
-//         state.list = res.data.data;
-//         state.total = res.data.total;
-//       })();
-//     })
-//     return state;
-//   },
   components: {
       Details,
       SearchKey

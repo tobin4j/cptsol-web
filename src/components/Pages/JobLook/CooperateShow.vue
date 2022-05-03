@@ -12,6 +12,15 @@
     </div>
 </div>
 <Details :isShow="showDetails"  :content="content" :title="title" @showList="showList"></Details>
+<div class="page-container" v-show="!showDetails">
+  <el-pagination background layout="prev, pager, next" 
+  :total="total" 
+  @currentChange = "onCurrentChange"
+  @prevClick = "prevClick"
+  @nextClick = "nextClick"
+  class="page"/>
+  <span>共{{total}}条，10条每页</span>
+  </div>
 </template>
 
 <script>
@@ -25,7 +34,6 @@ export default {
    data () {
     return {
        title:'中心介绍',
-       total: 10,
        pageNum: 1,
        intro:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名',
        searchForm: {
@@ -60,8 +68,11 @@ export default {
       this.current = null;
       this.isvisible = false;
     },
-    search(key) {
+    search(key,type) {
       this.keyWord = key;
+      if(type=='reset') {
+        this.pageNum = 1;
+      }
       this.getDataList();
     },
     goDetails(id) {
@@ -82,6 +93,7 @@ export default {
       let noticeUrl=`https://api.cptsol.cn/api/open/articleList?type=10&page=${this.pageNum}&size=10&title=${this.keyWord}`;
       axios.get(noticeUrl).then((res)=>{
         this.dataList = res.data.data;
+        this.total = res.data.total;
       })
     }
   },
@@ -216,5 +228,20 @@ export default {
     color: #FFFFFF;
     line-height: 20px;
     margin-right: 24px;
+ }
+ /* 分页 */
+ .page-container >>>button,.page-container >>>ul li{
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    /* border-radius: 4px 0px 0px 4px; */
+    border: 1px solid #D4D9E0;
+    margin: 0!important;
+    padding: 0!important;
+    text-indent: 0;
+ }
+ .el-pagination >>> ul li.is-active {
+   border: 1px solid #D4D9E0!important;
+   background: #2F318B!important;
  }
 </style>

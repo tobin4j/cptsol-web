@@ -34,7 +34,6 @@ export default {
    data () {
     return {
        title:'中心介绍',
-       total: 10,
        pageNum: 1,
        intro:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名',
        searchForm: {
@@ -69,8 +68,11 @@ export default {
       this.current = null;
       this.isvisible = false;
     },
-    search(key) {
+    search(key,type) {
       this.keyWord = key;
+      if(type=='reset') {
+        this.pageNum = 1;
+      }
       this.getDataList();
     },
     goDetails(id) {
@@ -91,6 +93,7 @@ export default {
       let noticeUrl=`https://api.cptsol.cn/api/open/articleList?type=6&page=${this.pageNum}&size=10&title=${this.keyWord}`;
       axios.get(noticeUrl).then((res)=>{
         this.dataList = res.data.data;
+        this.total = res.data.total;
       })
     }
   },

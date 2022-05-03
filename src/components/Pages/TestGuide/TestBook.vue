@@ -142,7 +142,7 @@ export default {
 }
 
 .testbook-details{
-  margin-left: 183px;
+  margin-left: 193px;
 }
 .menu {
   padding-top: 26px;
@@ -159,6 +159,7 @@ export default {
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
+    cursor: pointer;
 }
 .menu li.checked {
   background: #ffffff29;

@@ -111,5 +111,6 @@ export default {
   font-weight: 600;
   color: #2F318B;
   line-height: 22px;
+  cursor: pointer;
 }
 </style>
