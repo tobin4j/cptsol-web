@@ -1,6 +1,6 @@
 <template>
   <div class="tab">
-    <el-tabs v-model="activeName" class="demo-tabs" @tab-change="handleClick">
+    <el-tabs v-model="activeName"  @tab-change="handleClick" :class="['demo-tabs', { 'lastone': activeName=='CertificateClaimProcess' }]">
         <el-tab-pane :label="item.label" :name="item.name" class="tab-content" v-for="(item,index) in tabs" :key="index">
           <template v-if="activeName ==='testIntro' 
             || activeName ==='testRangle'
@@ -155,6 +155,9 @@ export default {
     height: 3px;
     width: 65px!important;
     background-color: #2F318B;
+}
+.tab >>>.el-tabs.el-tabs--top.demo-tabs.lastone .el-tabs__active-bar{
+  width: 100px!important;
 }
 .tab >>>.el-tabs__item{
     font-size: 16px!important;
