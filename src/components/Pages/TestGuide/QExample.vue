@@ -4,11 +4,11 @@
     <div class="testbook-title">
        <ul class="menu">
         <li class="title" style="font-size:16px">笔试真题实例</li>
-         <li class="subTitle" v-for="(item,index) in dataList" :key="index" :class="{'checked':index ===checkedIndex && titleName===1 }" @click="change(1,item.title,index)">
+         <li class="subTitle" v-for="(item,index) in dataList" :key="index" :class="{'checked':index ===checkedIndex && titleName===1 }" @click="change(1,item.title,item.articleId)">
            {{item.title}}
          </li>
         <li class="title" style="font-size:16px">面试真题实例</li>
-        <li class="subTitle" v-for="(item,index) in dataList2" :key="index" :class="{'checked':index ===checkedIndex &&titleName === 2}" @click="change(2,titleName,item.title,index)">
+        <li class="subTitle" v-for="(item,index) in dataList2" :key="index" :class="{'checked':index ===checkedIndex &&titleName === 2}" @click="change(2,item.title,item.articleId)">
            {{item.title}}
          </li>
        </ul>
@@ -58,9 +58,9 @@ export default {
     getContent(type,title) {
       let noticeUrl="";
       if(type ===1){
-         noticeUrl = `https://api.cptsol.cn/api/open/articleDetail?type=15&subType=1501&title=${title}`
+         noticeUrl = `https://api.cptsol.cn/api/open/articleDetail?type=15&subType=1501&title=${title}&id=${this.checkedIndex}`
       } else {
-          noticeUrl = `https://api.cptsol.cn/api/open/articleDetail?type=15&subType=1502&title=${title}`
+          noticeUrl = `https://api.cptsol.cn/api/open/articleDetail?type=15&subType=1502&title=${title}&id=${this.checkedIndex}`
       }
       axios.get(noticeUrl).then((res)=>{
         this.content = res.data.content;

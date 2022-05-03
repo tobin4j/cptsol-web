@@ -3,7 +3,7 @@
     <!-- <div class="testbook-title" v-for="(item,index) in dataList" :key="index"> -->
     <div class="testbook-title">
        <ul class="menu">
-         <li v-for="(item,index) in dataList" :key="index" :class="{'checked':index ===checkedIndex}" @click="change(item.title,index)">
+         <li v-for="(item,index) in dataList" :key="index" :class="{'checked':index ===checkedIndex}" @click="change(item.title,item.articleId)">
            {{item.title}}
          </li>
        </ul>
@@ -14,15 +14,8 @@
 </template>
 
 <script>
-// import SearchKey from '@/components/Common/SearchKey'
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
-// import Details from '@/components/Common/Details'
-// import RegisterProcess from './RegisterProcess.vue';
-// import TestProcess from './TestProcess.vue';
-// import CertificateClaimProcess from './CertificateClaimProcess.vue';
-// import TestBook from './TestBook.vue';
-
 export default {
   name: 'Notice',
    data () {
@@ -49,7 +42,7 @@ export default {
       console.log('submit!');
     },
     getContent(title) {
-      let noticeUrl=`https://api.cptsol.cn/api/open/articleDetail?type=16&title=${title}`;
+      let noticeUrl=`https://api.cptsol.cn/api/open/articleDetail?type=16&title=${title}&id=${this.checkedIndex}`;
       axios.get(noticeUrl).then((res)=>{
         this.content = res.data.content;
       })

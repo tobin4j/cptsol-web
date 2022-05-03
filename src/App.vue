@@ -25,7 +25,7 @@
         <li><a href="#"  @click.prevent="changeComp('Famous')" :class="{'active':compName==='Famous'}">名家观点</a></li>
         <li><a href="#"  @click.prevent="changeComp('JobLook')" :class="{'active':compName==='JobLook'}">职业风采</a></li>
         <li><a href="#"  @click.prevent="changeComp('TestGuide')" :class="{'active':compName==='TestGuide'}">考试指南</a></li>
-        <li><a href="https://ks.cptsol.cn"  @click="goLink" :class="{'active':menu==='TestSys'}">考试系统</a></li>
+        <li><a href="https://ks.cptsol.cn"  @click="goLink"  target="_blank">考试系统</a></li>
         <li><a href="#"  @click.prevent="changeComp('ContactUs')" :class="{'active':compName==='ContactUs'}">联系我们</a></li>
       </ul>
     </div>
