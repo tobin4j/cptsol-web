@@ -72,20 +72,11 @@ export default {
 .tab >>>.el-tabs__nav-wrap::after {
       position: static !important;
 }
-.tab-content {
-    padding-left: 20px; 
-    margin-top: 32px;
-    text-indent: 0;
-    padding-right: 20px;
-}
-.tab-content .content {
+.content {
   text-indent: 0;
-  padding-left: 20px;
+  padding-left: 40px;
+  text-align: justify;
 }
-/* .center-intro{
-  width: 1200px;
-  height: 436px;
-} */
 .center-intro img {
   height: 100%;
   width: 100%;

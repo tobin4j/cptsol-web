@@ -121,7 +121,7 @@
              @mouseenter="enters(index)"
              @mouseleave="leaver()"
              :key="index" 
-             @click="goDetails('JobLook',item.articleId,3)"
+             @click="goDetails('JobLook',item.articleId,3,'coopShow')"
              class="item">
                 <img @click="go"   alt="logo" :src="item.imgUrl" style="height:100%;width:100%;" />
                 <div class="category-title" v-show="isvisible && index === current">{{item.title}}</div>
@@ -225,13 +225,12 @@ export default {
       this.isvisible = false;
     },
     lookMore(){
-      // alert('12')
     },
     goPage(compName,activeTab){
       this.$parent.changeMenu(compName,activeTab)
     },
-    goDetails(compName,id,activeName){
-     this.$parent.lookDetails(compName,id,activeName);
+    goDetails(compName,id,activeName,type){
+     this.$parent.lookDetails(compName,id,activeName,type);
     }
   },
   created () {

@@ -13,7 +13,7 @@
           <TeachShare></TeachShare>
         </el-tab-pane>
         <el-tab-pane label="合作展示" name="cooperateShow" class="tab-content">
-          <CooperateShow :id="id"></CooperateShow>
+          <CooperateShow :titleId="coopId"></CooperateShow>
         </el-tab-pane>
   </el-tabs>
  </div>
@@ -29,18 +29,19 @@ import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 export default {
   name: 'Notice',
-  props:['activeTabName','articleId'],
+  props:['activeTabName','jobLookId','coopId'],
    data () {
     return {
        title:'中心介绍',
        total: 10,
        content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
        activeName:'jobLook',
-       id: this.articleId,
+       id: this.jobLookId,
+       titleId:this.coopId
     }
    },
    watch:{
-     articleId:{
+     jobLookId:{
        immediate:true,
        deep:true,
        handler: function(val) {
@@ -48,6 +49,17 @@ export default {
              this.id = val;
            } else {
              this.id = null;
+           }
+       }
+     },
+    coopId:{
+       immediate:true,
+       deep:true,
+       handler: function(val) {
+           if(val) {
+             this.titleId= val;
+           } else {
+             this.titleId = null;
            }
        }
      },

@@ -17,18 +17,18 @@ import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 export default {
   name: 'Notice',
-  props:['articleId'],
+  props:['centerDynamicsId'],
    data () {
     return {
        title:'中心介绍',
        total: 10,
        content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
        activeName:'famousPoint',
-       id:this.articleId
+       id:this.centerDynamicsId
     }
    },
    watch:{
-     articleId:{
+     centerDynamicsId:{
        immediate:true,
        deep:true,
        handler: function(val) {

@@ -30,7 +30,7 @@ import Details from '@/components/Common/Details'
 import SearchKey from '@/components/Common/SearchKey'
 export default {
   name: 'ContactUs',
-  props:['id'],
+  props:['titleId'],
    data () {
     return {
        title:'中心介绍',
@@ -45,7 +45,7 @@ export default {
     }
    },
     watch:{
-     id:{
+     titleId:{
        immediate:true,
        deep:true,
        handler: function(val) {

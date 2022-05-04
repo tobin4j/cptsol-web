@@ -31,7 +31,16 @@
     </div>
   </div>
   <!-- <Home></Home> -->
-  <component :is="compName" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName" :articleId="articleId"></component>
+  <!-- <component :is="compName" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName" :articleId="articleId"></component> -->
+  <Main  v-if="compName == 'Main'" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName"></Main>
+  <CenterIntro v-if="compName=='CenterIntro'" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName"></CenterIntro>
+  <Notice  v-if="compName=='Notice'" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName" :noticeId="noticeId"></Notice>
+  <CenterDynamics v-if="compName=='CenterDynamics'" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName" :centerDynamicsId="centerDynamicsId"></CenterDynamics>
+  <IndustryExchanges  v-if="compName=='IndustryExchanges'"  :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName"></IndustryExchanges>
+  <Famous v-if="compName=='Famous'" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName" ></Famous>
+  <JobLook  v-if="compName=='JobLook'" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName" :jobLookId="jobLookId" :coopId="coopId"></JobLook>
+  <TestGuide v-if="compName=='TestGuide'" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName"></TestGuide>
+  <ContactUs v-if="compName=='ContactUs'" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName"></ContactUs>
   <Footer></Footer>
   <el-backtop :bottom="100">
     <div class="backtop">
@@ -66,7 +75,10 @@ export default {
       showList: false,
       activeTabName:0,
       isFromHome: false,
-      articleId:''
+      NoticeId:'',
+      centerDynamicsId:'',
+      jobLookId:'',// 职业风采
+      coopId:'' // 合作展示
     }
   },
   methods: {
@@ -75,10 +87,22 @@ export default {
       this.menu = "";
       this.activeTabName = 0;
     },
-    lookDetails(name,id,activeName){
+    lookDetails(name,id,activeName,type){
       this.compName = name;
       this.isFromHome = true;
-      this.articleId = id;
+      if(name=='Notice') {
+        this.noticeId = id;
+      }
+      if(name=='CenterDynamics'){
+        this.centerDynamicsId = id;
+      }
+      if(name =='JobLook' && type == 'coopShow'){
+        this.coopId = id;
+        this.jobLookId = null;
+      } else {
+        this.jobLookId = id;
+        this.coopId = null;
+      }
       if(activeName){
         this.activeTabName = activeName;
       }
@@ -89,7 +113,16 @@ export default {
     changeMenu(name,activeIndex){
       this.compName = name;
       this.activeTabName = activeIndex;
-      this.articleId = null;
+      if(name =='Notice'){
+        this.noticeId = null;
+      }
+      if(name=='CenterDynamics'){
+        this.centerDynamicsId = null;
+      }
+      if(name=='JobLook'){
+        this.jobLookId = null;
+        this.coopId = null;
+      }
     }
    },
   components: {
