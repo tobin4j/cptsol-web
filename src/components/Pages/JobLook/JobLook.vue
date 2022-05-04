@@ -4,7 +4,7 @@
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
         <el-tab-pane label="职业风采" name="jobLook" class="tab-content">
-          <JobStyle :id="id" ></JobStyle>
+          <JobStyle :id="id"></JobStyle>
         </el-tab-pane>
         <el-tab-pane label="就业信息" name="jobMsg" class="tab-content">
           <JobInfo></JobInfo>
@@ -13,7 +13,7 @@
           <TeachShare></TeachShare>
         </el-tab-pane>
         <el-tab-pane label="合作展示" name="cooperateShow" class="tab-content">
-          <CooperateShow></CooperateShow>
+          <CooperateShow :id="id"></CooperateShow>
         </el-tab-pane>
   </el-tabs>
  </div>
@@ -36,7 +36,7 @@ export default {
        total: 10,
        content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
        activeName:'jobLook',
-       id: this.articleId
+       id: this.articleId,
     }
    },
    watch:{
@@ -44,7 +44,11 @@ export default {
        immediate:true,
        deep:true,
        handler: function(val) {
-           this.id = val;
+           if(val) {
+             this.id = val;
+           } else {
+             this.id = null;
+           }
        }
      },
      activeTabName:{

@@ -57,7 +57,7 @@
               <img alt="logo" src="../assets/003.png">
             </span>
             <span class="jooblook">职业风采</span>
-            <span class="more" @click="goPage('JobLook')">更多
+            <span class="more" @click="goPage('JobLook',0)">更多
               <span class="more-icon">
                 <img src="../assets/more.png"/>
               </span>
@@ -121,6 +121,7 @@
              @mouseenter="enters(index)"
              @mouseleave="leaver()"
              :key="index" 
+             @click="goDetails('JobLook',item.articleId,3)"
              class="item">
                 <img @click="go"   alt="logo" :src="item.imgUrl" style="height:100%;width:100%;" />
                 <div class="category-title" v-show="isvisible && index === current">{{item.title}}</div>
@@ -229,8 +230,8 @@ export default {
     goPage(compName,activeTab){
       this.$parent.changeMenu(compName,activeTab)
     },
-    goDetails(compName,id){
-     this.$parent.lookDetails(compName,id)
+    goDetails(compName,id,activeName){
+     this.$parent.lookDetails(compName,id,activeName);
     }
   },
   created () {

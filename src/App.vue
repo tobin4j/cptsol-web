@@ -75,10 +75,13 @@ export default {
       this.menu = "";
       this.activeTabName = 0;
     },
-    lookDetails(name,id){
+    lookDetails(name,id,activeName){
       this.compName = name;
       this.isFromHome = true;
       this.articleId = id;
+      if(activeName){
+        this.activeTabName = activeName;
+      }
     },
     goLink() {
       this.menu = "TestSys"
@@ -86,6 +89,7 @@ export default {
     changeMenu(name,activeIndex){
       this.compName = name;
       this.activeTabName = activeIndex;
+      this.articleId = null;
     }
    },
   components: {

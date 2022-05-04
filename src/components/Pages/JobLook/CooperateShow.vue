@@ -30,7 +30,7 @@ import Details from '@/components/Common/Details'
 import SearchKey from '@/components/Common/SearchKey'
 export default {
   name: 'ContactUs',
-  // props:['dataList'],
+  props:['id'],
    data () {
     return {
        title:'中心介绍',
@@ -43,6 +43,19 @@ export default {
        showDetails: false,
        activeName:'contactUS'
     }
+   },
+    watch:{
+     id:{
+       immediate:true,
+       deep:true,
+       handler: function(val) {
+        if(val){
+          this.goDetails(val)
+        } else {
+          this.showDetails = false;
+        }
+       }
+     }
    },
    methods: {
     // goBack(){
