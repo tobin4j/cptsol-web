@@ -23,7 +23,17 @@ export default {
     }
    },
   components: {
-  }
+  },
+  watch:{
+     content:{
+       immediate:true,
+       deep:true,
+       handler: function() {
+           window.scrollTo(0,0)
+       }
+     }
+   },
+
 }
 </script>
 

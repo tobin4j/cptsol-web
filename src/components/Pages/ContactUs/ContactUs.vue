@@ -48,6 +48,7 @@ export default {
       coopApplyDetails:'',//合作申请
       articleList:[] // 合作展示、文章列表
     })
+    window.scrollTo(0,0);
     onMounted(async () => {
       var noticeUrl="https://api.cptsol.cn/api/open/articleDetail?type=17";
       (async function () {

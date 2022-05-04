@@ -90,6 +90,7 @@ export default {
     },
     goDetails(id) {
       this.showDetails = true;
+      this.content = '';
       let noticeUrl=`https://api.cptsol.cn/api/open/articleDetail?type=10&page=${this.pageNum}&size=10&id=${id}`;
       axios.get(noticeUrl).then((res)=>{
         this.content = res.data.content;

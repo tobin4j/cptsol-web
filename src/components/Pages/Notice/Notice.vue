@@ -85,6 +85,7 @@ export default {
     },
     goDetails(id) {
       this.showDetails = true;
+      this.content = '';
       let noticeUrl=`https://api.cptsol.cn/api/open/articleDetail?type=2&page=${this.pageNum}&size=10&id=${id}`;
       axios.get(noticeUrl).then((res)=>{
         this.content = res.data.content;
@@ -113,7 +114,6 @@ export default {
       articleList:[] // 合作展示、文章列表
     })
     onMounted(async () => {
-      // https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10
       var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10";
       (async function () {
         const res = await axios.get(noticeUrl) //返回 {id:0}

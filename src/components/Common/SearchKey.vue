@@ -29,9 +29,9 @@ export default {
   methods: {
     // 方法
     onSearch() {
-        if(this.searchForm.keyWord) {
+        // if(this.searchForm.keyWord) {
          this.$parent.search(this.searchForm.keyWord);
-        }
+        // }
     },
     reset() {
       this.searchForm.keyWord = '';
