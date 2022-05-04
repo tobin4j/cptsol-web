@@ -1,7 +1,7 @@
 <template>
   <div class="tab">
     <el-tabs v-model="activeName"  @tab-change="handleClick" :class="['demo-tabs', { 'lastone': activeName=='CertificateClaimProcess' }]">
-        <el-tab-pane :label="item.label" :name="item.name" class="tab-content" v-for="(item,index) in tabs" :key="index">
+        <!-- <el-tab-pane :label="item.label" :name="item.name" class="tab-content" v-for="(item,index) in tabs" :key="index">
           <template v-if="activeName ==='testIntro' 
             || activeName ==='testRangle'
             || activeName ==='testStruce'" > 
@@ -19,6 +19,33 @@
             <QExample v-if="activeName==='qExample'"></QExample>
             <TestStandard v-if="activeName==='testStandard'"></TestStandard>
           </template>
+        </el-tab-pane> -->
+        <el-tab-pane class="tab-content" label="考试介绍" name="testIntro">
+          <div v-html="introContent" class="tab-content" v-show="activeName ==='testIntro'"></div>
+        </el-tab-pane>
+        <el-tab-pane class="tab-content" label="考试范围" name="testRangle">
+           <div v-html="introContent" class="tab-content" v-show="activeName ==='testRangle'"></div>
+        </el-tab-pane>
+        <el-tab-pane class="tab-content" label="考试结构" name="testStruce">
+          <div v-html="introContent" class="tab-content" v-show="activeName ==='testStruce'"></div>
+        </el-tab-pane>
+        <el-tab-pane class="tab-content" label="考试标准" name="testStandard">
+          <TestStandard v-if="activeName==='testStandard'"></TestStandard>
+        </el-tab-pane>
+        <el-tab-pane class="tab-content" label="真题实例" name="qExample">
+          <QExample v-if="activeName==='qExample'"></QExample>
+        </el-tab-pane>
+        <el-tab-pane class="tab-content" label="考试用书" name="testBook">
+          <TestBook v-if="activeName==='testBook'"></TestBook>
+        </el-tab-pane>
+        <el-tab-pane class="tab-content" label="报名流程" name="registerProcess">
+          <RegisterProcess v-if="activeName==='registerProcess'"></RegisterProcess>
+        </el-tab-pane>
+        <el-tab-pane class="tab-content" label="考试流程" name="testProcess">
+          <TestProcess v-if="activeName==='testProcess'"></TestProcess>
+        </el-tab-pane>
+        <el-tab-pane class="tab-content" label="证书申领流程" name="CertificateClaimProcess">
+          <CertificateClaimProcess v-if="activeName==='CertificateClaimProcess'"></CertificateClaimProcess>
         </el-tab-pane>
   </el-tabs>
  </div>
