@@ -1,7 +1,7 @@
 <template>
 <SearchKey @search="search"></SearchKey>
 <div>
-    <div class="list-container clearfix" v-for="(item,index) in dataList" :key="index" @click="goDetails(10,item.articleId)">
+    <div class="list-container clearfix" v-for="(item,index) in dataList" :key="index" @click.self="goDetails(10,item.articleId)">
         <div class="list-left">
             <img :src="item.imgUrl"/>
         </div>
