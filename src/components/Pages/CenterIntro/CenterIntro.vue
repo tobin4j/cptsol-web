@@ -1,6 +1,4 @@
 <template>
-  <!-- 中心介绍 -->
-  <!-- <p class="tab">{{title}}</p> -->
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
     <el-tab-pane label="中心介绍" name="centerIntro" class="tab-content">
@@ -11,7 +9,6 @@
 </template>
 
 <script>
-import SearchKey from '@/components/Common/SearchKey'
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 export default {
@@ -19,34 +16,25 @@ export default {
    data () {
     return {
        title:'中心介绍',
-       total: 10,
-       // content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
        activeName:'centerIntro'
     }
    },
   methods: {
-    goBack(){
-      this.$refs.notice.showList();
-    }
    },
   setup() {
     const state = reactive({
-      content: [],
-      isvisible: false,
-      isShow: false,
-      articleList:[] // 合作展示、文章列表
+      content: []
     })
     onMounted(async () => {
-      var noticeUrl="https://api.cptsol.cn/api/open/articleDetail?type=1";
+      var dataUrl="https://api.cptsol.cn/api/open/articleDetail?type=1";
       (async function () {
-        const res = await axios.get(noticeUrl) //返回 {id:0}
+        const res = await axios.get(dataUrl);
         state.content = res.data.content;
       })();
     })
     return state;
   },
   components: {
-    SearchKey
   }
 }
 </script>

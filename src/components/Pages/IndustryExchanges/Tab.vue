@@ -3,7 +3,7 @@
   <!-- <p class="tab">{{title}}</p> -->
   <div class="tab">
     <el-tabs v-model="activeName"  @tab-click="handleClick" >
-        <el-tab-pane label="行业交流" name="famousPoint"  style="margin-top:32px;">
+        <el-tab-pane label="行业交流" name="industryExchanges"  style="margin-top:32px;">
          <IndustryExchanges ref="child"></IndustryExchanges>
         </el-tab-pane>
   </el-tabs>
@@ -22,7 +22,7 @@ export default {
        title:'中心介绍',
        total: 10,
        content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
-       activeName:'famousPoint'
+       activeName:'industryExchanges'
     }
    },
    methods: {

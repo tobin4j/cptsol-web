@@ -44,24 +44,6 @@ export default {
 </script>
 
 <style scoped>
-.title {
-  width: 1200px;
-  margin: 26px auto;
-  text-indent: 40px;
-  font-size: 16px;
-  font-family: "PingFangSC-Semibold", "PingFang SC";
-  font-weight: 600;
-  color: #454545;
-  line-height: 22px;
-}
- .serach-form {
-   /* width: 1200px; */
-   margin: 0 auto;
-   justify-content: end;
-   height: 40px;
-   margin-top: 16px;
-   margin-bottom: 24px;
- }
  .serach-form >>>.el-form-item {
    margin-right: 0;
  }
@@ -79,16 +61,5 @@ export default {
     border-radius: 4px;
     border: 1px solid #D4D9E0;
  }
- .search {
-    width: 100px;
-    height: 32px;
-    background: #2F318B;
-    border-radius: 4px;
-    font-family: "PingFangSC-Regular", "PingFang SC";
-    font-weight: 400;
-    color: #FFFFFF;
-    line-height: 20px;
-    margin-right: 24px;
-    margin-top: 4px;
- }
+
 </style>

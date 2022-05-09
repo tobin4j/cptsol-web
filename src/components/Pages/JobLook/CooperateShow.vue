@@ -1,7 +1,7 @@
 <template>
-<SearchKey v-if="!showDetails" :title="title" @search="search"></SearchKey>
-<div v-show="!showDetails">
-    <div class="list-container clearfix" v-for="(item,index) in dataList" :key="index" @click="goDetails(item.articleId)">
+<SearchKey @search="search"></SearchKey>
+<div>
+    <div class="list-container clearfix" v-for="(item,index) in dataList" :key="index" @click="goDetails(10,item.articleId)">
         <div class="list-left">
             <img :src="item.imgUrl"/>
         </div>
@@ -11,8 +11,7 @@
         </div>
     </div>
 </div>
-<Details :isShow="showDetails"  :content="content" :title="title" @showList="showList"></Details>
-<div class="page-container" v-show="!showDetails">
+<div class="page-container" >
   <el-pagination background layout="prev, pager, next" 
   :total="total" 
   @currentChange = "onCurrentChange"
@@ -28,6 +27,7 @@ import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 import Details from '@/components/Common/Details'
 import SearchKey from '@/components/Common/SearchKey'
+import { useRouter } from 'vue-router'
 export default {
   name: 'ContactUs',
   props:['titleId'],
@@ -44,26 +44,27 @@ export default {
        activeName:'contactUS'
     }
    },
-    watch:{
-     titleId:{
-       immediate:true,
-       deep:true,
-       handler: function(val) {
-        if(val){
-          this.goDetails(val)
-        } else {
-          this.showDetails = false;
-        }
-       }
-     }
-   },
+  //   watch:{
+  //    titleId:{
+  //      immediate:true,
+  //      deep:true,
+  //      handler: function(val) {
+  //       if(val){
+  //         this.goDetails(val)
+  //       } else {
+  //         this.showDetails = false;
+  //       }
+  //      }
+  //    }
+  //  },
    methods: {
     // goBack(){
     //   this.$parent.showList();
     // },
     onCurrentChange(pageNum){
       this.pageNum = pageNum;
-       this.getDataList();
+      this.getDataList();
+      window.scrollTo(0,0);
     },
     prevClick(pageNum) {
       this.pageNum = pageNum;
@@ -73,14 +74,6 @@ export default {
      this.pageNum = pageNum;
       this.getDataList();
     },
-    enters(index){
-      this.current = index;
-      this.isvisible = true;
-    },
-    leaver(){
-      this.current = null;
-      this.isvisible = false;
-    },
     search(key,type) {
       this.keyWord = key;
       if(type=='reset') {
@@ -88,13 +81,8 @@ export default {
       }
       this.getDataList();
     },
-    goDetails(id) {
-      this.showDetails = true;
-      this.content = '';
-      let noticeUrl=`https://api.cptsol.cn/api/open/articleDetail?type=10&page=${this.pageNum}&size=10&id=${id}`;
-      axios.get(noticeUrl).then((res)=>{
-        this.content = res.data.content;
-      })
+    goDetails(type,id) {
+      this.lookDetails(type,id);
     },
     onSearch() {
     //    this.$parent.search(this.searchForm.keyWord);
@@ -119,7 +107,22 @@ export default {
       total:'',
       articleList:[] // 合作展示、文章列表
     })
+    const router = useRouter();
+    const lookDetails = (type,id)=> {
+      const newpage = router.resolve({
+        name: 'details',
+        params: {
+          type: type,
+          id:id
+        }
+      }) 
+       window.open(newpage.href,'_blank')
+      // router.push({
+      //   path: path,
+      // })
+    }
     onMounted(async () => {
+      state.lookDetails = lookDetails;
       // https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10
       var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=10&page=1&size=10";
       (async function () {
@@ -139,6 +142,7 @@ export default {
 </script>
 
 <style scoped>
+ @import '@/styles/list.css';
 *,p{
     margin: 0;
     padding: 0;

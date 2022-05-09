@@ -1,9 +1,7 @@
 <template>
-  <!-- 中心介绍 -->
-  <!-- <p class="tab">{{title}}</p> -->
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-        <el-tab-pane label="通知公告" name="famousPoint" style="margin-top:32px;">
+        <el-tab-pane label="通知公告" name="notice" style="margin-top:32px;">
          <Notice ref="notice" :id="id"></Notice>
         </el-tab-pane>
   </el-tabs>
@@ -23,7 +21,7 @@ export default {
        title:'中心介绍',
        total: 10,
        content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
-       activeName:'famousPoint',
+       activeName:'notice',
        id: this.noticeId
     }
    },
@@ -55,8 +53,7 @@ export default {
     return state;
   },
   components: {
-    Notice,
-    SearchKey
+    Notice
   }
 }
 </script>

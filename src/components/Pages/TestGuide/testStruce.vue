@@ -1,57 +1,60 @@
 <template>
-  <div class="tab">
-    <el-tabs v-model="activeName" @tab-change="handleChange">
-        <el-tab-pane label="职业风采" name="jobStyle" class="tab-content">
-        </el-tab-pane>
-        <el-tab-pane label="就业信息" name="jobInfo" class="tab-content">
-        </el-tab-pane>
-        <el-tab-pane label="教学分享" name="teachShare" class="tab-content">
-        </el-tab-pane>
-        <el-tab-pane label="合作展示" name="cooperateShow" class="tab-content">
-        </el-tab-pane>
-        <router-view></router-view>
-  </el-tabs>
- </div>
+ <div v-html="introContent" class="tab-content"></div>
 </template>
 
 <script>
-import { ref, toRefs, reactive } from 'vue'
+import axios from 'axios'
+import { reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 export default {
-  name: 'JobLook',
+  name: 'ContactUs',
+  props:['activeTabName'],
    data () {
     return {
+      //  title:'中心介绍',
+      //  total: 10,
+       activeName:'contactUS'
     }
    },
    methods: {
     handleChange(name){
-      this.activeName = name;
-      if(name === 'jobStyle') {
-        this.goPage('/jobLook/jobStyle');
-      } else if(name ==='jobInfo'){
-        this.goPage('/jobLook/jobInfo');
-      } else if(name==='teachShare'){
-        this.goPage('/jobLook/teachShare')
+      if(name === 'coopApply') {
+        this.goCoopApply();
       } else {
-        this.goPage('/jobLook/cooperateShow')
+        this.goContactUs();
       }
     }
+  },
+   watch:{
+    //  activeTabName:{
+    //    immediate:true,
+    //    deep:true,
+    //    handler: function(val) {
+    //      console.log(val,'@')
+    //      if(val === 0) {
+    //        this.activeName = 'contactUS';
+    //      } else {
+    //        this.activeName = 'coopApply';
+    //      }
+    //    }
+    //  }
    },
   setup() {
-    const router = useRouter();
-    let url = router.currentRoute.value.fullPath;
-    let index = url.lastIndexOf("\/");
-    let str = url.substring(index + 1,url.length);
-    const activeName = ref(str);
-    const goPage = (path)=> {
-      router.push({
-        path: path
-      })
-    }
-    return {
-      activeName,
-      goPage
-    };
+    window.scrollTo(0,0);
+    const state = reactive({
+      introContent: [],
+      isvisible: false,
+      isShow: false,
+      articleList:[] // 合作展示、文章列表
+    })
+    onMounted(async () => {
+      var noticeUrl="https://api.cptsol.cn/api/open/articleDetail?type=13";
+      (async function () {
+        const res = await axios.get(noticeUrl) //返回 {id:0}
+        state.introContent =  res.data.content;
+      })();
+    })
+    return state;
   },
   components: {
   }
@@ -83,6 +86,9 @@ export default {
     width: 65px!important;
     background-color: #2F318B;
 }
+.tab >>>.el-tabs.el-tabs--top.demo-tabs.lastone .el-tabs__active-bar{
+  width: 100px!important;
+}
 .tab >>>.el-tabs__item{
     font-size: 16px!important;
     font-family: "PingFangSC-Regular", "PingFang SC";
@@ -96,16 +102,17 @@ export default {
 .tab >>>.el-tabs__nav-wrap::after {
       position: static !important;
 }
-/* .tab-content {
+.tab-content {
     padding-left: 20px; 
     margin-top: 32px;
+    text-indent: 0;
     padding-right: 20px;
 }
 .center-intro{
   width: 1200px;
   height: 436px;
-} */
-/* .center-intro img {
+}
+.center-intro img {
   height: 100%;
   width: 100%;
   object-fit: fill;
@@ -130,6 +137,6 @@ export default {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-} */
+}
 
 </style>

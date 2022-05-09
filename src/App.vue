@@ -17,30 +17,20 @@
     </div>
     <div class="menu">
       <ul>
-        <li style="text-indent: 2em;"><a href="#"  @click.prevent="changeComp('Main')" :class="{'active':compName==='Main'}">首页</a></li>
-        <li><a href="#"  @click.prevent="changeComp('CenterIntro')" :class="{'active':compName==='CenterIntro'}">中心介绍</a></li>
-        <li><a href="#"  @click.prevent="changeComp('Notice')" :class="{'active':compName==='Notice'}">通知公告</a></li>
-        <li><a href="#"  @click.prevent="changeComp('CenterDynamics')" :class="{'active':compName==='CenterDynamics'}">中心动态</a></li>
-        <li><a href="#"  @click.prevent="changeComp('IndustryExchanges')" :class="{'active':compName==='IndustryExchanges'}">行业交流</a></li>
-        <li><a href="#"  @click.prevent="changeComp('Famous')" :class="{'active':compName==='Famous'}">名家观点</a></li>
-        <li><a href="#"  @click.prevent="changeComp('JobLook')" :class="{'active':compName==='JobLook'}">职业风采</a></li>
-        <li><a href="#"  @click.prevent="changeComp('TestGuide')" :class="{'active':compName==='TestGuide'}">考试指南</a></li>
+        <li style="text-indent: 2em;"><router-link to="/index">首页</router-link></li>
+        <li><router-link to="/centerIntro">中心介绍</router-link></li>
+        <li><router-link to="/notice">通知公告</router-link></li>
+        <li><router-link to="/centerDynamics">中心动态</router-link></li>
+        <li><router-link to="/industryExchanges">行业交流</router-link></li>
+        <li><router-link to="/famous">名家观点</router-link></li>
+        <li><router-link to="/joblook">职业风采</router-link></li>
+        <li><router-link to="/testGuide">考试指南</router-link></li>
         <li><a href="https://ks.cptsol.cn"  @click="goLink"  target="_blank">考试系统</a></li>
-        <li><a href="#"  @click.prevent="changeComp('ContactUs')" :class="{'active':compName==='ContactUs'}">联系我们</a></li>
+        <li><router-link to="/contact">联系我们</router-link></li>
       </ul>
     </div>
   </div>
-  <!-- <Home></Home> -->
-  <!-- <component :is="compName" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName" :articleId="articleId"></component> -->
-  <Main  v-if="compName == 'Main'" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName"></Main>
-  <CenterIntro v-if="compName=='CenterIntro'" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName"></CenterIntro>
-  <Notice  v-if="compName=='Notice'" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName" :noticeId="noticeId"></Notice>
-  <CenterDynamics v-if="compName=='CenterDynamics'" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName" :centerDynamicsId="centerDynamicsId"></CenterDynamics>
-  <IndustryExchanges  v-if="compName=='IndustryExchanges'"  :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName"></IndustryExchanges>
-  <Famous v-if="compName=='Famous'" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName" ></Famous>
-  <JobLook  v-if="compName=='JobLook'" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName" :jobLookId="jobLookId" :coopId="coopId"></JobLook>
-  <TestGuide v-if="compName=='TestGuide'" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName"></TestGuide>
-  <ContactUs v-if="compName=='ContactUs'" :showList="showList"  @changeComp="changeComp" :activeTabName="activeTabName"></ContactUs>
+  <router-view  />
   <Footer></Footer>
   <el-backtop :bottom="100">
     <div class="backtop">
@@ -50,21 +40,8 @@
 </template>
 
 <script>
-// import Banner from './components/Banner.vue'
 import Footer from './components/Common/Footer.vue'
-import Main from './components/Main.vue'
-// import Home from './components/Pages/Home.vue' // 首页
-import CenterIntro from './components/Pages/CenterIntro/CenterIntro.vue' // 中心介绍
-import Notice from './components/Pages/Notice/Tab.vue' // 通知公告
-import CenterDynamics from './components/Pages/CenterDynamics/Tab.vue' // 中心动态
-import IndustryExchanges from './components/Pages/IndustryExchanges/Tab.vue' // 行业交流
-import Famous from './components/Pages/Famous/Famous.vue' // 名家观点
-import JobLook from './components/Pages/JobLook/JobLook.vue' // 职业风采
-import TestGuide from './components/Pages/TestGuide/TestGuide.vue' // 考试指南
-import TestSys from './components/Pages/TestSys/TestSys.vue' // 考试系统
-import ContactUs from './components/Pages/ContactUs/ContactUs.vue' //  联系我们
 import {Top} from '@element-plus/icons-vue'
-
 export default {
   name: 'App',
     data () {
@@ -81,12 +58,10 @@ export default {
       coopId:'' // 合作展示
     }
   },
+  // setup(){
+  //   const router = useRouter();
+  // },
   methods: {
-    changeComp(name) {
-      this.compName = name;
-      this.menu = "";
-      this.activeTabName = 0;
-    },
     lookDetails(name,id,activeName,type){
       this.compName = name;
       this.isFromHome = true;
@@ -128,17 +103,17 @@ export default {
   components: {
     Top,
     // Banner,
-    Main,
+    // Main,
     // Home,// 首页
-    CenterIntro, // 中心介绍
-    CenterDynamics,
-    Famous,
-    JobLook,
-    TestGuide,
-    IndustryExchanges,
-    TestSys,
-    Notice,
-    ContactUs,
+    //CenterIntro, // 中心介绍
+    // CenterDynamics,
+    // Famous,
+    // JobLook,
+    // TestGuide,
+    // IndustryExchanges,
+    // TestSys,
+    // Notice,
+    // ContactUs,
     Footer
   }
 }
@@ -146,4 +121,7 @@ export default {
 
 <style scoped>
   @import '@/styles/app.css';
+  >>>.router-link-active{
+  border-bottom: 3px solid #fff;
+}
 </style>

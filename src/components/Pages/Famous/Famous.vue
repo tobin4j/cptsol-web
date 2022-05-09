@@ -1,50 +1,54 @@
 <template>
   <div class="tab">
-    <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+    <el-tabs v-model="activeName" class="demo-tabs" @tab-change="handleChange">
         <el-tab-pane label="名家观点" name="famousPoint" class="tab-content">
-         <FamousPoint ref="child"></FamousPoint>
         </el-tab-pane>
         <el-tab-pane label="名家团队" name="famousTeam" class="tab-content">
-          <FamousTeam :dataList="dataList"></FamousTeam>
         </el-tab-pane>
+         <router-view></router-view>
   </el-tabs>
  </div>
 </template>
 
 <script>
-import FamousTeam from './FamousTeam.vue'
-import FamousPoint from './FamousPoint.vue'
-import axios from 'axios'
-import { reactive, onMounted } from 'vue'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
 export default {
-  name: 'Notice',
+  name: 'Famous',
    data () {
     return {
-       title:'中心介绍',
-       total: 10,
-       content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
-       activeName:'famousPoint'
     }
    },
   methods: {
-    goBack(){
-      this.$refs.child.showList();
+    handleChange(name){
+      this.activeName = name
+      if(name === 'famousPoint') { //名家观点
+        this.goPage('/famous/famousPoint');
+      } else {
+        this.goPage('/famous/famousTeam');
+      }
     }
    },
   setup() {
-    const state = reactive({
-      dataList:[],
-      isvisible: false,
-      isShow: false,
-      articleList:[] // 合作展示、文章列表
-    })
-    onMounted(async () => {
-    })
-    return state;
+     const router = useRouter();
+     let url = router.currentRoute.value.fullPath;
+     let index = url.lastIndexOf("\/");
+     let str = url.substring(index + 1,url.length);
+     const activeName = ref(str);
+     const goPage = (path)=> {
+      router.push({
+        path: path
+      })
+    }
+    return {
+      activeName,
+      goPage
+    };
   },
   components: {
-    FamousPoint,
-    FamousTeam
+    // FamousPoint,
+    // FamousTeam
   }
 }
 </script>

@@ -9,7 +9,7 @@
             <img alt="logo" src="../assets/001.png">
           </span>
           <span class="notice">通知公告</span>
-          <span class="more" @click="goPage('Notice')">更多
+          <span class="more" @click="goPage('notice')">更多
             <span class="more-icon">
               <img src="../assets/more.png"/>
             </span>
@@ -17,7 +17,7 @@
         </div>
         <div class="list">
           <ul>
-            <li v-for="(item,index) in list" :key="index" @click="goDetails('Notice',item.articleId)">
+            <li v-for="(item,index) in list" :key="index" @click="goDetails(2,item.articleId)">
               <span class="msg-title" :title="item.title"><span class="dot"></span>{{ item.title }}</span>
               <span class="date">
               「{{item.createTime.substring(0,10)}}」
@@ -32,7 +32,7 @@
         <div style="margin-bottom: 25px;">
           <img alt="logo" src="../assets/002.png" style="vertical-align:middle">
           <span class="trends">中心动态</span>
-          <span class="more" @click="goPage('CenterDynamics')">更多
+          <span class="more" @click="goPage('centerDynamics')">更多
             <span class="more-icon">
               <img src="../assets/more.png"/>
             </span>
@@ -40,7 +40,7 @@
         </div>
         <div class="list">
           <ul>
-            <li v-for="(item,index) in centerList" :key="index"  @click="goDetails('CenterDynamics',item.articleId)">
+            <li v-for="(item,index) in centerList" :key="index"  @click="goDetails(3,item.articleId)">
               <span class="msg-title" :title="item.title"><span class="dot"></span>{{ item.title }}</span>
               <span class="date">「{{item.createTime.substring(0,10)}}」</span>
             </li>
@@ -57,7 +57,7 @@
               <img alt="logo" src="../assets/003.png">
             </span>
             <span class="jooblook">职业风采</span>
-            <span class="more" @click="goPage('JobLook',0)">更多
+            <span class="more" @click="goPage('joblook')">更多
               <span class="more-icon">
                 <img src="../assets/more.png"/>
               </span>
@@ -65,7 +65,7 @@
           </div>
           <div class="list">
             <ul>
-              <li v-for="(item,index) in jobLookList" :key="index" @click="goDetails('JobLook',item.articleId)">
+              <li v-for="(item,index) in jobLookList" :key="index" @click="goDetails(7,item.articleId)">
                 <span class="msg-title" :title="item.title"><span class="dot"></span>{{ item.title}}</span>
               <span class="date">「{{item.createTime.substring(0,10)}}」</span>
               </li>
@@ -81,7 +81,7 @@
             </div>
             <p class="content_intro">{{content}}</p>
             <div class="apply">
-              <el-button style="margin: 0 auto;" @click="goPage('ContactUs',1)">立即申请</el-button>
+              <el-button style="margin: 0 auto;" @click="goPage('coopApply')">立即申请</el-button>
             </div>
           </el-card>
           <el-card shadow="always" style="margin-top:16px;" class="last-one">
@@ -111,7 +111,7 @@
               <img alt="logo" src="../assets/006.png" style="vertical-align:middle;padding-left:24px;">
             </span>
             <span class="cooperation-show" style="padding-left:32px;">合作展示</span>
-            <span class="more" @click="goPage('JobLook',3)">更多
+            <span class="more" @click="goPage('cooperateShow')">更多
               <span class="more-icon">
                 <img src="../assets/more.png"/>
               </span>
@@ -121,7 +121,7 @@
              @mouseenter="enters(index)"
              @mouseleave="leaver()"
              :key="index" 
-             @click="goDetails('JobLook',item.articleId,3,'coopShow')"
+             @click="goDetails(10,item.articleId)"
              class="item">
                 <img @click="go"   alt="logo" :src="item.imgUrl" style="height:100%;width:100%;" />
                 <div class="category-title" v-show="isvisible && index === current">{{item.title}}</div>
@@ -139,7 +139,7 @@
             <span class="friendly-link">友情链接</span>
              <div class="pics container" style="margin-top: 25px;">
                  <div class="pic-item" v-for="item in imgList" :key="item">
-                   <a :href="item.imgUrl" target="_blank">
+                   <a :href="item.redirectUrl" target="_blank">
                      <img alt="logo" :src="item.imgUrl" />
                    </a>
                 </div>
@@ -154,6 +154,7 @@
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 import Banner from './Banner.vue'
+import { useRouter } from 'vue-router'
 export default {
   components: { Banner },
   name: 'Main',
@@ -177,6 +178,30 @@ export default {
       list:[],// 通知公告
       articleList:[] // 合作展示、文章列表
     })
+    const router = useRouter();
+    const lookMore = (path)=> {
+      const newpage = router.resolve({
+        path: path
+      }) 
+       window.open(newpage.href,'_blank')
+      // router.push({
+      //   path: path,
+      // })
+    }
+    const lookDetails = (type,id)=> {
+      const newpage = router.resolve({
+        name: 'details',
+        params: {
+          type: type,
+          id:id
+        }
+      }) 
+       window.open(newpage.href,'_blank')
+      // router.push({
+      //   path: path,
+      // })
+    }
+    
     onMounted(async () => {
       // banner图
       var bannerUrl="https://api.cptsol.cn/api/open/adList?type=2";
@@ -185,6 +210,8 @@ export default {
       var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=5";
       var centerUrl="https://api.cptsol.cn/api/open/articleList?type=3&page=1&size=5";
       var jobLookUrl="https://api.cptsol.cn/api/open/articleList?type=7&page=1&size=10";
+      state.lookMore = lookMore;
+      state.lookDetails = lookDetails;
       (async function () {
         const res = await axios.get(bannerUrl) //返回 {id:0}
         state.imgList = res.data;
@@ -206,7 +233,7 @@ export default {
         state.jobLookList = res.data.data;
       })();
     })
-    return state;
+    return state
   },
   methods: {
     // 方法
@@ -224,13 +251,26 @@ export default {
       this.current = null;
       this.isvisible = false;
     },
-    lookMore(){
+    goPage(compName){
+      if(compName === 'coopApply') {
+        this.lookMore('/contact/coopApply')
+      }
+      if(compName === 'notice') { 
+        this.lookMore('/notice')
+      }
+      if(compName === 'centerDynamics') {
+        this.lookMore('/centerDynamics')
+      }
+      if(compName==='joblook') {
+        this.lookMore('/jobLook/jobStyle')
+      }
+      if(compName === 'cooperateShow') {
+        this.lookMore('/jobLook/cooperateShow')
+      }
+      //this.$parent.changeMenu(compName,activeTab)
     },
-    goPage(compName,activeTab){
-      this.$parent.changeMenu(compName,activeTab)
-    },
-    goDetails(compName,id,activeName,type){
-     this.$parent.lookDetails(compName,id,activeName,type);
+    goDetails(type,id){
+     this.lookDetails(type,id);
     }
   },
   created () {

@@ -3,12 +3,12 @@
     <!-- <div class="testbook-title" v-for="(item,index) in dataList" :key="index"> -->
     <div class="testbook-title">
        <ul class="menu">
-        <li class="title" style="font-size:16px">笔试真题实例</li>
-         <li class="subTitle" v-for="(item,index) in dataList" :key="index" :class="{'checked':index ===checkedIndex && titleName===1 }" @click="change(1,item.title,item.articleId)">
+         <li class="li-title" style="font-size:14px">笔试真题实例</li>
+         <li class="subTitle" v-for="(item,index) in dataList" :key="index" :class="{'checked':index ===checkedIndex && titleName===1 }" @click="change(1,item.articleId,index)">
            {{item.title}}
          </li>
-        <li class="title" style="font-size:16px">面试真题实例</li>
-        <li class="subTitle" v-for="(item,index) in dataList2" :key="index" :class="{'checked':index ===checkedIndex &&titleName === 2}" @click="change(2,item.title,item.articleId)">
+        <li class="li-title" style="font-size:14px">面试真题实例</li>
+        <li class="subTitle" v-for="(item,index) in dataList2" :key="index" :class="{'checked':index ===checkedIndex &&titleName === 2}" @click="change(2,item.articleId,index)">
            {{item.title}}
          </li>
        </ul>
@@ -55,21 +55,21 @@ export default {
     onSubmit() {
       console.log('submit!');
     },
-    getContent(type,title) {
+    getContent(type,id) {
       let noticeUrl="";
       if(type ===1){
-         noticeUrl = `https://api.cptsol.cn/api/open/articleDetail?type=15&subType=1501&title=${title}&id=${this.checkedIndex}`
+         noticeUrl = `https://api.cptsol.cn/api/open/articleDetail?type=15&subType=1501&id=${id}`
       } else {
-          noticeUrl = `https://api.cptsol.cn/api/open/articleDetail?type=15&subType=1502&title=${title}&id=${this.checkedIndex}`
+          noticeUrl = `https://api.cptsol.cn/api/open/articleDetail?type=15&subType=1502&id=${id}`
       }
       axios.get(noticeUrl).then((res)=>{
         this.content = res.data.content;
       })
     },
-    change(type,title,val){
-      this.checkedIndex = val;
+    change(type,id,index){
+      this.checkedIndex = index;
       this.titleName = type;
-      this.getContent(type,title)
+      this.getContent(type,id)
     },
     handleClick(name){
       let typeVal = 11;
@@ -125,9 +125,9 @@ export default {
         if(res.data.data) {
             let data = res.data.data;
             state.dataList =  data;
-            let fisrtITem = res.data.data[0];
+            let fisrtITem = res.data.data[0].articleId;
             (async function () {
-            const res = await axios.get(`https://api.cptsol.cn/api/open/articleDetail?type=15&subType=1501&title=${fisrtITem}`) //返回 {id:0}
+            const res = await axios.get(`https://api.cptsol.cn/api/open/articleDetail?type=15&subType=1501&id=${fisrtITem}`) //返回 {id:0}
             state.content =  res.data.content;
             })();
         }
@@ -194,7 +194,7 @@ export default {
   background: #ffffff29;
   /* opacity: 0.19; */
 }
-.menu li.title:before{
+.menu li.li-title:before{
   content: '';
   display: inline-block;
   width: 4px;

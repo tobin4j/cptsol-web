@@ -1,67 +1,62 @@
 <template>
   <!-- 联系我们 -->
   <div class="tab">
-    <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-        <el-tab-pane label="联系我们" name="contactUS" class="tab-content">
-        <div class="content" v-html="content"></div>
+    <el-tabs v-model="activeName" class="demo-tabs" @tab-change="handleChange">
+        <el-tab-pane label="联系我们" name="contactUs" class="tab-content">
         </el-tab-pane>
         <el-tab-pane label="合作申请" name="coopApply" class="tab-content">
-          <div class="content" v-html="coopApplyDetails"></div>
         </el-tab-pane>
+        <router-view></router-view>
   </el-tabs>
  </div>
 </template>
 
 <script>
 import axios from 'axios'
-import { reactive, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { ref } from 'vue'
 export default {
   name: 'ContactUs',
-  props:['activeTabName'],
+  // props:['activeTabName'],
    data () {
     return {
-       title:'中心介绍',
-       total: 10,
-       activeName:'contactUS'
+      //  title:'中心介绍',
+      //  total: 10,
+      // activeName:'contactUS'
     }
    },
-   watch:{
-     activeTabName:{
-       immediate:true,
-       deep:true,
-       handler: function(val) {
-         console.log(val,'@')
-         if(val === 0) {
-           this.activeName = 'contactUS';
-         } else {
-           this.activeName = 'coopApply';
-         }
-       }
-     }
-   },
+   methods: {
+    handleChange(name){
+      this.activeName = name;
+      if(name === 'coopApply') {
+        this.goCoopApply();
+      } else {
+        this.goContactUs();
+      }
+    }
+  },
   setup() {
-    const state = reactive({
-      noticeList: [],
-      isvisible: false,
-      isShow: false,
-      content:'',
-      coopApplyDetails:'',//合作申请
-      articleList:[] // 合作展示、文章列表
-    })
     window.scrollTo(0,0);
-    onMounted(async () => {
-      var noticeUrl="https://api.cptsol.cn/api/open/articleDetail?type=17";
-      (async function () {
-        const res = await axios.get(noticeUrl) //返回 {id:0}
-        state.content = res.data.content;
-      })();
-      var coopApplyUrl="https://api.cptsol.cn/api/open/articleDetail?type=18";
-      (async function () {
-        const res = await axios.get(coopApplyUrl) //返回 {id:0}
-        state.coopApplyDetails = res.data.content;
-      })();
-    })
-    return state;
+    const router = useRouter();
+    let url = router.currentRoute.value.fullPath;
+    let index = url.lastIndexOf("\/");
+    let str = url.substring(index + 1,url.length);
+    const activeName = ref(str);
+    const goCoopApply = ()=> {
+      router.push({
+        path: '/contact/coopApply'
+      })
+    }
+    const goContactUs = ()=> {
+      router.push({
+        path: '/contact/contactUs',
+      })
+    }
+    return {
+      activeName,
+      goContactUs,
+      goCoopApply
+    };
   },
   components: {
   }

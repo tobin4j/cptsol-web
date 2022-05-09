@@ -3,7 +3,7 @@
     <!-- <div class="testbook-title" v-for="(item,index) in dataList" :key="index"> -->
     <div class="testbook-title">
        <ul class="menu">
-         <li v-for="(item,index) in dataList" :key="index" :class="{'checked':index ===checkedIndex}" @click="change(item.title,item.articleId)">
+         <li v-for="(item,index) in dataList" :key="index" :class="{'checked':index ===checkedIndex}" @click="change(item.articleId,index)">
            {{item.title}}
          </li>
        </ul>
@@ -41,15 +41,15 @@ export default {
     onSubmit() {
       console.log('submit!');
     },
-    getContent(title) {
-      let noticeUrl=`https://api.cptsol.cn/api/open/articleDetail?type=16&title=${title}&id=${this.checkedIndex}`;
+    getContent(id) {
+      let noticeUrl=`https://api.cptsol.cn/api/open/articleDetail?type=16&id=${id}`;
       axios.get(noticeUrl).then((res)=>{
         this.content = res.data.content;
       })
     },
-    change(title,val){
-      this.checkedIndex = val;
-      this.getContent(title)
+    change(id,index){
+      this.checkedIndex = index;
+      this.getContent(id)
     },
     handleClick(name){
       let typeVal = 11;
@@ -97,30 +97,21 @@ export default {
     })
     onMounted(async () => {
       var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=16&page=1&size=20";
-      // let noticeUrl2=`https://api.cptsol.cn/api/open/articleDetail?type=16&title=`;
       (async function () {
         const res = await axios.get(noticeUrl) //返回 {id:0}
         state.dataList =  res.data.data;
         if(state.dataList.length>0){
-          let fisrtITem = res.data.data[0];
+          let fisrtITem = res.data.data[0].articleId;
           (async function () {
-          const res = await axios.get(`https://api.cptsol.cn/api/open/articleDetail?type=16&title=${fisrtITem}`) //返回 {id:0}
+          const res = await axios.get(`https://api.cptsol.cn/api/open/articleDetail?type=16&id=${fisrtITem}`) //返回 {id:0}
           state.content =  res.data.content;
           })();
         }
       })();
-
     })
     return state;
   },
   components: {
-    // Details,
-    // SearchKey,
-    // RegisterProcess,
-    // TestProcess,
-    // CertificateClaimProcess,
-    // TestBook
-    
   }
 }
 </script>

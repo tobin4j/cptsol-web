@@ -1,39 +1,45 @@
 <template>
-  <div class="tab" v-show="isShow">
+  <div class="tab">
       <div class="content" v-html="content"></div>
-      <span @click="goBack" class="back">返回列表</span>
+      <!-- <span @click="goBack" class="back">返回列表</span> -->
  </div>
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
+import { reactive, onMounted } from 'vue'
+import axios from 'axios'
 export default {
   name: 'Notice',
-  //  propos:['examId ','courseId']  // 多参
-   props:['content','title','isShow'],
+  
    data () {
     return {
        total: 10,
-       // content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
        activeName:'centerIntro'
     }
    },
    methods: {
-    goBack(){
-      this.$parent.showList();
-    }
+    // goBack(){
+    //   this.$parent.showList();
+    // }
    },
   components: {
   },
-  watch:{
-     content:{
-       immediate:true,
-       deep:true,
-       handler: function() {
-           window.scrollTo(0,0)
-       }
-     }
-   },
-
+  setup() {
+    const state = reactive({
+      content:''
+    })
+     const router = useRouter();
+     onMounted(()=>{
+       let params = router.currentRoute.value.params;
+       let noticeUrl=`https://api.cptsol.cn/api/open/articleDetail?type=${params.type}&id=${params.id}`;
+        axios.get(noticeUrl).then((res)=>{
+          let content = res.data.content;
+          state.content = content;
+        })
+     })
+    return state;
+  }
 }
 </script>
 

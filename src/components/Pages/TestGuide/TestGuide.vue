@@ -1,69 +1,34 @@
 <template>
   <div class="tab">
-    <el-tabs v-model="activeName"  @tab-change="handleClick" :class="['demo-tabs', { 'lastone': activeName=='CertificateClaimProcess' }]">
-        <!-- <el-tab-pane :label="item.label" :name="item.name" class="tab-content" v-for="(item,index) in tabs" :key="index">
-          <template v-if="activeName ==='testIntro' 
-            || activeName ==='testRangle'
-            || activeName ==='testStruce'" > 
-            <div v-html="introContent" class="tab-content"></div>
-          </template>
-          <template v-else-if="activeName ==='registerProcess' 
-            || activeName ==='testProcess'
-            || activeName ==='CertificateClaimProcess'">
-            <RegisterProcess v-if="activeName==='registerProcess'"></RegisterProcess>
-            <TestProcess v-if="activeName==='testProcess'"></TestProcess>
-            <CertificateClaimProcess v-if="activeName==='CertificateClaimProcess'"></CertificateClaimProcess>
-          </template>
-          <template v-else>
-            <TestBook v-if="activeName==='testBook'"></TestBook>
-            <QExample v-if="activeName==='qExample'"></QExample>
-            <TestStandard v-if="activeName==='testStandard'"></TestStandard>
-          </template>
-        </el-tab-pane> -->
+    <el-tabs v-model="activeName"  @tab-change="handleChange" :class="['demo-tabs', { 'lastone': activeName=='CertificateClaimProcess' }]">
         <el-tab-pane class="tab-content" label="考试介绍" name="testIntro">
-          <div v-html="introContent" class="tab-content" v-show="activeName ==='testIntro'"></div>
         </el-tab-pane>
         <el-tab-pane class="tab-content" label="考试范围" name="testRangle">
-           <div v-html="introContent" class="tab-content" v-show="activeName ==='testRangle'"></div>
         </el-tab-pane>
         <el-tab-pane class="tab-content" label="考试结构" name="testStruce">
-          <div v-html="introContent" class="tab-content" v-show="activeName ==='testStruce'"></div>
         </el-tab-pane>
         <el-tab-pane class="tab-content" label="考试标准" name="testStandard">
-          <TestStandard v-if="activeName==='testStandard'"></TestStandard>
         </el-tab-pane>
         <el-tab-pane class="tab-content" label="真题实例" name="qExample">
-          <QExample v-if="activeName==='qExample'"></QExample>
         </el-tab-pane>
         <el-tab-pane class="tab-content" label="考试用书" name="testBook">
-          <TestBook v-if="activeName==='testBook'"></TestBook>
         </el-tab-pane>
         <el-tab-pane class="tab-content" label="报名流程" name="registerProcess">
-          <RegisterProcess v-if="activeName==='registerProcess'"></RegisterProcess>
         </el-tab-pane>
         <el-tab-pane class="tab-content" label="考试流程" name="testProcess">
-          <TestProcess v-if="activeName==='testProcess'"></TestProcess>
         </el-tab-pane>
         <el-tab-pane class="tab-content" label="证书申领流程" name="CertificateClaimProcess">
-          <CertificateClaimProcess v-if="activeName==='CertificateClaimProcess'"></CertificateClaimProcess>
         </el-tab-pane>
+        <router-view></router-view>
   </el-tabs>
  </div>
 </template>
 
 <script>
-import SearchKey from '@/components/Common/SearchKey'
-import axios from 'axios'
-import { reactive, onMounted } from 'vue'
-import Details from '@/components/Common/Details'
-import RegisterProcess from './RegisterProcess.vue';
-import TestProcess from './TestProcess.vue';
-import CertificateClaimProcess from './CertificateClaimProcess.vue';
-import TestBook from './TestBook.vue';
-import QExample from './QExample.vue';
-import TestStandard from './TestStandard.vue';
+import { useRouter } from 'vue-router'
+import { ref} from 'vue'
 export default {
-  name: 'Notice',
+  name: 'TestGuide',
    data () {
     return {
        label:'国际中文教师职业能力证书考试报名流程',
@@ -79,81 +44,49 @@ export default {
        title:'中心介绍',
        total: 10,
        content:'某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......某某公告 | 2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业能力考试报名2022年第一期国际中文执业......',
-       activeName:'testIntro'
+       // activeName:'testIntro'
     }
    },
   methods: {
-    // 方法
-    onSubmit() {
-      console.log('submit!');
-    },
-    getContent(typeVal) {
-      let noticeUrl=`https://api.cptsol.cn/api/open/articleDetail?type=${typeVal}`;
-      axios.get(noticeUrl).then((res)=>{
-        this.introContent = res.data.content;
-      })
-    },
-    handleClick(name){
-      let typeVal = 11;
-      this.activeName = name;
-      if(name==='testIntro') {
-        typeVal = 11;
-        this.getContent(typeVal);
+    handleChange(name){
+      if(name === 'testIntro') {
+        this.goPage('/testGuide/testIntro');
+      } else if(name ==='testRangle'){
+        this.goPage('/testGuide/testRangle');
+      } else if(name==='testStruce'){
+        this.goPage('/testGuide/testStruce');
+      } else if(name === 'testStandard'){
+        this.goPage('/testGuide/testStandard');
+      } else if(name === 'qExample') {
+        this.goPage('/testGuide/qExample');
+      } else if(name === 'registerProcess') {
+        this.goPage('/testGuide/registerProcess');
+      }else if(name === 'testBook') {
+        this.goPage('/testGuide/testBook');
+      }else if(name === 'testProcess') {
+        this.goPage('/testGuide/testProcess'); 
+      }else {
+        this.goPage('/testGuide/CertificateClaimProcess');
       }
-      if(name === "testRangle") {
-        typeVal = 12;
-        this.getContent(typeVal);
-      }
-      if(name === 'testStruce') {
-        typeVal = 13;
-        this.getContent(typeVal);
-      } 
-      if(name === 'testStandard') {
-        typeVal = 14;
-      } 
-      if(name === 'qExample') {
-        typeVal = 15;
-      } 
-      if(name === "testBook") {
-        typeVal = 16
-        this.getContent(typeVal);
-      } 
-      if(name === 'registerProcess') {
-        this.label = '国际中文教师职业能力证书考试报名流程';
-      } 
-      if(name === 'testProcess') {
-        this.label = '国际中文教师职业能力证书考试流程';
-      } 
-      if(name === "CertificateClaimProcess") {
-        this.label = '国际中文教师职业能力证书申领流程'
-      } 
-    }
+    },
   },
   setup() {
-    const state = reactive({
-      introContent: [],
-      isvisible: false,
-      isShow: false,
-      articleList:[] // 合作展示、文章列表
-    })
-    onMounted(async () => {
-      var noticeUrl="https://api.cptsol.cn/api/open/articleDetail?type=11";
-      (async function () {
-        const res = await axios.get(noticeUrl) //返回 {id:0}
-        state.introContent =  res.data.content;
-      })();
-    })
-    return state;
+    const router = useRouter();
+     let url = router.currentRoute.value.fullPath;
+     let index = url.lastIndexOf("\/");
+     let str = url.substring(index + 1,url.length);
+     const activeName = ref(str);
+    const goPage = (path)=> {
+      router.push({
+        path: path
+      })
+    }
+    return {
+      activeName,
+      goPage
+    };
   },
   components: {
-    Details,
-    SearchKey,
-    RegisterProcess,
-    TestProcess,
-    CertificateClaimProcess,
-    TestBook,
-    QExample,
-    TestStandard
   }
 }
 </script>
