@@ -2,19 +2,18 @@
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
         <el-tab-pane label="通知公告" name="notice" style="margin-top:32px;">
-         <Notice ref="notice" :id="id"></Notice>
+         <!-- <Notice ref="notice" :id="id"></Notice> -->
+         <router-view></router-view>
         </el-tab-pane>
   </el-tabs>
  </div>
 </template>
 
 <script>
-import SearchKey from '@/components/Common/SearchKey'
 import Notice from './Notice.vue'
-import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 export default {
-  name: 'Tab',
+  name: 'Notice',
   props:['showList','noticeId'],
    data () {
     return {

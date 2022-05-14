@@ -1,24 +1,24 @@
 <template>
-<SearchKey  @search="search"></SearchKey>
+<SearchKey @search="search"></SearchKey>
 <div>
-    <div class="list-container clearfix" v-for="(item,index) in dataList" :key="index" @click="goDetails(6,item.articleId)">
-        <div class="list-left">
-            <img :src="item.imgUrl"/>
+    <div class="list-container clearfix" v-for="(item,index) in dataList" :key="index" @click.self="goDetails(10,item.articleId)">
+        <div class="list-left" >
+            <img :src="item.imgUrl"  @click.self="goDetails(10,item.articleId)"/>
         </div>
         <div class="list-right">
-            <p class="list-title">{{item.title}}</p>
-            <p class="list-brief">{{item.summary}}</p>
+            <p class="list-title"  @click.self="goDetails(10,item.articleId)">{{item.title}}</p>
+            <p class="list-brief"  @click.self="goDetails(10,item.articleId)">{{item.summary}}</p>
         </div>
     </div>
 </div>
-  <div class="page-container">
-    <el-pagination background layout="prev, pager, next" 
-    :total="total" 
-    @currentChange = "onCurrentChange"
-    @prevClick = "prevClick"
-    @nextClick = "nextClick"
-    class="page"/>
-    <span>共{{total}}条，10条每页</span>
+<div class="page-container" >
+  <el-pagination background layout="prev, pager, next" 
+  :total="total" 
+  @currentChange = "onCurrentChange"
+  @prevClick = "prevClick"
+  @nextClick = "nextClick"
+  class="page"/>
+  <span>共{{total}}条，10条每页</span>
   </div>
 </template>
 
@@ -28,10 +28,9 @@ import { reactive, onMounted } from 'vue'
 import Details from '@/components/Common/Details'
 import SearchKey from '@/components/Common/SearchKey'
 import { useRouter } from 'vue-router'
-
 export default {
-  name: 'FamousPoint',
-  // props:['dataList'],
+  name: 'ContactUs',
+  props:['titleId'],
    data () {
     return {
        title:'中心介绍',
@@ -45,7 +44,23 @@ export default {
        activeName:'contactUS'
     }
    },
+  //   watch:{
+  //    titleId:{
+  //      immediate:true,
+  //      deep:true,
+  //      handler: function(val) {
+  //       if(val){
+  //         this.goDetails(val)
+  //       } else {
+  //         this.showDetails = false;
+  //       }
+  //      }
+  //    }
+  //  },
    methods: {
+    // goBack(){
+    //   this.$parent.showList();
+    // },
     onCurrentChange(pageNum){
       this.pageNum = pageNum;
       this.getDataList();
@@ -77,12 +92,7 @@ export default {
       this.showDetails = false;
     },
     getDataList() {
-      let noticeUrl = '';
-      if(this.keyWord) {
-        noticeUrl=`https://api.cptsol.cn/api/open/articleList?type=6&page=${this.pageNum}&size=10&title=${this.keyWord}`;
-      } else {
-        noticeUrl=`https://api.cptsol.cn/api/open/articleList?type=6&page=${this.pageNum}&size=10`;
-      }
+      let noticeUrl=`https://api.cptsol.cn/api/open/articleList?type=10&page=${this.pageNum}&size=10&title=${this.keyWord}`;
       axios.get(noticeUrl).then((res)=>{
         this.dataList = res.data.data;
         this.total = res.data.total;
@@ -99,19 +109,19 @@ export default {
     })
     const router = useRouter();
     const lookDetails = (type,id)=> {
-        router.push({
-        name: 'teamDetail',
+       router.push({
+        name: 'coopDetails',
         params: {
           type: type,
           id:id,
-          comp:62
+          comp:74
         }
-      }) 
+      })     
     }
-    
     onMounted(async () => {
       state.lookDetails = lookDetails;
-      var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=6&page=1&size=10";
+      // https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10
+      var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=10&page=1&size=10";
       (async function () {
         const res = await axios.get(noticeUrl) //返回 {id:0}
         state.dataList = res.data.data;
@@ -234,7 +244,8 @@ export default {
     line-height: 20px;
     margin-right: 24px;
  }
-.page-container >>>button,.page-container >>>ul li{
+ /* 分页 */
+ .page-container >>>button,.page-container >>>ul li{
     width: 32px;
     height: 32px;
     background: #FFFFFF;

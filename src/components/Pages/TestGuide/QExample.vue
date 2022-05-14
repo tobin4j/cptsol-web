@@ -206,6 +206,6 @@ export default {
 }
 .menu li.subTitle{
     list-style: none!important;
-    text-indent: 10px;
+    text-indent: 30px;
 }
 </style>

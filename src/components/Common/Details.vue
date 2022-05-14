@@ -1,37 +1,74 @@
 <template>
+  <BackList v-show="showDetails" @click="goBack"></BackList>
   <div class="tab">
       <div class="content" v-html="content"></div>
-      <!-- <span @click="goBack" class="back">返回列表</span> -->
  </div>
 </template>
 
 <script>
 import { useRouter } from 'vue-router'
 import { reactive, onMounted } from 'vue'
+import BackList from './backlist.vue'
 import axios from 'axios'
+import router from '@/router'
 export default {
   name: 'Notice',
   
    data () {
     return {
        total: 10,
-       activeName:'centerIntro'
+       activeName:'centerIntro',
+       showDetails: true
     }
    },
    methods: {
-    // goBack(){
-    //   this.$parent.showList();
-    // }
+    goBack(){
+      let path = '';
+      if(this.menu == 3) {
+        path = '/notice'
+      }
+      if(this.menu == 4) {
+        path = '/centerDynamics'
+      }
+      if(this.menu == 5) {
+        path = '/industryExchanges'
+      }
+      if(this.menu == 61) {
+        path = '/famous/famousPoint'
+      }
+      if(this.menu == 62) {
+        path = '/famous/famousTeam'
+      }
+      if(this.menu == 71) {
+        path = '/jobLook/jobStyle'
+      }
+      if(this.menu == 72) {
+        path = '/jobLook/jobInfo'
+      }
+      if(this.menu == 73) {
+        path = '/jobLook/teachShare'
+      }
+      if(this.menu == 74) {
+        path = '/jobLook/cooperateShow'
+      }
+      router.push({
+        path:path
+      })
+    },
    },
   components: {
+    BackList
   },
   setup() {
+    window.scrollTo(0,0);
     const state = reactive({
-      content:''
+      content:'',
+      menu:''
     })
      const router = useRouter();
      onMounted(()=>{
        let params = router.currentRoute.value.params;
+       state.menu = params.comp;
        let noticeUrl=`https://api.cptsol.cn/api/open/articleDetail?type=${params.type}&id=${params.id}`;
         axios.get(noticeUrl).then((res)=>{
           let content = res.data.content;

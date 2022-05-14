@@ -79,17 +79,14 @@ export default {
     })
     const router = useRouter();
     const lookDetails = (type,id)=> {
-      const newpage = router.resolve({
-        name: 'details',
+      router.push({
+        name: 'pointDetail',
         params: {
           type: type,
-          id:id
+          id:id,
+          comp:61
         }
-      }) 
-       window.open(newpage.href,'_blank')
-      // router.push({
-      //   path: path,
-      // })
+      })
     }
     onMounted(async () => {
       state.lookDetails = lookDetails;

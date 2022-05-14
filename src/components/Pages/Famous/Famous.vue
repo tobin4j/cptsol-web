@@ -33,9 +33,18 @@ export default {
   setup() {
      const router = useRouter();
      let url = router.currentRoute.value.fullPath;
-     let index = url.lastIndexOf("\/");
-     let str = url.substring(index + 1,url.length);
-     const activeName = ref(str);
+     let str = url.split('/')[2];
+     let params = router.currentRoute.value.params;
+     let activeName = '';
+     if(JSON.stringify(params) == "{}") {
+       activeName = ref(str);
+     } else {
+       if(params.comp && params.comp == 61) {
+         activeName = 'famousPoint'
+       } else {
+         activeName = 'famousTeam'
+       }
+     } 
      const goPage = (path)=> {
       router.push({
         path: path

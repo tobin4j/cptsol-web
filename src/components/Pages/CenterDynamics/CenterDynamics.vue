@@ -96,6 +96,7 @@ export default {
     }
   },
   setup() {
+    window.scrollTo(0,0);
     const state = reactive({
       dataList: [],
       total: '',
@@ -104,17 +105,22 @@ export default {
     })
     const router = useRouter();
     const lookDetails = (type,id)=> {
-      const newpage = router.resolve({
-        name: 'details',
+      // const newpage = router.resolve({
+      //   name: 'dynamicDetail',
+      //   params: {
+      //     type: type,
+      //     id:id
+      //   }
+      // }) 
+      //window.open(newpage.href,'_blank')
+      router.push({
+        name: 'dynamicDetail',
         params: {
           type: type,
-          id:id
+          id:id,
+          comp:4
         }
-      }) 
-       window.open(newpage.href,'_blank')
-      // router.push({
-      //   path: path,
-      // })
+      })
     }
     onMounted(async () => {
       state.lookDetails = lookDetails;

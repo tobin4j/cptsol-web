@@ -3,7 +3,7 @@
       <span class="register-title">国际中文教师职业能力证书考试报名流程</span>
  </div>
  <div class="register-kind">
-     <span @click="changeTab(item.index)"  v-for="(item,index) in tabName" :key="index" :class="{'test2':index === activeTab}">{{item.name}}</span>
+     <span @click="changeTab(item.index)"  v-for="(item,index) in tabName" :key="index" :class="{'tabchencked':index === activeTab}">{{item.name}}</span>
  </div>
  <div class="switch">
      <span class="arrowIconleft" @click="onLast">
@@ -178,9 +178,10 @@ export default {
 
 <style scoped>
 @import '@/styles/testguide.css';
-.register-kind span.test2 {
+.register-kind span.tabchencked {
     display: inline-block;
     padding-bottom: 12px;
+    text-indent: 0;
     border-bottom:3px solid  #2F318B;
     border-bottom-left-radius: 3px;  /* 左下角 */
     border-bottom-right-radius: 3px; /* 右下角 */
@@ -200,6 +201,7 @@ export default {
     background-color: unset;
     top: 18px;
     left: 37px;
+    width: 100%;
 }
 .test >>>.el-step__icon{
     background-color: #2F318B;
@@ -228,5 +230,8 @@ export default {
 }
 .mark-tips .tip.nth{
     text-align: unset;
+}
+>>>.el-step__icon .el-step__icon-inner{
+    text-indent: 0;
 }
 </style>

@@ -38,10 +38,10 @@ export default {
     }
    },
   setup() {
+    window.scrollTo(0,0);
     const router = useRouter();
     let url = router.currentRoute.value.fullPath;
-    let index = url.lastIndexOf("\/");
-    let str = url.substring(index + 1,url.length);
+    let str = url.split('/')[2];
     const activeName = ref(str);
     const goPage = (path)=> {
       router.push({

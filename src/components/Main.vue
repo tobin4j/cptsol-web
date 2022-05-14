@@ -180,28 +180,38 @@ export default {
     })
     const router = useRouter();
     const lookMore = (path)=> {
-      const newpage = router.resolve({
+      router.push({
         path: path
-      }) 
-       window.open(newpage.href,'_blank')
-      // router.push({
-      //   path: path,
-      // })
+      })
     }
     const lookDetails = (type,id)=> {
-      const newpage = router.resolve({
-        name: 'details',
-        params: {
-          type: type,
-          id:id
-        }
-      }) 
-       window.open(newpage.href,'_blank')
-      // router.push({
-      //   path: path,
-      // })
+      let name = '';
+      let comp = '';
+      if(type == 10 ){ // 合作展示详情
+        name = 'coopDetails';
+        comp = 74
+      }  
+      if(type == 2) { // 公告详情
+        name = 'details'
+        comp = 3
+      } 
+      if(type == 3) { // 中心动态详情
+        name = 'dynamicDetail'
+        comp = 4
+      } 
+      if(type == 7) { // 职业风采详情
+        name = 'jobStyleDetail'
+        comp = 71
+      } 
+      router.push({
+      name: name,
+      params: {
+        type: type,
+        id:id,
+        comp:comp
+      }
+    })  
     }
-    
     onMounted(async () => {
       // banner图
       var bannerUrl="https://api.cptsol.cn/api/open/adList?type=2";
@@ -269,8 +279,8 @@ export default {
       }
       //this.$parent.changeMenu(compName,activeTab)
     },
-    goDetails(type,id){
-     this.lookDetails(type,id);
+    goDetails(name,type,id){
+     this.lookDetails(name,type,id);
     }
   },
   created () {

@@ -4,9 +4,55 @@ const routes = [
     {path:'/',redirect:'/index'},
     {path:'/index',component: ()=>import('../components/Main.vue')}, // 首页
     {path:'/centerIntro',component:()=>import('../components/Pages/CenterIntro/CenterIntro.vue')},// 中介介绍
-    {path:'/notice',component:()=>import('../components/Pages/Notice/Tab.vue')},// 公告
-    {path:'/centerDynamics',component:()=>import('../components/Pages/CenterDynamics/Tab.vue')}, //中心动态
-    {path:'/industryExchanges',component:()=>import('../components/Pages/IndustryExchanges/Tab.vue')}, //行业交流
+    {path:'/notice',component:()=>import('../components/Pages/Notice/Tab.vue'),
+       children: [
+        {
+            path: '',
+            redirect: '/notice/list'
+        },
+        {
+            path: 'list',
+            component:()=>import('../components/Pages/Notice/Notice.vue')
+        },
+        {
+           path:'details/:type/:id/:comp',
+           name:'details',
+           component:()=>import('../components/Common/Details.vue')
+       }]
+    },// 公告
+    {path:'/centerDynamics',component:()=>import('../components/Pages/CenterDynamics/Tab.vue'),
+       children: [
+        {
+            path: '',
+            redirect: '/centerDynamics/list'
+        },
+        {
+            path: 'list',
+            component:()=>import('../components/Pages/CenterDynamics/CenterDynamics.vue')
+        },
+        {
+           path:'details/:type/:id/:comp',
+           name:'dynamicDetail',
+           component:()=>import('../components/Common/Details.vue')
+       }]
+    }, //中心动态
+    {path:'/industryExchanges',component:()=>import('../components/Pages/IndustryExchanges/Tab.vue'),
+       children:[
+        {
+            path: '',
+            redirect: '/industryExchanges/list'
+        },
+        {
+            path: 'list',
+            component:()=>import('../components/Pages/IndustryExchanges/IndustryExchanges.vue')
+        },
+        {
+            path:'details/:type/:id/:comp',
+            name:'industryExchangesDetail',
+            component:()=>import('../components/Common/Details.vue')
+        }
+       ]
+    }, //行业交流
      //名家观点
     {path:'/famous',component:()=>import('../components/Pages/Famous/Famous.vue'),
         children: [{
@@ -20,29 +66,99 @@ const routes = [
         {
             path: 'famousTeam',
             component:()=>import('../components/Pages/Famous/FamousTeam.vue')
-        }]
+        },
+        {
+            path:'details/:type/:id/:comp',
+            name:'pointDetail',
+            component:()=>import('../components/Common/Details.vue')
+        },
+        {
+            path:'details/:type/:id/:comp',
+            name:'teamDetail',
+            component:()=>import('../components/Common/Details.vue')
+        }
+    ]
     },
     //职业风采
     {path:'/jobLook',component:()=>import('../components/Pages/JobLook/JobLook.vue'),
-        children: [{
+        children: [
+            {
             path: '',
             redirect: '/jobLook/jobStyle' // 
         },
         {
             path: 'jobStyle',
-            component:()=>import('../components/Pages/JobLook/JobStyle.vue')
+            component:()=>import('../components/Pages/JobLook/JobStyle.vue'),
+            children: [
+                {
+                    path: '',
+                    redirect: '/jobLook/jobStyle/list' // 
+                },
+                {
+                    path: 'list',
+                    component:()=>import('../components/Pages/JobLook/jobStyleList.vue')
+                },
+                {
+                   path:'details/:type/:id/:comp',
+                   name:'jobStyleDetail',
+                   component:()=>import('../components/Common/Details.vue')
+            }]
+            // jobStyleList
         },
         {
-            path: 'JobInfo',
-            component:()=>import('../components/Pages/JobLook/JobInfo.vue')
+            path: 'jobInfo',
+            component:()=>import('../components/Pages/JobLook/JobInfo.vue'),
+            children: [
+                {
+                    path: '',
+                    redirect: '/jobLook/jobInfo/list' // 
+                },
+                {
+                    path: 'list',
+                    component:()=>import('../components/Pages/JobLook/JobInfoList.vue')
+                },
+                {
+                   path:'details/:type/:id/:comp',
+                   name:'jobInfoDetail',
+                   component:()=>import('../components/Common/Details.vue')
+            }]
         },
         {
             path: 'teachShare',
-            component:()=>import('../components/Pages/JobLook/TeachShare.vue')
+            component:()=>import('../components/Pages/JobLook/TeachShare.vue'),
+            children: [
+                {
+                    path: '',
+                    redirect: '/jobLook/teachShare/list' // 
+                },
+                {
+                    path: 'list',
+                    component:()=>import('../components/Pages/JobLook/TeachShareList.vue')
+                },
+                {
+                   path:'details/:type/:id/:comp',
+                   name:'teachShareDetail',
+                   component:()=>import('../components/Common/Details.vue')
+            }]
         },
         {
             path: 'cooperateShow',
-            component:()=>import('../components/Pages/JobLook/CooperateShow.vue')
+            component:()=>import('../components/Pages/JobLook/CooperateShow.vue'),
+            children: [
+                {
+                    path: '',
+                    redirect: '/jobLook/cooperateShow/list' // 
+                },
+                {
+                    path: 'list',
+                    component:()=>import('../components/Pages/JobLook/cooperateShowList.vue')
+                },
+                {
+                   path:'details/:type/:id/:comp',
+                   name:'coopDetails',
+                   component:()=>import('../components/Common/Details.vue')
+            }]
+            // 
         }]
     }, 
     //考试指南
@@ -107,7 +223,7 @@ const routes = [
         }]
 
     }, //联系我们
-    {path:'/intro/details/:type/:id',name:'details',component:()=>import('../components/Common/Details.vue')}// 详情
+    // {path:'/intro/details/:type/:id',name:'details',component:()=>import('../components/Common/Details.vue')}// 详情
 ]
 const router = createRouter({
     routes,

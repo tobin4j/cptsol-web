@@ -1,11 +1,11 @@
 <template>
   <!-- 通知公告 -->
-  <SearchKey @search="search" ></SearchKey>
+  <SearchKey  @search="search"></SearchKey>
   <div class="listitem clearfix"> 
-    <div v-for="(item,index) in noticeList" :key="index" class="list-container">
+    <div v-for="(item,index) in dataList" :key="index" class="list-container">
       <span class="list-left">
         <span class="dot"></span>
-        <a @click="goDetails(2,item.articleId)" class="a-details">{{item.title}}</a>
+        <a @click="goDetails(7,item.articleId)" class="a-details">{{item.title}}</a>
       </span>
       <span class="list-right">
         「{{item.createTime.substring(0,10)}}」
@@ -14,33 +14,29 @@
   </div>
   <div class="page-container">
     <el-pagination background layout="prev, pager, next" 
-    :total="total"
+    :total="total" 
     @currentChange = "onCurrentChange"
     @prevClick = "prevClick"
     @nextClick = "nextClick"
-     class="page"/>
+    class="page"/>
     <span>共{{total}}条，10条每页</span>
   </div>
 </template>
 
 <script>
-
 import SearchKey from '@/components/Common/SearchKey'
+import Details from '@/components/Common/Details'
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
-import Details from '@/components/Common/Details'
-import BackList from '@/components/Common/backlist'
 import { useRouter } from 'vue-router'
 export default {
-  name: 'Notice',
-  props:['id'],
+  name: 'JobStyle',
    data () {
     return {
-       title:'通知公告',
-       keyWord: '', // 搜索关键字
+       title:'',
+       keyWord:'',
        pageNum: 1,
        content:'',
-       showDetails: false
     }
    },
    methods: {
@@ -65,48 +61,43 @@ export default {
       this.getDataList();
     },
     goDetails(type,id) {
-      this.lookDetails(type,id);
+     this.lookDetails(type,id);
     },
-    // showList() {
-    //   this.showDetails = true;
-    // },
-    // goDetailsLink() {
-    //   this.showDetails = true;
-    // },
+    showList() {
+      this.showDetails = false;
+    },
     getDataList() {
-      let noticeUrl=`https://api.cptsol.cn/api/open/articleList?type=2&page=${this.pageNum}&size=10&title=${this.keyWord}`;
+      let noticeUrl=`https://api.cptsol.cn/api/open/articleList?type=7&page=${this.pageNum}&size=10&title=${this.keyWord}`;
       axios.get(noticeUrl).then((res)=>{
-        this.noticeList = res.data.data;
+        this.dataList = res.data.data;
         this.total = res.data.total;
       })
     }
   },
-  setup(props,context) {
-    window.scrollTo(0,0);
-    let state = reactive({
-      noticeList: [],
-      list:[],
-      // isvisible: false,
-      total:'',
+  setup() {
+    const state = reactive({
+      dataList: [],
+      total: '',
+      isvisible: false,
       articleList:[] // 合作展示、文章列表
     })
     const router = useRouter();
     const lookDetails = (type,id)=> {
-      router.push({
-        name: 'details',
+       router.push({
+        name: 'jobStyleDetail',
         params: {
           type: type,
           id:id,
-          comp:3
+          comp:71
         }
-      })
+      }) 
     }
     onMounted(async () => {
       state.lookDetails = lookDetails;
-      var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=10";
+      var noticeUrl="https://api.cptsol.cn/api/open/articleList?type=7&page=1&size=10";
       (async function () {
         const res = await axios.get(noticeUrl) //返回 {id:0}
-        state.noticeList = res.data.data;
+        state.dataList = res.data.data;
         state.total = res.data.total;
       })();
     })
@@ -114,15 +105,14 @@ export default {
   },
   components: {
     SearchKey,
-    Details,
-    BackList
+    Details
   }
 }
 </script>
 
 <style scoped>
  @import '@/styles/list.css';
-  .page-container >>>button,.page-container >>>ul li{
+.page-container >>>button,.page-container >>>ul li{
     width: 32px;
     height: 32px;
     background: #FFFFFF;

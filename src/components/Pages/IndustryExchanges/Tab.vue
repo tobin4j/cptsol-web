@@ -4,7 +4,8 @@
   <div class="tab">
     <el-tabs v-model="activeName"  @tab-click="handleClick" >
         <el-tab-pane label="行业交流" name="industryExchanges"  style="margin-top:32px;">
-         <IndustryExchanges ref="child"></IndustryExchanges>
+         <!-- <IndustryExchanges ref="child"></IndustryExchanges> -->
+         <router-view></router-view>
         </el-tab-pane>
   </el-tabs>
  </div>

@@ -104,6 +104,7 @@ export default {
     background-color: unset;
     top: 18px;
     left: 37px;
+    width: 100%;
 }
 .test >>>.el-step__icon{
     background-color: #2F318B;
@@ -124,5 +125,7 @@ export default {
     line-height: 22px;
     border: 1px dashed #2F318B;
 }
-
+>>>.el-step__icon .el-step__icon-inner{
+    text-indent: 0;
+}
 </style>

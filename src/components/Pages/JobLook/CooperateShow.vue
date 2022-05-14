@@ -1,25 +1,5 @@
 <template>
-<SearchKey @search="search"></SearchKey>
-<div>
-    <div class="list-container clearfix" v-for="(item,index) in dataList" :key="index" @click.self="goDetails(10,item.articleId)">
-        <div class="list-left">
-            <img :src="item.imgUrl"/>
-        </div>
-        <div class="list-right">
-            <p class="list-title">{{item.title}}</p>
-            <p class="list-brief">{{item.summary}}</p>
-        </div>
-    </div>
-</div>
-<div class="page-container" >
-  <el-pagination background layout="prev, pager, next" 
-  :total="total" 
-  @currentChange = "onCurrentChange"
-  @prevClick = "prevClick"
-  @nextClick = "nextClick"
-  class="page"/>
-  <span>共{{total}}条，10条每页</span>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>
@@ -109,17 +89,14 @@ export default {
     })
     const router = useRouter();
     const lookDetails = (type,id)=> {
-      const newpage = router.resolve({
-        name: 'details',
+     router.push({
+        name: 'jobStyleDetail',
         params: {
           type: type,
-          id:id
+          id:id,
+          menu:'/cooperateShow/list'
         }
-      }) 
-       window.open(newpage.href,'_blank')
-      // router.push({
-      //   path: path,
-      // })
+      })
     }
     onMounted(async () => {
       state.lookDetails = lookDetails;

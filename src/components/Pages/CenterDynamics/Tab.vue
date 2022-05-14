@@ -4,7 +4,8 @@
   <div class="tab">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
         <el-tab-pane label="中心动态" name="centerDynamics" style="margin-top:32px;">
-         <CenterDynamics ref="child"  :id="id"></CenterDynamics>
+         <!-- <CenterDynamics ref="child"  :id="id"></CenterDynamics> -->
+         <router-view></router-view>
         </el-tab-pane>
   </el-tabs>
  </div>

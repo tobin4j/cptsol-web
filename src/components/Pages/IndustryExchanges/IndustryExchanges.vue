@@ -86,14 +86,22 @@ export default {
     })
     const router = useRouter();
     const lookDetails = (type,id)=> {
-      const newpage = router.resolve({
-        name: 'details',
+       router.push({
+        name: 'industryExchangesDetail',
         params: {
           type: type,
-          id:id
+          id:id,
+          comp:5
         }
-      }) 
-      window.open(newpage.href,'_blank')
+      })
+      // const newpage = router.resolve({
+      //   name: 'details',
+      //   params: {
+      //     type: type,
+      //     id:id
+      //   }
+      // }) 
+      // window.open(newpage.href,'_blank')
     }
     onMounted(async () => {
       state.lookDetails = lookDetails;
