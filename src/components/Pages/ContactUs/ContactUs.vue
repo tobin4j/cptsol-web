@@ -105,5 +105,8 @@ export default {
 .content {
   text-indent: 0;
   padding-left: 20px;
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
+    font-weight: 400;
+    font-size: 14px;
 }
 </style>

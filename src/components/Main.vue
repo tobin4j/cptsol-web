@@ -285,6 +285,7 @@ export default {
   },
   created () {
     // 生命钩子
+    axios.get("https://api.cptsol.cn/api/st/cd")
   },
   computed: {
     // 计算属性
