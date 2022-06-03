@@ -1,37 +1,42 @@
 <template>
   <div class="header">
+<!--    <div class="header-shadow" >-->
+
+<!--    </div>-->
     <div class="header-container clearfix">
+
       <div class="logo">
         <div class="logo-container">
-          <img alt="logo" src="./assets/logo.png" style="height:100%;width:100%;">
+          <img alt="logo" src="./assets/logo_new.png" style="height:79px;width:79px;">
         </div>
         <div class="name">
-          <p class="name_zh">国际中文教师发展研究中心（CPTSOL）</p>
-          <p class="name_en">The International Chinese Teacher Development Research Center</p>
+          <p class="name_zh">国际中文教师发展研究网</p>
+          <p class="name_en">中国文化信息协会汉语推广工作委员会</p>
         </div>
       </div>
-      <div class="code">
-        <img alt="微信公众号" src="./assets/WxCode.png" style="height:110px;width:110px;">
-        <p style="text-align:center;">微信公众号</p>
+<!--      <div class="code">-->
+<!--        <img alt="微信公众号" src="./assets/WxCode.png" style="height:110px;width:110px;">-->
+<!--        <p style="text-align:center;">微信公众号</p>-->
+<!--      </div>-->
+      <div class="menu">
+        <ul>
+          <li style="text-indent: 2em;"><router-link to="/index">首页</router-link></li>
+          <li><router-link to="/centerIntro">中心介绍</router-link></li>
+          <li><router-link to="/notice">通知公告</router-link></li>
+          <li><router-link to="/centerDynamics">中心动态</router-link></li>
+          <li><router-link to="/industryExchanges">行业交流</router-link></li>
+          <li><router-link to="/famous">名家观点</router-link></li>
+          <li><router-link to="/joblook">职业风采</router-link></li>
+          <li><router-link to="/testGuide">考试指南</router-link></li>
+          <li><a href="https://ks.cptsol.cn"  @click="goLink"  target="_blank">考试系统</a></li>
+          <li><router-link to="/contact">联系我们</router-link></li>
+        </ul>
       </div>
     </div>
-    <div class="menu">
-      <ul>
-        <li style="text-indent: 2em;"><router-link to="/index">首页</router-link></li>
-        <li><router-link to="/centerIntro">中心介绍</router-link></li>
-        <li><router-link to="/notice">通知公告</router-link></li>
-        <li><router-link to="/centerDynamics">中心动态</router-link></li>
-        <li><router-link to="/industryExchanges">行业交流</router-link></li>
-        <li><router-link to="/famous">名家观点</router-link></li>
-        <li><router-link to="/joblook">职业风采</router-link></li>
-        <li><router-link to="/testGuide">考试指南</router-link></li>
-        <li><a href="https://ks.cptsol.cn"  @click="goLink"  target="_blank">考试系统</a></li>
-        <li><router-link to="/contact">联系我们</router-link></li>
-      </ul>
-    </div>
   </div>
+  <Banner ></Banner>
   <router-view  />
-  <Footer></Footer>
+  <Footer ></Footer>
   <el-backtop :bottom="100">
     <div class="backtop">
       <el-icon color="#fff"><b><Top /></b></el-icon>
@@ -42,6 +47,7 @@
 <script>
 import Footer from './components/Common/Footer.vue'
 import {Top} from '@element-plus/icons-vue'
+import Banner from './components/Banner.vue'
 export default {
   name: 'App',
     data () {
@@ -102,7 +108,7 @@ export default {
    },
   components: {
     Top,
-    // Banner,
+    Banner,
     // Main,
     // Home,// 首页
     //CenterIntro, // 中心介绍
@@ -122,6 +128,6 @@ export default {
 <style scoped>
   @import '@/styles/app.css';
   >>>.router-link-active{
-  border-bottom: 3px solid #fff;
-}
+    border-bottom: 3px solid #fff;
+  }
 </style>

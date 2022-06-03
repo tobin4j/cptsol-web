@@ -1,7 +1,37 @@
 <template>
-  <div id="footer">
-    <p>Copyright©2021-2022.国际中文教师发展研究中心.All rights reserved.</p>
-    <p>京ICP备2022004998</p>
+  <div class="footer ">
+
+    <div class="footer-second">
+      <div class="footer-third flex-col">
+        <div style="height: 180px" class="flex-row">
+
+          <div class="footer-logo">
+              <img alt="logo" src="../../assets/logo_new.png" style="height:40px;width:40px;">
+          </div>
+          <div class="footer-logo-text">
+              <p class="footer-logo-text-1">国际中文教师发展研究网</p>
+              <p class="footer-logo-text-2">中国文化信息协会汉语推广工作委员会</p>
+          </div>
+          <div class="footer-copyright-text">
+              <p >版权所有：中国文化信息协会汉语推广工作委员会</p>
+              <p >网站运维：蒙盈行达（北京）网络科技有限公司</p>
+          </div>
+
+          <div class="footer-wxcode">
+            <img src="../../assets/WxCode.png" style="width: 191px;height: 191px">
+            <p>欢迎关注公众号</p>
+          </div>
+
+        </div>
+        <div class="footer-split"></div>
+        <div style="height: 72px" class="footer-msg">
+          京ICP备2022004998号  Copyright © 2021 - 2022 国际中文教师发展研究网.All rights reserved.
+        </div>
+      </div>
+    </div>
+
+<!--    <p>Copyright©2021-2022.国际中文教师发展研究中心.All rights reserved.</p>-->
+<!--    <p>京ICP备2022004998</p>-->
   </div>
 </template>
 
@@ -27,17 +57,99 @@ export default {
 </script>
 
 <style scoped>
-#footer{
-  text-align: center;
-  background: #2F318B;
-  padding: 38px 0 7px;
-}
-#footer p{
-  height: 17px;
-  font-size: 12px;
-  font-family: "PingFangSC-Regular", "PingFang SC";
-  font-weight: 400;
-  color: #FFFFFF;
-  line-height: 17px;
-}
+  .footer{
+    background: #FFFFFF;
+    height: 253px;
+    z-index: 1;
+    /*position: absolute;*/
+  }
+  .footer-second{
+    background: rgba(199, 207, 215, 1);
+    width: 97%;
+    height: 225px;
+    position: relative;
+    right: 0;
+    bottom: 0;
+    top: 28px;
+    margin-left: auto;
+    z-index: 2;
+  }
+  .footer-third{
+    background: #2F318B;
+    width: 95%;
+    height: 253px;
+    margin-left: auto;
+    bottom: 28px;
+    position: relative;
+    z-index: 3;
+  }
+  .footer-msg{
+    /*width: 527px;*/
+    height: 17px;
+    font-size: 12px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(153, 153, 144, 1);
+    line-height: 17px;
+    margin-top: 16px;
+    margin-left: 42px;
+  }
+  .footer-split{
+    width: 90%;
+    opacity: 0.13;
+    border: 1px solid #FFFFFF;
+    margin: 0 auto auto 42px;
+  }
+  .footer-logo{
+    margin-top: 63px;
+    margin-left: 42px;
+  }
+  .footer-logo-text{
+    margin-top: 59px;
+    margin-left: 4px;
+  }
+  .footer-logo-text-1{
+    height: 25px;
+    font-size: 18px;
+    font-family: STXingkaiSC-Bold, STXingkaiSC;
+    font-weight: bold;
+    color: #FFFFFF;
+    line-height: 25px;
+  }
+  .footer-logo-text-2{
+    height: 17px;
+    font-size: 12px;
+    font-family: STXingkaiSC-Light, STXingkaiSC;
+    font-weight: 300;
+    color: #FFFFFF;
+    line-height: 17px;
+  }
+  .footer-copyright-text{
+    margin-top: 60px;
+    margin-left: 52px;
+    height: 24px;
+    font-size: 12px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #FFFFFF;
+    line-height: 24px;
+  }
+  .footer-wxcode{
+    margin-left: auto;
+    margin-right: 91px;
+    margin-top: -68px;
+
+    text-align: center;
+  }
+  .footer-wxcode p{
+    margin-top: 12px;
+    height: 17px;
+    font-size: 12px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #FFFFFF;
+    line-height: 17px;
+  }
+
+
 </style>
