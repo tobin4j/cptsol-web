@@ -37,11 +37,11 @@
   <Banner ></Banner>
   <router-view  />
   <Footer ></Footer>
-  <el-backtop :bottom="100">
-    <div class="backtop">
-      <el-icon color="#fff"><b><Top /></b></el-icon>
-    </div>
-  </el-backtop>
+<!--  <el-backtop :bottom="100">-->
+<!--    <div class="backtop">-->
+<!--      <el-icon color="#fff"><b><Top /></b></el-icon>-->
+<!--    </div>-->
+<!--  </el-backtop>-->
 </template>
 
 <script>
@@ -129,5 +129,12 @@ export default {
   @import '@/styles/app.css';
   >>>.router-link-active{
     border-bottom: 3px solid #fff;
+  }
+
+  @media screen and (min-width: 0px) and (max-width: 1770px){
+
+    .menu{
+      display: none;
+    }
   }
 </style>

@@ -6,6 +6,7 @@
     height: 100%;
     width: 100%;
     background-color: #F1F2F7;
+    /*overflow-x: hidden !important;*/
   }
   #app {
     width:100%;
@@ -90,7 +91,7 @@
     line-height: 34px;
   }
   .header .menu{
-    /*width: 1200px;*/
+    /*width: 66%;*/
     /*margin: 0 auto;*/
     float: right;
     padding-top: 27px;
@@ -208,4 +209,20 @@
   display: table-cell;
   vertical-align: middle;
   text-align: center;
+}
+.single-line-break{
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;
+}
+.third-line-break{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  word-break: break-all;
 }
