@@ -1,10 +1,10 @@
 <template>
   <div class="tab">
-    <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-    <el-tab-pane label="中心介绍" name="centerIntro" class="tab-content">
-      <div class="content" v-html="content"></div>
-    </el-tab-pane>
-  </el-tabs>
+<!--    <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">-->
+<!--    <el-tab-pane label="中心介绍" name="centerIntro" class="tab-content">-->
+<!--      <div class="content" v-html="content"></div>-->
+<!--    </el-tab-pane>-->
+<!--  </el-tabs>-->
  </div>
 </template>
 
