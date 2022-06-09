@@ -5,7 +5,7 @@
   html,body{
     height: 100%;
     width: 100%;
-    background-color: #F1F2F7;
+    background-color: #ffffff;
     /*overflow-x: hidden !important;*/
     min-width: 1780px;
   }
@@ -136,7 +136,7 @@
   /* .header .menu ul li:not(:last-child) {
     margin-right: 60px;
   } */
-  .header .menu ul li a {
+  .header .menu-text {
     text-decoration: none;
     width: 36px;
     height: 24px;
@@ -155,29 +155,55 @@
   .no-main-header .menu-jt{
     background: url('../assets/select-jt.png') 100% no-repeat;
   }
-  .no-main-header .menu ul li a {
-    color: #333333 !important;
+  .no-main-header .menu-text {
+    color: #333333 ;
   }
-  .tab{
-    min-height: 100%;
+
+
+  .app-area{
+    /*text-align: left;*/
+    /*min-height: 100%;*/
+    margin-top :200px;
+    padding-bottom :200px;
   }
-  .backtop {
-    height: 100%;
-    width: 100%;
-    background-color: var(--el-bg-color-overlay);
-    box-shadow: var(--el-box-shadow-lighter);
-    background: #2F318B;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.a-details{
-  cursor: pointer;
-}
-.a-details:hover{
-  color: #066EF3;
-}
+
+  .app-name{
+    width: 112px;
+    height: 37px;
+    font-size: 28px;
+    font-family: MicrosoftYaHei-Bold, MicrosoftYaHei;
+    font-weight: bold;
+    color: #666666;
+    line-height: 37px;
+
+  }
+
+  .st-x{
+    margin-top: 18px;
+    width: 42px;
+    border: 3px solid #2F318B;
+    border-radius: 10px;
+  }
+
+
+
+  /*.backtop {*/
+  /*    height: 100%;*/
+  /*    width: 100%;*/
+  /*    background-color: var(--el-bg-color-overlay);*/
+  /*    box-shadow: var(--el-box-shadow-lighter);*/
+  /*    background: #2F318B;*/
+  /*    border-radius: 50%;*/
+  /*    display: flex;*/
+  /*    align-items: center;*/
+  /*    justify-content: center;*/
+  /*  }*/
+  /*  .a-details{*/
+  /*    cursor: pointer;*/
+  /*  }*/
+  /*  .a-details:hover{*/
+  /*    color: #066EF3;*/
+  /*  }*/
 
 
 /* 搜索 */
@@ -211,22 +237,22 @@
     margin-top: 4px;
  }
 
-.content {
-  text-indent: 0;
-  padding-left: 40px;
-  text-align: justify;
-  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-}
-.tab-content {
-  text-indent: 0;
-  padding-left: 40px;
-  text-align: justify;
-  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-}
+/*.content {*/
+/*  text-indent: 0;*/
+/*  padding-left: 40px;*/
+/*  text-align: justify;*/
+/*  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;*/
+/*  font-weight: 400;*/
+/*  font-size: 14px;*/
+/*}*/
+/*.tab-content {*/
+/*  text-indent: 0;*/
+/*  padding-left: 40px;*/
+/*  text-align: justify;*/
+/*  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;*/
+/*  font-weight: 400;*/
+/*  font-size: 14px;*/
+/*}*/
 
 
 .flex-col {

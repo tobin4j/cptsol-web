@@ -1,11 +1,12 @@
 <template>
-  <div class="tab">
-<!--    <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">-->
-<!--    <el-tab-pane label="中心介绍" name="centerIntro" class="tab-content">-->
-<!--      <div class="content" v-html="content"></div>-->
-<!--    </el-tab-pane>-->
-<!--  </el-tabs>-->
- </div>
+  <div class="app-area" >
+
+      <div class="app-name">
+          中心介绍
+      </div>
+      <div class="st-x" style="margin-bottom: 36px"></div>
+      <div class="app-content" style="width: 1120px;" v-html="content"></div>
+  </div>
 </template>
 
 <script>
@@ -20,13 +21,14 @@ export default {
     }
    },
   methods: {
+
    },
   setup() {
     const state = reactive({
       content: []
-    })
+    });
     onMounted(async () => {
-      var dataUrl="https://api.cptsol.cn/api/open/articleDetail?type=1";
+      let dataUrl="https://api.cptsol.cn/api/open/articleDetail?type=1";
       (async function () {
         const res = await axios.get(dataUrl);
         state.content = res.data.content;
@@ -40,81 +42,9 @@ export default {
 </script>
 
 <style scoped>
-.tab {
-  width: 1200px;
-  margin: 0 auto;
-  margin: 15px auto;
-  text-indent: 20px;
-  font-size: 16px;
-  font-family: "PingFangSC-Semibold", "PingFang SC";
-  font-weight: 600;
-  color: #454545;
-  line-height: 22px;
-}
-/* .intro-content {
-    width: 1200px;
-    margin: 0 auto;
-} */
-.tab >>>.el-tabs__header {
-    margin: 0;
-}
-.tab >>>.el-tabs__active-bar {
-    left: 20px;
-    height: 3px;
-    width: 65px!important;
-    background-color: #2F318B;
-}
-.tab >>>.el-tabs__item.is-active {
-    font-size: 16px;
-    font-family: "PingFangSC-Semibold", "PingFang SC";
-    font-weight: 600;
-    color: #454545;
-}
-.tab >>>.el-tabs__nav-wrap::after {
-      position: static !important;
-}
-.tab-content {
-    padding-left: 20px; 
-    margin-top: 32px;
-    text-indent: 0;
-    padding-right: 20px;
-}
-.tab-content .content {
-  text-indent: 0;
-  padding-left: 20px;
-  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-}
-/* .center-intro{
-  width: 1200px;
-  height: 436px;
-} */
-.center-intro img {
-  height: 100%;
-  width: 100%;
-  object-fit: fill;
-  border-radius: 6px;
-  border: 1px solid #979797;
-}
- .intro-content{
-  margin-top: 24px;
-  margin-bottom: 92px;
-}
-.intro-content p {
-    font-size: 16px;
-    font-family: "PingFangSC-Semibold", "PingFang SC";
-    font-weight: 600;
-    color: #454545;
-    line-height: 22px;
-    padding-left: 20px;
-    text-indent: 0;
-    text-align: justify;
-    overflow: hidden;
-    -webkit-line-clamp: 3;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-}
+
+    .app-area{
+        margin-left: calc((100% - 1120px) / 2);
+    }
 
 </style>

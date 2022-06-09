@@ -1,0 +1,229 @@
+export default {
+
+  'zxjs':{
+    type : 1,
+    cm : 'zxjs',
+    name : '中心介绍',
+    isSingle : true,
+    hasTitle : false,
+    hasModule : false,
+    hasImg : false,
+    hasPubdate : false,
+    canMove : false,
+
+
+  },
+  'tzgg':{
+    type : 2,
+    cm : 'tzgg',
+    name : '通知公告',
+    isSingle : false,
+    hasTitle : true,
+    hasModule : false,
+    hasImg : true,
+    hasPubdate : true,
+    canMove : false,
+    hasSummary : true
+  },
+  'zxdt':{
+    type : 3,
+    cm : 'zxdt',
+    name : '中心动态',
+    isSingle : false,
+    hasTitle : true,
+    hasModule : false,
+    hasImg : true,
+    hasPubdate : true,
+    canMove : false,
+    hasSummary : true
+  },
+  'hyjl':{
+    type : 4,
+    cm : 'hyjl',
+    name : '行业交流',
+    isSingle : false,
+    hasTitle : true,
+    hasModule : false,
+    hasImg : false,
+    hasPubdate : true,
+    canMove : false
+  },
+  'mjgd':{
+    type : 5,
+    cm : 'mjgd',
+    name : '名家观点',
+    isSingle : false,
+    hasTitle : true,
+    hasModule : false,
+    hasImg : false,
+    hasPubdate : true,
+    canMove : false
+  },
+  'zjtd':{
+    type : 6,
+    cm : 'zjtd',
+    name : '专家团队',
+    isSingle : false,
+    hasTitle : true,
+    hasModule : false,
+    hasImg : true,
+    hasPubdate : false,
+    canMove : true,
+    hasSummary : true
+  },
+  'zyfc':{
+    type : 7,
+    cm : 'zyfc',
+    name : '职业风采',
+    isSingle : false,
+    hasTitle : true,
+    hasModule : false,
+    hasImg : true,
+    hasPubdate : true,
+    canMove : false,
+    hasSummary : true
+  },
+  'jyxx':{
+    type : 8,
+    cm : 'jyxx',
+    name : '就业信息',
+    isSingle : false,
+    hasTitle : true,
+    hasModule : false,
+    hasImg : false,
+    hasPubdate : true,
+    canMove : false
+  },
+  'jxfx':{
+    type : 9,
+    cm : 'jxfx',
+    name : '教学分享',
+    isSingle : false,
+    hasTitle : true,
+    hasModule : false,
+    hasImg : false,
+    hasPubdate : true,
+    canMove : false
+  },
+  'hzzs':{
+    type : 10,
+    cm : 'hzzs',
+    name : '合作展示',
+    isSingle : false,
+    hasTitle : true,
+    hasModule : false,
+    hasImg : true,
+    hasPubdate : false,
+    canMove : true,
+    hasSummary : true
+  },
+  'ksjs':{
+    type : 11,
+    cm : 'ksjs',
+    name : '考试介绍',
+    isSingle : true,
+    hasTitle : false,
+    hasModule : false,
+    hasImg : false,
+    hasPubdate : false,
+    canMove : false
+  },
+  'ksfw':{
+    type : 12,
+    cm : 'ksfw',
+    name : '考试范围',
+    isSingle : true,
+    hasTitle : false,
+    hasModule : false,
+    hasImg : false,
+    hasPubdate : false,
+    canMove : false
+  },
+  'ksjg':{
+    type : 13,
+    cm : 'ksjg',
+    name : '考试结构',
+    isSingle : true,
+    hasTitle : false,
+    hasModule : false,
+    hasImg : false,
+    hasPubdate : false,
+    canMove : false
+  },
+  'ksbz':{
+    type : 14,
+    cm : 'ksbz',
+    name : '考试标准',
+    isSingle : false,
+    hasTitle : true,
+    hasModule : true,
+    hasImg : false,
+    hasPubdate : false,
+    canMove : false,
+    moduleList:[
+      {
+        subtype:1401,
+        moduleName:'本体考察标准'
+      },
+      {
+        subtype:1402,
+        moduleName:'面试评审标准'
+      }
+    ]
+  },
+  'ztsl':{
+    type : 15,
+    cm : 'ztsl',
+    name : '真题实例',
+    isSingle : false,
+    hasTitle : true,
+    hasModule : true,
+    hasImg : false,
+    hasPubdate : false,
+    canMove : false,
+    moduleList:[
+      {
+        subtype:1501,
+        moduleName:'笔试真题实例'
+      },
+      {
+        subtype:1502,
+        moduleName:'面试真题实例'
+      }
+    ]
+  },
+  'ksys':{
+    type : 16,
+    cm : 'ksys',
+    name : '考试用书',
+    isSingle : false,
+    hasTitle : true,
+    hasModule : false,
+    hasImg : true,
+    hasPubdate : false,
+    canMove : true
+  },
+  'lxwm':{
+    type : 17,
+    cm : 'lxwm',
+    name : '联系我们',
+    isSingle : true,
+    hasTitle : false,
+    hasModule : false,
+    hasImg : false,
+    hasPubdate : false,
+    canMove : false
+  },
+  'hzsq':{
+    type : 18,
+    cm : 'hzsq',
+    name : '合作申请',
+    isSingle : true,
+    hasTitle : false,
+    hasModule : false,
+    hasImg : false,
+    hasPubdate : false,
+    canMove : false
+  }
+
+}

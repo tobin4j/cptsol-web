@@ -3,6 +3,13 @@ import { createRouter,createWebHashHistory } from 'vue-router'
 const routes = [
     {path:'/',redirect:'/index'},
     {path:'/index',component: ()=>import('../components/Main.vue')}, // 首页
+
+    {
+        path: '/singleArticle/:cm',
+        component:()=>import('../components/Common/SingleArticle.vue'),
+        name: 'singleArticle',
+    },
+
     {path:'/centerIntro',component:()=>import('../components/Pages/CenterIntro/CenterIntro.vue')},// 中介介绍
     {path:'/notice',component:()=>import('../components/Pages/Notice/Tab.vue'),
        children: [
@@ -224,9 +231,9 @@ const routes = [
 
     }, //联系我们
     // {path:'/intro/details/:type/:id',name:'details',component:()=>import('../components/Common/Details.vue')}// 详情
-]
+];
 const router = createRouter({
     routes,
     history:createWebHashHistory()
-})
+});
 export default router

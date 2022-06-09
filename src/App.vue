@@ -15,64 +15,91 @@
       <div class="menu">
         <ul>
           <li style="text-indent: 2em;" >
-            <router-link to="/index">首页</router-link>
+            <router-link to="/index" class="menu-text">首页</router-link>
             <div class="menu-active" style="margin-left: 34px"></div>
           </li>
+
           <li>
-            <router-link to="/centerIntro">中心介绍</router-link>
+            <router-link to="/singleArticle/zxjs" class="menu-text">中心介绍</router-link>
             <div class="menu-active" ></div>
           </li>
-          <li><router-link to="/notice">通知公告</router-link><div class="menu-active" ></div></li>
-          <li><router-link to="/centerDynamics">中心动态</router-link><div class="menu-active" ></div></li>
-          <li><router-link to="/industryExchanges">行业交流</router-link><div class="menu-active" ></div></li>
+
+          <li><router-link to="/notice" class="menu-text">通知公告</router-link><div class="menu-active" ></div></li>
+          <li><router-link to="/centerDynamics" class="menu-text">中心动态</router-link><div class="menu-active" ></div></li>
+          <li><router-link to="/industryExchanges" class="menu-text">行业交流</router-link><div class="menu-active" ></div></li>
 
           <li>
-            <div class="flex-row">
+            <div class="flex-row has-select">
               <div>
-                <router-link to="/famous">
+                <a class="menu-text">
                   名家观点
-                </router-link>
+                </a>
                 <div class="menu-active"></div>
               </div>
               <div class="menu-jt"/>
             </div>
+            <div class="menu-select" style="height: 88px">
+              <div class="menu-select-item">名家观点</div>
+              <div class="menu-select-item">名家团队</div>
+            </div>
           </li>
 
           <li>
-            <div class="flex-row">
+            <div class="flex-row has-select">
               <div>
-                <router-link to="/joblook">
+                <a to="/joblook" class="menu-text">
                   职业风采
-                </router-link>
+                </a>
                 <div class="menu-active"></div>
               </div>
               <div class="menu-jt"/>
             </div>
+            <div class="menu-select" style="height: 176px">
+              <div class="menu-select-item">职业风采</div>
+              <div class="menu-select-item">就业信息</div>
+              <div class="menu-select-item">教学分享</div>
+              <div class="menu-select-item">合作展示</div>
+            </div>
           </li>
 
           <li>
-            <div class="flex-row">
+            <div class="flex-row has-select">
               <div>
-                <router-link to="/testGuide">
+                <a to="/testGuide" class="menu-text" :class="{'router-link-active':ksznActive}">
                   考试指南
-                </router-link>
+                </a>
                 <div class="menu-active"></div>
               </div>
               <div class="menu-jt"/>
             </div>
+            <div class="menu-select" style="height: 396px">
+              <div class="menu-select-item" @click="$router.push({path:'/singleArticle/ksjs'});ksznActive=true">考试介绍</div>
+              <div class="menu-select-item">考试范围</div>
+              <div class="menu-select-item">考试结构</div>
+              <div class="menu-select-item">考试标准</div>
+              <div class="menu-select-item">真题实例</div>
+              <div class="menu-select-item">考试用书</div>
+              <div class="menu-select-item">报名流程</div>
+              <div class="menu-select-item">考试流程</div>
+              <div class="menu-select-item">证书申请流程</div>
+            </div>
           </li>
 
-          <li><a href="https://ks.cptsol.cn"  @click="goLink"  target="_blank">考试系统</a></li>
+          <li><a href="https://ks.cptsol.cn" class="menu-text"    target="_blank">考试系统</a></li>
 
           <li>
-            <div class="flex-row">
+            <div class="flex-row has-select">
               <div>
-                <router-link to="/contact">
+                <a class="menu-text" to="/contact">
                   联系我们
-                </router-link>
+                </a>
                 <div class="menu-active"></div>
               </div>
               <div src="./assets/select-jt.png" class="menu-jt"/>
+            </div>
+            <div class="menu-select" style="height: 88px">
+              <div class="menu-select-item">联系我们</div>
+              <div class="menu-select-item">合作申请</div>
             </div>
           </li>
 
@@ -81,7 +108,7 @@
     </div>
   </div>
   <Banner v-show="$route.path === '/index'"></Banner>
-  <router-view  />
+  <router-view :key="key"/>
   <Footer ></Footer>
 <!--  <el-backtop :bottom="100">-->
 <!--    <div class="backtop">-->
@@ -107,65 +134,21 @@ export default {
       NoticeId:'',
       centerDynamicsId:'',
       jobLookId:'',// 职业风采
-      coopId:'' // 合作展示
+      coopId:'' ,// 合作展示
     }
   },
-  // setup(){
-  //   const router = useRouter();
-  // },
-  methods: {
-    lookDetails(name,id,activeName,type){
-      this.compName = name;
-      this.isFromHome = true;
-      if(name=='Notice') {
-        this.noticeId = id;
-      }
-      if(name=='CenterDynamics'){
-        this.centerDynamicsId = id;
-      }
-      if(name =='JobLook' && type == 'coopShow'){
-        this.coopId = id;
-        this.jobLookId = null;
-      } else {
-        this.jobLookId = id;
-        this.coopId = null;
-      }
-      if(activeName){
-        this.activeTabName = activeName;
-      }
-    },
-    goLink() {
-      this.menu = "TestSys"
-    },
-    changeMenu(name,activeIndex){
-      this.compName = name;
-      this.activeTabName = activeIndex;
-      if(name =='Notice'){
-        this.noticeId = null;
-      }
-      if(name=='CenterDynamics'){
-        this.centerDynamicsId = null;
-      }
-      if(name=='JobLook'){
-        this.jobLookId = null;
-        this.coopId = null;
-      }
+  computed:{
+    key() {
+      // 只要保证 key 唯一性就可以了，保证不同页面的 key 不相同
+      return this.$route.fullPath
     }
-   },
+  },
+  methods: {
+
+  },
   components: {
     Top,
     Banner,
-    // Main,
-    // Home,// 首页
-    //CenterIntro, // 中心介绍
-    // CenterDynamics,
-    // Famous,
-    // JobLook,
-    // TestGuide,
-    // IndustryExchanges,
-    // TestSys,
-    // Notice,
-    // ContactUs,
     Footer
   }
 }
@@ -187,6 +170,49 @@ export default {
   .no-main-header .menu-active{
     border: 2px solid #333333;
   }
+
+  .menu-select{
+    position: absolute;
+    width: 177px;
+    background: #FFFFFF;
+    border-top: 5px solid #2F318B;
+    margin-left: -45px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    display: none;
+
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.6s ease;
+  }
+  .menu-select-item{
+    width: 177px !important;
+    height: 44px !important;
+    font-size: 18px !important;
+    font-family: MicrosoftYaHei !important;
+    color: #2F318B !important;
+    text-align: center !important;
+    line-height:44px !important;
+  }
+  .menu-select-item:hover{
+    background: #EDEDED;
+    cursor: pointer;
+  }
+  .has-select{
+    padding-bottom: 15px;
+  }
+  .has-select:hover+.menu-select{
+    display: block;
+    opacity: 1;
+    height: 100%;
+  }
+  .menu-select:hover{
+    display: block;
+    opacity: 1;
+    height: 100%;
+  }
+
 
   /*@media screen and (min-width: 0px) and (max-width: 1770px){*/
 
