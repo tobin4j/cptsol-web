@@ -20,7 +20,7 @@
           </li>
 
           <li>
-            <router-link to="/singleArticle/zxjs" class="menu-text">中心介绍</router-link>
+            <router-link to="/sa/zxjs" class="menu-text">中心介绍</router-link>
             <div class="menu-active" ></div>
           </li>
 
@@ -65,7 +65,9 @@
           <li>
             <div class="flex-row has-select">
               <div>
-                <a to="/testGuide" class="menu-text" :class="{'router-link-active':$route.path === '/singleArticle/ksjs' || $route.path === '/singleArticle/ksfw' || $route.path === '/singleArticle/ksjg' }">
+                <a to="/testGuide" class="menu-text" :class="{'router-link-active':$route.path === '/sa/ksjs'
+                 || $route.path === '/sa/ksfw' 
+                 || $route.path === '/sa/ksjg' }">
                   考试指南
                 </a>
                 <div class="menu-active"></div>
@@ -73,15 +75,16 @@
               <div class="menu-jt"/>
             </div>
             <div class="menu-select" style="height: 396px">
-              <div class="menu-select-item" @click="$router.push({path:'/singleArticle/ksjs'})">考试介绍</div>
-              <div class="menu-select-item" @click="$router.push({path:'/singleArticle/ksfw'})">考试范围</div>
-              <div class="menu-select-item" @click="$router.push({path:'/singleArticle/ksjg'})">考试结构</div>
-              <div class="menu-select-item">考试标准</div>
-              <div class="menu-select-item">真题实例</div>
-              <div class="menu-select-item">考试用书</div>
-              <div class="menu-select-item">报名流程</div>
-              <div class="menu-select-item">考试流程</div>
-              <div class="menu-select-item">证书申请流程</div>
+              <div class="menu-select-item" @click="$router.push({path:'/sa/ksjs'})">考试介绍</div>
+              <div class="menu-select-item" @click="$router.push({path:'/sa/ksfw'})">考试范围</div>
+              <div class="menu-select-item" @click="$router.push({path:'/sa/ksjg'})">考试结构</div>
+              <div class="menu-select-item" @click="$router.push({path:'/mma/ksbz'})">考试标准</div>
+              <div class="menu-select-item" @click="$router.push({path:'/mma/ztsl'})">真题实例</div>
+              <div class="menu-select-item" @click="$router.push({path:'/sma/ksys'})">考试用书</div>
+
+              <div class="menu-select-item" @click="$router.push({path:'/rp'})">报名流程</div>
+              <div class="menu-select-item" @click="$router.push({path:'/tp'})">考试流程</div>
+              <div class="menu-select-item" @click="$router.push({path:'/cap'})">证书申请流程</div>
             </div>
           </li>
 
@@ -98,8 +101,8 @@
               <div src="./assets/select-jt.png" class="menu-jt"/>
             </div>
             <div class="menu-select" style="height: 88px">
-              <div class="menu-select-item" @click="$router.push({path:'/singleArticle/lxwm'})">联系我们</div>
-              <div class="menu-select-item" @click="$router.push({path:'/singleArticle/hzsq'})">合作申请</div>
+              <div class="menu-select-item" @click="$router.push({path:'/sa/lxwm'})">联系我们</div>
+              <div class="menu-select-item" @click="$router.push({path:'/sa/hzsq'})">合作申请</div>
             </div>
           </li>
 

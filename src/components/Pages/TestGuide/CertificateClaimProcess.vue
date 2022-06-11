@@ -1,8 +1,8 @@
 <template>
-  <div class="register">
-      <span class="register-title">国际中文教师职业能力证书申领流程</span>
- </div>
- <div class="switch">
+<!--  <div class="register">-->
+<!--      <span class="register-title">国际中文教师职业能力证书申领流程</span>-->
+<!-- </div>-->
+ <div class="switch" style="margin-top: 180px">
      <span class="arrowIconleft" @click="onLast">
          <img src="../../../assets/register/arrowleft.png" style="height:44px;width:24px"/>
      </span>
@@ -38,8 +38,9 @@
             <p class="mark2">收到证书，申领完毕</p>
         </div>
      </div>
-     <span @click="onNext" class="arrowright" >
-     <img src="../../../assets/register/arrowright.png" style="height:44px;width:24px" />
+     <span @click="onNext" class="arrowright"  style="    position: absolute;
+    right: 100px;">
+     <img src="../../../assets/register/arrowright.png" style="height:44px;width:24px;" />
      </span>
  </div>
  <div class="steps">

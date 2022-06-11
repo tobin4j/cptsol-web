@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import ArticleTypeConfig from './ArticleTypeConfig'
-import Fetch from '../utils/Fetch'
+import ArticleTypeConfig from '../Common/ArticleTypeConfig'
+import ArticleService from '../Common/ArticleService'
 
 export default {
     name: 'singleArticle',
@@ -25,20 +25,19 @@ export default {
     methods: {
 
     },
-    mounted(){
+    async mounted(){
 
         const componentName = this.$route.params.cm;
 
-        this.config = ArticleTypeConfig[componentName]
+        this.config = ArticleTypeConfig[componentName];
 
-        Fetch({
-            url: '/open/articleDetail',
-            params:{type:this.config.type}
-        }).then(res => {
-            this.content = res.content
-        })
+        this.title = this.config.name;
 
-        this.title = this.config.name
+        let res = await ArticleService.getArticleByType(this.config.type);
+
+        this.content = res.content
+
+
     },
 }
 </script>

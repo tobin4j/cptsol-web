@@ -5,10 +5,35 @@ const routes = [
     {path:'/index',component: ()=>import('../components/Main.vue')}, // 首页
 
     {
-        path: '/singleArticle/:cm',
-        component:()=>import('../components/Common/SingleArticle.vue'),
+        path: '/sa/:cm',
+        component:()=>import('../components/Pages/SingleArticle.vue'),
         name: 'singleArticle',
     },
+    {
+        path: '/mma/:cm',
+        component:()=>import('../components/Pages/MultiModuleArticle.vue'),
+        name: 'multiModuleArticle',
+    },
+    {
+        path: '/sma/:cm',
+        component:()=>import('../components/Pages/SingleModuleArticle.vue'),
+        name: 'singleModuleArticle',
+    },
+
+    {
+        path: '/rp',
+        component:()=>import('../components/Pages/TestGuide/RegisterProcess.vue')
+    },
+    {
+        path: '/tp',
+        component:()=>import('../components/Pages/TestGuide/TestProcess.vue')
+    },
+    {
+        path:'/cap',
+        component:()=>import('../components/Pages/TestGuide/CertificateClaimProcess.vue')
+    },
+
+
 
 
     {path:'/notice',component:()=>import('../components/Pages/Notice/Tab.vue'),
@@ -168,49 +193,6 @@ const routes = [
             // 
         }]
     }, 
-    //考试指南
-    {path:'/testGuide',component:()=>import('../components/Pages/TestGuide/TestGuide.vue'),
-        children: [{
-            path: '',
-            redirect: '/testGuide/testIntro' 
-        },
-        {
-            path: 'testIntro',// 考试介绍
-            component:()=>import('../components/Pages/TestGuide/testIntro.vue')
-        },
-        {
-            path: 'testRangle',
-            component:()=>import('../components/Pages/TestGuide/testRangle.vue')
-        },
-        {
-            path: 'testStruce',
-            component:()=>import('../components/Pages/TestGuide/testStruce.vue')
-        },
-        {
-            path: 'TestStandard',
-            component:()=>import('../components/Pages/TestGuide/TestStandard.vue')
-        },
-        {
-            path: 'QExample',
-            component:()=>import('../components/Pages/TestGuide/QExample.vue')
-        },
-        {
-            path: 'TestBook',
-            component:()=>import('../components/Pages/TestGuide/TestBook.vue')
-        },
-        {
-            path: 'registerProcess',
-            component:()=>import('../components/Pages/TestGuide/RegisterProcess.vue')
-        },
-        {
-            path: 'testProcess',
-            component:()=>import('../components/Pages/TestGuide/TestProcess.vue')
-        },
-        {
-            path:'certificateClaimProcess',
-            component:()=>import('../components/Pages/TestGuide/CertificateClaimProcess.vue')
-        },]
-    },
 
 ];
 const router = createRouter({

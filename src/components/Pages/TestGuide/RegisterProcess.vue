@@ -1,8 +1,8 @@
 <template>
-  <div class="register">
-      <span class="register-title">国际中文教师职业能力证书考试报名流程</span>
- </div>
- <div class="register-kind">
+<!--  <div class="register">-->
+<!--      <span class="register-title">国际中文教师职业能力证书考试报名流程</span>-->
+<!-- </div>-->
+ <div class="register-kind" style="margin-top: 180px">
      <span @click="changeTab(item.index)"  v-for="(item,index) in tabName" :key="index" :class="{'tabchencked':index === activeTab}">{{item.name}}</span>
  </div>
  <div class="switch">
