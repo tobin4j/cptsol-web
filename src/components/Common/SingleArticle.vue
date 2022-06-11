@@ -5,7 +5,7 @@
             {{title}}
         </div>
         <div class="st-x" style="margin-bottom: 36px"></div>
-        <div class="app-content" style="width: 1120px;" v-html="content"></div>
+        <div class="app-content" style="width: 1220px;" v-html="content"></div>
     </div>
 </template>
 
@@ -46,7 +46,7 @@ export default {
 <style scoped>
 
     .app-area{
-        margin-left: calc((100% - 1120px) / 2);
+        margin-left: calc((100% - 1220px) / 2);
     }
 
 </style>
