@@ -65,7 +65,7 @@
           <li>
             <div class="flex-row has-select">
               <div>
-                <a to="/testGuide" class="menu-text" :class="{'router-link-active':ksznActive}">
+                <a to="/testGuide" class="menu-text" :class="{'router-link-active':$route.path === '/singleArticle/ksjs' || $route.path === '/singleArticle/ksfw' || $route.path === '/singleArticle/ksjg' }">
                   考试指南
                 </a>
                 <div class="menu-active"></div>
@@ -73,9 +73,9 @@
               <div class="menu-jt"/>
             </div>
             <div class="menu-select" style="height: 396px">
-              <div class="menu-select-item" @click="$router.push({path:'/singleArticle/ksjs'});ksznActive=true">考试介绍</div>
-              <div class="menu-select-item">考试范围</div>
-              <div class="menu-select-item">考试结构</div>
+              <div class="menu-select-item" @click="$router.push({path:'/singleArticle/ksjs'})">考试介绍</div>
+              <div class="menu-select-item" @click="$router.push({path:'/singleArticle/ksfw'})">考试范围</div>
+              <div class="menu-select-item" @click="$router.push({path:'/singleArticle/ksjg'})">考试结构</div>
               <div class="menu-select-item">考试标准</div>
               <div class="menu-select-item">真题实例</div>
               <div class="menu-select-item">考试用书</div>
@@ -85,7 +85,7 @@
             </div>
           </li>
 
-          <li><a href="https://ks.cptsol.cn" class="menu-text"    target="_blank">考试系统</a></li>
+          <li><a href="https://ks.cptsol.cn" class="menu-text" target="_blank">考试系统</a></li>
 
           <li>
             <div class="flex-row has-select">
@@ -98,8 +98,8 @@
               <div src="./assets/select-jt.png" class="menu-jt"/>
             </div>
             <div class="menu-select" style="height: 88px">
-              <div class="menu-select-item">联系我们</div>
-              <div class="menu-select-item">合作申请</div>
+              <div class="menu-select-item" @click="$router.push({path:'/singleArticle/lxwm'})">联系我们</div>
+              <div class="menu-select-item" @click="$router.push({path:'/singleArticle/hzsq'})">合作申请</div>
             </div>
           </li>
 
@@ -139,7 +139,6 @@ export default {
   },
   computed:{
     key() {
-      // 只要保证 key 唯一性就可以了，保证不同页面的 key 不相同
       return this.$route.fullPath
     }
   },
@@ -155,10 +154,11 @@ export default {
 </script>
 
 <style scoped>
-  @import '@/styles/app.css';
+  @import '@/styles/app1.0.css';
   >>>.router-link-active+.menu-active{
     display:block;
   }
+  /*>>>.router-link-active*/
 
   .menu-active{
     width: 29px;
@@ -194,11 +194,23 @@ export default {
     color: #2F318B !important;
     text-align: center !important;
     line-height:44px !important;
+
   }
   .menu-select-item:hover{
     background: #EDEDED;
     cursor: pointer;
   }
+  .menu-select-item a{
+    width: 177px !important;
+    height: 44px !important;
+    font-size: 18px !important;
+    font-family: MicrosoftYaHei !important;
+    color: #2F318B !important;
+    text-align: center !important;
+    line-height:44px !important;
+    text-decoration: none;
+  }
+
   .has-select{
     padding-bottom: 15px;
   }
@@ -212,7 +224,6 @@ export default {
     opacity: 1;
     height: 100%;
   }
-
 
   /*@media screen and (min-width: 0px) and (max-width: 1770px){*/
 

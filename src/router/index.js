@@ -229,8 +229,7 @@ const routes = [
             component:()=>import('../components/Pages/ContactUs/coopApply.vue')
         }]
 
-    }, //联系我们
-    // {path:'/intro/details/:type/:id',name:'details',component:()=>import('../components/Common/Details.vue')}// 详情
+    },
 ];
 const router = createRouter({
     routes,

@@ -1,7 +1,7 @@
-*{
-  margin: 0;
-  padding: 0;
-}
+/**{*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*}*/
   .main-cards {
     display: flex;
     justify-content: space-between;
