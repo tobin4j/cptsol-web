@@ -10,7 +10,7 @@ const routes = [
         name: 'singleArticle',
     },
 
-    {path:'/centerIntro',component:()=>import('../components/Pages/CenterIntro/CenterIntro.vue')},// 中介介绍
+
     {path:'/notice',component:()=>import('../components/Pages/Notice/Tab.vue'),
        children: [
         {
@@ -211,25 +211,7 @@ const routes = [
             component:()=>import('../components/Pages/TestGuide/CertificateClaimProcess.vue')
         },]
     },
-    //考试系统
-    {path:'/testSys',component:()=>import('../components/Pages/TestSys/TestSys.vue')}, 
-    {
-        path:'/contact',
-        component:()=>import('../components/Pages/ContactUs/ContactUs.vue'),
-        children: [{
-            path: '',
-            redirect: '/contact/contactUs'
-        },
-        {
-            path: 'contactUs',
-            component:()=>import('../components/Pages/ContactUs/contact.vue')
-        },
-        {
-            path: 'coopApply',
-            component:()=>import('../components/Pages/ContactUs/coopApply.vue')
-        }]
 
-    },
 ];
 const router = createRouter({
     routes,
