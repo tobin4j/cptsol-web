@@ -24,14 +24,15 @@
             <div class="menu-active" ></div>
           </li>
 
-          <li><router-link to="/notice" class="menu-text">通知公告</router-link><div class="menu-active" ></div></li>
+          <li><router-link to="/al/tzgg" class="menu-text">通知公告</router-link><div class="menu-active" ></div></li>
           <li><router-link to="/centerDynamics" class="menu-text">中心动态</router-link><div class="menu-active" ></div></li>
-          <li><router-link to="/industryExchanges" class="menu-text">行业交流</router-link><div class="menu-active" ></div></li>
+          <li><router-link to="/al/hyjl" class="menu-text">行业交流</router-link><div class="menu-active" ></div></li>
 
           <li>
             <div class="flex-row has-select">
               <div>
-                <a class="menu-text">
+                <a class="menu-text"  :class="{'router-link-active':$route.path === '/al/mjgd'
+                 || $route.path === '/sa/zjtd' }">
                   名家观点
                 </a>
                 <div class="menu-active"></div>
@@ -39,15 +40,18 @@
               <div class="menu-jt"/>
             </div>
             <div class="menu-select" style="height: 88px">
-              <div class="menu-select-item">名家观点</div>
-              <div class="menu-select-item">名家团队</div>
+              <div class="menu-select-item" @click="$router.push({path:'/al/mjgd'})">名家观点</div>
+              <div class="menu-select-item" @click="$router.push({path:'/'})">专家团队</div>
             </div>
           </li>
 
           <li>
             <div class="flex-row has-select">
               <div>
-                <a to="/joblook" class="menu-text">
+                <a class="menu-text" :class="{'router-link-active':$route.path === '/al/zyfc'
+                 || $route.path === '/al/jyxx'
+                 || $route.path === '/al/jxfx'
+                 || $route.path === '/' }">
                   职业风采
                 </a>
                 <div class="menu-active"></div>
@@ -55,19 +59,25 @@
               <div class="menu-jt"/>
             </div>
             <div class="menu-select" style="height: 176px">
-              <div class="menu-select-item">职业风采</div>
-              <div class="menu-select-item">就业信息</div>
-              <div class="menu-select-item">教学分享</div>
-              <div class="menu-select-item">合作展示</div>
+              <div class="menu-select-item" @click="$router.push({path:'/al/zyfc'})">职业风采</div>
+              <div class="menu-select-item" @click="$router.push({path:'/al/jyxx'})">就业信息</div>
+              <div class="menu-select-item" @click="$router.push({path:'/al/jxfx'})">教学分享</div>
+              <div class="menu-select-item" @click="$router.push({path:'/'})">合作展示</div>
             </div>
           </li>
 
           <li>
             <div class="flex-row has-select">
               <div>
-                <a to="/testGuide" class="menu-text" :class="{'router-link-active':$route.path === '/sa/ksjs'
+                <a class="menu-text" :class="{'router-link-active':$route.path === '/sa/ksjs'
                  || $route.path === '/sa/ksfw' 
-                 || $route.path === '/sa/ksjg' }">
+                 || $route.path === '/sa/ksjg'
+                 || $route.path === '/mma/ksbz'
+                 || $route.path === '/mma/ztsl'
+                 || $route.path === '/sma/ksys'
+                 || $route.path === '/rp'
+                 || $route.path === '/tp'
+                 || $route.path === '/cap' }">
                   考试指南
                 </a>
                 <div class="menu-active"></div>

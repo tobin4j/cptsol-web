@@ -33,6 +33,11 @@ const routes = [
         component:()=>import('../components/Pages/TestGuide/CertificateClaimProcess.vue')
     },
 
+    {
+        path: '/al/:cm',
+        component:()=>import('../components/Pages/ArticleList.vue'),
+        name: 'articleList',
+    },
 
 
 

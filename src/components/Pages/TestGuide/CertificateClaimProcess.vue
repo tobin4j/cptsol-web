@@ -2,6 +2,9 @@
 <!--  <div class="register">-->
 <!--      <span class="register-title">国际中文教师职业能力证书申领流程</span>-->
 <!-- </div>-->
+    <div class="register-kind" style="margin-top: 180px;text-align: center; padding-left: 70px;">
+        <span  class="tabchencked">证书申请流程</span>
+    </div>
  <div class="switch" style="margin-top: 180px">
      <span class="arrowIconleft" @click="onLast">
          <img src="../../../assets/register/arrowleft.png" style="height:44px;width:24px"/>
@@ -96,6 +99,16 @@ export default {
 
 <style scoped>
 @import '@/styles/testguide.css';
+.register-kind span.tabchencked {
+
+
+    display: inline-block;
+    padding-bottom: 12px;
+    text-indent: 0;
+    border-bottom:3px solid  #2F318B;
+    border-bottom-left-radius: 3px;  /* 左下角 */
+    border-bottom-right-radius: 3px; /* 右下角 */
+}
 .steps >>>.el-step:last-child {
     flex-basis:0px!important;
 }
