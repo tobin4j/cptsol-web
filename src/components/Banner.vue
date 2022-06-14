@@ -1,8 +1,8 @@
 <template>
   <el-carousel :interval="3000" arrow="always" class="swiper" v-if="isShow">
     <el-carousel-item v-for="item in list" :key="item">
-      <a :href="item.redirectUrl"  target="_blank">
-       <img :src="item.imgUrl" style="height:100%;"/>
+      <a @click="clickImg(item.redirectUrl)"  target="_blank">
+       <img :src="item.imgUrl" class="common-img"/>
       </a>
     </el-carousel-item>
   </el-carousel>
@@ -40,6 +40,12 @@ export default {
 
   },
   methods: {
+
+    clickImg(url){
+      if (url) {
+        window.open(url)
+      }
+    }
 
 
   },
@@ -82,7 +88,7 @@ export default {
   cursor: pointer;
 }
 >>>.el-carousel__container {
-  height: 765px;
+  height: 100vh;
 }
 .el-carousel--horizontal{
   overflow-x: visible;

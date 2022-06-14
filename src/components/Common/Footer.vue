@@ -5,13 +5,15 @@
       <div class="footer-third flex-col">
         <div style="height: 180px" class="flex-row">
 
-          <div class="footer-logo">
-              <img alt="logo" src="../../assets/logo_new.png" style="height:40px;width:40px;">
-          </div>
-          <div class="footer-logo-text">
-              <p class="footer-logo-text-1">国际中文教师发展研究网</p>
-              <p class="footer-logo-text-2">中国文化信息协会汉语推广工作委员会</p>
-          </div>
+          <img alt="logo" src="../../assets/logo_text.png" style="height:42px;width:250px;margin-top: 44px;margin-left: 40px "  />
+
+<!--          <div class="footer-logo">-->
+<!--              <img alt="logo" src="../../assets/logo_new.png" style="height:40px;width:40px;">-->
+<!--          </div>-->
+<!--          <div class="footer-logo-text">-->
+<!--              <p class="footer-logo-text-1">国际中文教师发展研究网</p>-->
+<!--              <p class="footer-logo-text-2">中国文化信息协会汉语推广工作委员会</p>-->
+<!--          </div>-->
           <div class="footer-copyright-text">
               <p >版权所有：中国文化信息协会汉语推广工作委员会</p>
               <p >网站运维：蒙盈行达（北京）网络科技有限公司</p>
@@ -125,14 +127,14 @@ export default {
     line-height: 17px;
   }
   .footer-copyright-text{
-    margin-top: 60px;
-    margin-left: 52px;
+    margin-top: 36px;
+    margin-left: 45px;
     height: 24px;
     font-size: 12px;
     font-family: PingFangSC-Medium, PingFang SC;
     font-weight: 500;
     color: #FFFFFF;
-    line-height: 24px;
+    /*line-height: 24px;*/
   }
   .footer-wxcode{
     margin-left: auto;

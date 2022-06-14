@@ -25,10 +25,10 @@
             <div class="zxdt-img-text" >
               — 中心动态 MESSAGE —
             </div>
-            <div class="zxdt-title">
+            <div class="zxdt-title" @click="goDetail('zxdt',centerList[curCenterIdx])">
               {{centerList[curCenterIdx].title}}
             </div>
-            <div class="zxdt-summary">
+            <div class="zxdt-summary third-line-break" style="-webkit-line-clamp:4">
               {{centerList[curCenterIdx].summary}}
             </div>
             <div class="zxdt-btn flex-row">
@@ -63,7 +63,7 @@
       <div class="st-x"></div>
 
       <div class="tzgg-content" style="margin-top: 22px">
-          <div class="tzgg-item flex-row" v-for="(item,idx) in list">
+          <div class="tzgg-item flex-row" v-for="(item,idx) in list" @click="goDetail('tzgg',item)">
               <div style="width: 18%;">
                 <div class="tzgg-date">{{item.pubdate.substring(5,11)}}</div>
                 <div class="tzgg-year">{{item.pubdate.substring(0,4)}}</div>
@@ -93,7 +93,7 @@
         </div>
         <div class="st-x" style="margin: 12px auto"></div>
 
-        <div class="zyfc-item flex-row" v-for="(item,idx) in jobLookList">
+        <div class="zyfc-item flex-row" v-for="(item,idx) in jobLookList" @click="goDetail('zyfc',item)">
             <div style="min-width: 85px;max-width: 85px">
                 <div class="zyfc-date">{{item.pubdate.substring(5,11)}}</div>
                 <div class="zyfc-year">{{item.pubdate.substring(0,4)}}</div>
@@ -401,10 +401,12 @@ export default {
     return state
   },
   methods: {
-    // 方法
-    onSubmit() {
-      console.log('submit!');
-    },
+      goDetail(cm,item){
+          this.$router.push({
+              path : '/detail/'+cm+'/'+item.articleId
+          })
+
+      },
     goLeft(){
       if (!this.centerList || !this.centerList.length || this.centerList.length === 1) {
         return;
@@ -451,9 +453,6 @@ export default {
       }
       //this.$parent.changeMenu(compName,activeTab)
     },
-    goDetails(name,type,id){
-     this.lookDetails(name,type,id);
-    }
   },
   created () {
     // 生命钩子

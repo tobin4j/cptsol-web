@@ -57,7 +57,11 @@ export default {
             font-weight: 700;
         }
         .detail-content{
+            margin-top: 50px;
             margin-left: calc((100% - 1220px) / 2);
+            width: 1220px;
+            word-break: break-all;
+            word-wrap: break-word;
         }
     }
 

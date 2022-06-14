@@ -114,7 +114,7 @@
    </template>
    <template v-else>
       <p class="tip" v-show="activeStep===1">考生须在考前测试阶段下载【考试客户端】，完成相关测试后，在正式考试过程中，准备好相关身份证件、准考证等待进入考试系统及监考人员的身份核验</p>
-      <p class="tip" v-show="activeStep===2">考生须在考前30min~5min内，凭准考证号、身份证号登录考试系统客户端；检测“摄像头”是否被调取出现异常情况，及时向监考人员汇报</p>
+      <p class="tip" v-show="activeStep===2">考生须在考前30分钟到50分钟内，凭准考证号、身份证号登录考试系统客户端；检测“摄像头”是否被调取出现异常情况，及时向监考人员汇报</p>
       <p class="tip" v-show="activeStep===3">考前5min内，由考试主监考官宣读考场规则，考生需注意听取</p>
       <p class="tip" v-show="activeStep===4">考试开始时间到，考生可进入作答，获取面试考题</p>
       <p class="tip" v-show="activeStep===5">考试开始后，考试获取面试考题，根据考题要求，进行相应的设计</p>

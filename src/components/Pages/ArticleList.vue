@@ -23,7 +23,7 @@
 
         <div class="article-list">
 
-            <div class="article-item flex-row" v-for="(item,idx) in list">
+            <div class="article-item flex-row" v-for="(item,idx) in list" @click="goDetail(item)">
                 <div class="item-left">
                     <div class="article-title single-line-break">
                         {{item.title}}
@@ -79,7 +79,12 @@ export default {
         }
     },
     methods: {
+        goDetail(item){
+            this.$router.push({
+                path : '/detail/'+this.config.cm+'/'+item.articleId
+            })
 
+        },
         async search(page){
             this.page = page;
 
@@ -124,7 +129,7 @@ export default {
             .article-item{
                 text-align: left;
                 margin-top: 20px;
-
+                cursor: pointer;
                 .item-right{
                     width: 85px;
                     margin-left: 52px;
@@ -236,7 +241,7 @@ export default {
     .app-area{
         margin-left: 100px;
         margin-right: 100px;
-
+        /*min-height: calc(100% - 400px + 68px);*/
     }
 
 

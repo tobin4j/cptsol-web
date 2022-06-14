@@ -23,7 +23,7 @@
 
         <div class="article-list">
 
-            <div class="article-item flex-row" v-for="(item,idx) in list">
+            <div class="article-item flex-row" v-for="(item,idx) in list" @click="goDetail(item)">
                 <div class="item-left">
                     <div class="flex-row">
                         <div class="article-img">
@@ -36,7 +36,7 @@
                             <div class="article-summary third-line-break">
                                 {{item.summary}}
                             </div>
-                            <div class="more" style="position: absolute;bottom: 0" @click="goDetail(item)">
+                            <div class="more" style="position: absolute;bottom: 0" >
                                 MORE
                                 <img src="../../assets/xjt.png"/>
                             </div>
@@ -45,8 +45,8 @@
 
                 </div>
                 <div class="item-right">
-                    <div class="item-date">{{item.pubdate.substring(5,11)}}</div>
-                    <div class="item-year">{{item.pubdate.substring(0,4)}}年</div>
+                    <div class="item-date">{{item.pubdate ? item.pubdate.substring(5,11) : item.createTime.substring(5,11)}}</div>
+                    <div class="item-year">{{item.pubdate ? item.pubdate.substring(0,4) : item.createTime.substring(0,4)}}年</div>
                 </div>
             </div>
 
@@ -89,7 +89,6 @@ export default {
     methods: {
 
         goDetail(item){
-            debugger
           this.$router.push({
               path : '/detail/'+this.config.cm+'/'+item.articleId
           })
@@ -141,7 +140,7 @@ export default {
                 text-align: left;
                 margin-top: 20px;
                 height: 250px;
-
+                cursor: pointer;
                 .item-right{
                     width: 85px;
                     margin-left: 52px;
@@ -264,7 +263,7 @@ export default {
     .app-area{
         margin-left: 100px;
         margin-right: 100px;
-
+        /*min-height: calc(100% - 400px + 68px);*/
     }
 
 

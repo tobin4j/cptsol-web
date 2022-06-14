@@ -3,14 +3,16 @@
     <div class="header-container clearfix" >
 
       <div class="logo">
-        <div class="logo-container">
-          <img alt="logo" src="./assets/logo_new.png" style="height:79px;width:79px " v-if="$route.path === '/index'" />
-          <img alt="logo" src="./assets/logo.png" style="height:79px;width:79px " v-else />
-        </div>
-        <div class="name">
-          <p class="name_zh">国际中文教师发展研究网</p>
-          <p class="name_en">中国文化信息协会汉语推广工作委员会</p>
-        </div>
+
+        <img alt="logo" src="./assets/logo_text.png" style="height:88px;width:516px "  />
+<!--        <div class="logo-container">-->
+<!--          <img alt="logo" src="./assets/logo_new.png" style="height:79px;width:79px " v-if="$route.path === '/index'" />-->
+<!--          <img alt="logo" src="./assets/logo.png" style="height:79px;width:79px " v-else />-->
+<!--        </div>-->
+<!--        <div class="name">-->
+<!--          <p class="name_zh">国际中文教师发展研究网</p>-->
+<!--          <p class="name_en">中国文化信息协会汉语推广工作委员会</p>-->
+<!--        </div>-->
       </div>
       <div class="menu">
         <ul>
@@ -23,9 +25,9 @@
             <router-link to="/sa/zxjs" class="menu-text">中心介绍</router-link>
             <div class="menu-active" ></div>
           </li>
-
-          <li><router-link to="/al/tzgg" class="menu-text">通知公告</router-link><div class="menu-active" ></div></li>
           <li><router-link to="/ial/zxdt" class="menu-text">中心动态</router-link><div class="menu-active" ></div></li>
+          <li><router-link to="/al/tzgg" class="menu-text">通知公告</router-link><div class="menu-active" ></div></li>
+
           <li><router-link to="/al/hyjl" class="menu-text">行业交流</router-link><div class="menu-active" ></div></li>
 
           <li>
@@ -98,7 +100,7 @@
             </div>
           </li>
 
-          <li><a href="https://ks.cptsol.cn" class="menu-text" target="_blank">考试系统</a></li>
+          <li><a href="https://ks.cptsol.cn" class="menu-text" target="_blank">考务系统</a></li>
 
           <li>
             <div class="flex-row has-select">
@@ -180,9 +182,9 @@ export default {
     margin: 10px auto auto 20px;
     display: none;
   }
-  .no-main-header .menu-active{
-    border: 2px solid #333333;
-  }
+  /*.no-main-header .menu-active{*/
+  /*  border: 2px solid #333333;*/
+  /*}*/
 
   .menu-select{
     position: absolute;
