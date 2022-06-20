@@ -172,7 +172,7 @@
                 <div style="width: 83%;margin: 107px auto auto 50px;">
                     <div class="flex-row" >
                         <el-input style="width: 85%" placeholder="请输入品牌/机构/培训名称"></el-input>
-                        <el-button style="width: 15%"  @click="onSubmit">查询</el-button>
+                        <el-button style="width: 15%"  @click="">查询</el-button>
                     </div>
                     <p class="jgcx-text">如果与您洽谈合作的机构在本系统中查询不到，请与我们电话联系，共同维护您的合法权益</p>
                     <p class="jgcx-text">联系电话：010-66666666</p>

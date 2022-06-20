@@ -1,18 +1,10 @@
 <template>
   <div class="header" :class="{'no-main-header':$route.path !== '/index','main-header':$route.path === '/index'}">
-    <div class="header-container clearfix" >
+    <div class="header-container clearfix flex-row" >
 
       <div class="logo">
 
         <img alt="logo" src="./assets/logo_text.png" style="height:88px;width:516px "  />
-<!--        <div class="logo-container">-->
-<!--          <img alt="logo" src="./assets/logo_new.png" style="height:79px;width:79px " v-if="$route.path === '/index'" />-->
-<!--          <img alt="logo" src="./assets/logo.png" style="height:79px;width:79px " v-else />-->
-<!--        </div>-->
-<!--        <div class="name">-->
-<!--          <p class="name_zh">国际中文教师发展研究网</p>-->
-<!--          <p class="name_en">中国文化信息协会汉语推广工作委员会</p>-->
-<!--        </div>-->
       </div>
       <div class="menu">
         <ul>
@@ -240,10 +232,34 @@ export default {
     height: 100%;
   }
 
-  /*@media screen and (min-width: 0px) and (max-width: 1770px){*/
+  /*@media screen and (min-width: 0px) and (max-width: 800px){*/
 
   /*  .menu{*/
   /*    display: none;*/
   /*  }*/
   /*}*/
+
+  @media all and (orientation : portrait){
+
+    .logo img{
+      /*display: none;*/
+      height:66px !important;
+      width:387px !important;
+    }
+    .menu{
+      padding-top: 13px;
+      margin-left: 0 !important;
+    }
+    .app-area+.footer{
+      margin-top: 100%;
+    }
+    .logo{
+      margin-left: 35px;
+    }
+
+  }
+
+
+
+
 </style>

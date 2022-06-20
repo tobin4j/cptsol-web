@@ -22,9 +22,10 @@
     margin: 0;
     padding: 0;
     width:100%;
+    min-width: 1780px;
     /*background: #2F318B;*/
     z-index: 20;
-    position: sticky;
+    position: fixed;
     top: 0;
     height: 0;
     /*width: 1920px;*/
@@ -134,12 +135,11 @@
   }
 
   .header .menu{
-    /*width: 66%;*/
-    /*margin: 0 auto;*/
+
     margin: 0;
     padding: 0;
-    float: right;
     padding-top: 27px;
+    margin-left: auto;
     margin-right: 48px;
   }
   .header .menu ul{
