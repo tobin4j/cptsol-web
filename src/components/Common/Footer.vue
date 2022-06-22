@@ -5,7 +5,7 @@
       <div class="footer-third flex-col">
         <div style="height: 110px" class="flex-row">
 
-          <img alt="logo" src="../../assets/logo_text.png" style="height:51px;width:337px;margin-top: 30px;margin-left: 70px "  />
+          <img alt="logo" src="../../assets/logo_text.png" style="height:60px;width:385px;margin-top: 24px;margin-left: 70px "  />
 
 <!--          <div class="footer-copyright-text">-->
 <!--              <p >版权所有：中国文化信息协会汉语推广工作委员会</p>-->

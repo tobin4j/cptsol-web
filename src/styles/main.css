@@ -11,7 +11,7 @@
   }
   .main-cards .cards-item{
     flex: 1;
-    width: 800px;
+    width: calc(100%/2 - 55px);
   }
   .main-cards .cards-item-title-text{
     width: 112px;
@@ -45,15 +45,15 @@
     flex-direction: column;
   }
   .st-x{
-    margin-top: 18px;
+    margin-top: 15px;
     width: 42px;
     border: 3px solid #2F318B;
     border-radius: 10px;
   }
   .main-cards .zxdt-img-con{
-    margin-top: 22px;
-    /*width: 100%;*/
-    width: 800px;
+    margin-top: 15px;
+    width: 100%;
+    /*width: 800px;*/
     height: 500px;
     overflow: hidden;
   }
@@ -82,14 +82,14 @@
     margin-top: 20px;
     margin-left: 7.5%;
     width: 85%;
-    height: 144px;
+    height: 75px;
     font-size: 16px;
     font-family: MicrosoftYaHei;
     color: #666666;
     line-height: 36px;
   }
   .main-cards .zxdt-btn{
-    margin-top: 35px;
+    margin-top: 20px;
     margin-left: 7.5%;
     width: 85%;
   }
@@ -111,7 +111,7 @@
 
   .main-cards .tzgg-item{
     width: 100%;
-    height: 150px;
+    height: 130px;
     background: rgba(246, 246, 246, 1);
     border-radius: 2px;
     margin-top: 25px;

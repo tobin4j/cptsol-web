@@ -3,7 +3,7 @@
 <div class="main">
 
 
-    <div class="main-cards" style="padding-top:60px;">
+    <div class="main-cards" style="padding-top:50px;">
 
         <div class="cards-item">
 
@@ -28,7 +28,7 @@
             <div class="zxdt-title" @click="goDetail('zxdt',centerList[curCenterIdx])">
               {{centerList[curCenterIdx].title}}
             </div>
-            <div class="zxdt-summary third-line-break" style="-webkit-line-clamp:4">
+            <div class="zxdt-summary third-line-break" style="-webkit-line-clamp:2">
               {{centerList[curCenterIdx].summary}}
             </div>
             <div class="zxdt-btn flex-row">
@@ -62,7 +62,7 @@
       </div>
       <div class="st-x"></div>
 
-      <div class="tzgg-content" style="margin-top: 22px">
+      <div class="tzgg-content" style="margin-top: 15px">
           <div class="tzgg-item flex-row" v-for="(item,idx) in list" @click="goDetail('tzgg',item)">
               <div style="width: 18%;">
                 <div class="tzgg-date">{{item.pubdate.substring(5,11)}}</div>

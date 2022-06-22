@@ -89,6 +89,7 @@ export default {
 }
 >>>.el-carousel__container {
   height: 100vh;
+  max-height: 1000px;
 }
 .el-carousel--horizontal{
   overflow-x: visible;
