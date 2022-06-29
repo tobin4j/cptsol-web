@@ -20,8 +20,23 @@
         </div>
         <div class="footer-split"></div>
         <div style="height: 70px" class="footer-msg">
-          京ICP备2022004998号  Copyright © 2021 - 2022 国际中文教师发展研究网.All rights reserved.
+          <div>
+            <img src="../../assets/ba.png" style="vertical-align:middle;width: 14px;height: 14px"/>
+<!--            京公网安备 11011402012720号 京ICP备2022004998号  Copyright © 2021 - 2022 国际中文教师发展研究网.All rights reserved.-->
+            <span style="vertical-align:middle;">&nbsp;京公网安备11011402012720号  京ICP备2022004998号  Copyright © 2021 - 2022 国际中文教师发展研究网.All rights reserved.</span>
+          </div>
+<!--          <div>-->
+<!--            -->
+<!--          </div>-->
         </div>
+
+<!--        <a target="_blank" href=" " style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">-->
+<!--          <img src="../../assets/ba.png" style="float:left;"/>-->
+<!--          <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备 11011402012720号</p >-->
+<!--        </a >-->
+
+
+
       </div>
     </div>
 
@@ -81,12 +96,13 @@ export default {
   }
   .footer-msg{
     /*width: 527px;*/
+    vertical-align:middle;
     height: 17px;
-    font-size: 12px;
+    font-size: 14px;
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
     color: rgba(153, 153, 144, 1);
-    line-height: 68px;
+    line-height: 70px;
     /*margin-top: 23px;*/
     margin-left: 70px;
   }
@@ -96,40 +112,6 @@ export default {
     opacity: 0.13;
     border: 1px solid #FFFFFF;
     margin: 0 auto auto 70px;
-  }
-  .footer-logo{
-    margin-top: 63px;
-    margin-left: 42px;
-  }
-  .footer-logo-text{
-    margin-top: 59px;
-    margin-left: 4px;
-  }
-  .footer-logo-text-1{
-    height: 25px;
-    font-size: 18px;
-    font-family: STXingkaiSC-Bold, STXingkaiSC;
-    font-weight: bold;
-    color: #FFFFFF;
-    line-height: 25px;
-  }
-  .footer-logo-text-2{
-    height: 17px;
-    font-size: 12px;
-    font-family: STXingkaiSC-Light, STXingkaiSC;
-    font-weight: 300;
-    color: #FFFFFF;
-    line-height: 17px;
-  }
-  .footer-copyright-text{
-    margin-top: 36px;
-    margin-left: 45px;
-    height: 24px;
-    font-size: 12px;
-    font-family: PingFangSC-Medium, PingFang SC;
-    font-weight: 500;
-    color: #FFFFFF;
-    /*line-height: 24px;*/
   }
   .footer-wxcode{
     margin-left: auto;

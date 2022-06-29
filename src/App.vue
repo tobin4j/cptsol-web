@@ -95,7 +95,7 @@
             </div>
           </li>
 
-          <li><a href="https://ks.cptsol.cn" class="menu-text" target="_blank">考试系统</a></li>
+          <li><a href="https://ks.cptsol.cn" class="menu-text" target="_blank">报名考试</a></li>
 
           <li>
             <div class="flex-row has-select">
@@ -251,7 +251,7 @@ export default {
     }
     .menu{
       padding-top: 13px;
-      margin-left: 0 !important;
+      /*margin-left: 0 !important;*/
     }
     .app-area+.footer{
       margin-top: 100%;

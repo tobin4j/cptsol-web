@@ -92,6 +92,21 @@ export default {
   max-height: 1000px;
 }
 .el-carousel--horizontal{
-  overflow-x: visible;
+  /*overflow-x: visible;*/
+}
+>>>.el-carousel__container .el-carousel__arrow {
+  width: 50px;
+  height: 50px;
+
+}
+>>>.el-carousel__container .el-icon {
+  width: 20px;
+  height: 20px;
+
+}
+>>>.el-carousel__container .el-icon svg{
+  width: 20px;
+  height: 20px;
+
 }
 </style>

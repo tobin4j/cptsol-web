@@ -91,7 +91,7 @@
         <div class="common-text2">
                 职业风采
         </div>
-        <div class="st-x" style="margin: 12px auto"></div>
+        <div class="st-x" style="margin: 15px auto 25px auto"></div>
 
         <div class="zyfc-item flex-row" v-for="(item,idx) in jobLookList" @click="goDetail('zyfc',item)">
             <div style="min-width: 85px;max-width: 85px">
@@ -102,16 +102,16 @@
                 <div class="zyfc-title single-line-break">
                     {{item.title}}
                 </div>
-                <div class="zyfc-summary third-line-break" style="margin-top: 24px">
+                <div class="zyfc-summary third-line-break" style="margin-top: 25px">
                     {{item.summary}}
                 </div>
-                <div class="zyfc-more" style="margin-top: 35px">
+                <div class="zyfc-more" style="margin-top: 65px">
                     MORE
                     <img src="../assets/xjt.png"/>
                 </div>
             </div>
             <div class="zyfc-img" style="margin-left: 56px" >
-                <img :src="item.imgUrl" class="common-img" />
+                <img :src="item.imgUrl" class="common-img" style="height: 250px;width: 400px;"/>
             </div>
 
         </div>
@@ -126,11 +126,11 @@
         <div class="common-text2">
             合作申请
         </div>
-        <div class="st-x" style="margin: 12px auto"></div>
+        <div class="st-x" style="margin: 15px auto"></div>
 
-        <div class="hzsq-word">
-            <img src="../assets/hzsq_word.png" style="width: 412px;height: 102px"/>
-        </div>
+<!--        <div class="hzsq-word">-->
+<!--            <img src="../assets/hzsq_word.png" style="width: 412px;height: 102px"/>-->
+<!--        </div>-->
 
         <div class="hzsq-content flex-row" >
             <div class="hzsq-img" >
@@ -142,7 +142,7 @@
                 <div class="hzsq-text">
                     近几年，随着中国经济快速发展，全球汉语学习热潮正在兴起，国际中文教师的缺口数量逐年增加，鉴于目前参加考试的人数逐年增加，为了满足广大参考人员的要求，中国文化信息协会汉语推广工作委员会为了完善全球考试中心布局，现启动培训中心合作计划。
                 </div>
-                  <el-button style="margin:38px auto;" >立即申请</el-button>
+                  <el-button type="primary" style="margin:25px auto;" >立即申请</el-button>
             </div>
 
         </div>
@@ -156,11 +156,11 @@
         <div class="common-text2">
             机构查询
         </div>
-        <div class="st-x" style="margin: 12px auto"></div>
+        <div class="st-x" style="margin: 15px auto"></div>
 
-        <div class="jgcx-word">
-            <img src="../assets/jgcx_word.png" style="width: 336px;height: 102px"/>
-        </div>
+<!--        <div class="jgcx-word">-->
+<!--            <img src="../assets/jgcx_word.png" style="width: 336px;height: 102px"/>-->
+<!--        </div>-->
 
         <div class="jgcx-content flex-row" >
             <div class="jgcx-img" >
@@ -175,7 +175,7 @@
                         <el-button style="width: 15%"  @click="">查询</el-button>
                     </div>
                     <p class="jgcx-text">如果与您洽谈合作的机构在本系统中查询不到，请与我们电话联系，共同维护您的合法权益</p>
-                    <p class="jgcx-text">联系电话：010-66666666</p>
+                    <p class="jgcx-text">联系电话：010-69730714</p>
                 </div>
             </div>
 
@@ -191,9 +191,9 @@
         <div class="common-text2">
             合作展示
         </div>
-        <div class="st-x" style="margin: 12px auto"></div>
+        <div class="st-x" style="margin: 15px auto"></div>
 
-        <div class="flex-row" style="width: 100%;margin:85px auto">
+        <div class="flex-row" style="width: 100%;margin:35px auto 25px auto">
 
             <div class="hzzs-side">
                 <img src="../assets/img_left.png" @click="curIv -= 1"/>
@@ -263,7 +263,7 @@
         </div>
 
 
-            <el-button style="margin:0 auto;" >MORE</el-button>
+            <el-button style="margin:0 auto;" type="primary" >MORE</el-button>
 
 
 
@@ -276,9 +276,9 @@
         <div class="common-text2">
             友情链接
         </div>
-        <div class="st-x" style="margin: 12px auto"></div>
+        <div class="st-x" style="margin: 15px auto"></div>
 
-        <div class="flex-row" style="width: 77%;margin:36px auto">
+        <div class="flex-row" style="margin:35px auto">
 
             <div class="yqlj-item" v-for="(item,idx) in imgList">
 
@@ -373,7 +373,7 @@ export default {
       //中心动态
       const centerUrl = "https://api.cptsol.cn/api/open/articleList?type=3&page=1&size=5";
       //职业风采
-      const jobLookUrl="https://api.cptsol.cn/api/open/articleList?type=7&page=1&size=3";
+      const jobLookUrl="https://api.cptsol.cn/api/open/articleList?type=7&page=1&size=5";
       state.lookMore = lookMore;
       state.lookDetails = lookDetails;
       (async function () {
