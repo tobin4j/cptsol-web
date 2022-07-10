@@ -62,7 +62,7 @@
       </div>
       <div class="st-x"></div>
 
-      <div class="tzgg-content" style="margin-top: 15px">
+      <div class="tzgg-content" style="margin-top: 15px;background-color: #fcfcfc">
           <div class="tzgg-item flex-row" v-for="(item,idx) in list" @click="goDetail('tzgg',item)">
               <div style="width: 18%;">
                 <div class="tzgg-date">{{item.pubdate.substring(5,11)}}</div>
@@ -119,35 +119,7 @@
     </div>
 
 
-    <div class="hzsq flex-col">
-        <div class="common-text1">
-            PROFESSIONAL DEMEANOR
-        </div>
-        <div class="common-text2">
-            合作申请
-        </div>
-        <div class="st-x" style="margin: 15px auto"></div>
 
-<!--        <div class="hzsq-word">-->
-<!--            <img src="../assets/hzsq_word.png" style="width: 412px;height: 102px"/>-->
-<!--        </div>-->
-
-        <div class="hzsq-content flex-row" >
-            <div class="hzsq-img" >
-                <!--todo合作申请图片 -->
-            </div>
-            <div class="hzsq-text-con" style="z-index: 1;left: -24px;position: relative">
-
-
-                <div class="hzsq-text">
-                    近几年，随着中国经济快速发展，全球汉语学习热潮正在兴起，国际中文教师的缺口数量逐年增加，鉴于目前参加考试的人数逐年增加，为了满足广大参考人员的要求，中国文化信息协会汉语推广工作委员会为了完善全球考试中心布局，现启动培训中心合作计划。
-                </div>
-                  <el-button type="primary" style="margin:25px auto;" >立即申请</el-button>
-            </div>
-
-        </div>
-
-    </div>
 
     <div class="jgcx flex-col">
         <div class="common-text1">
@@ -169,10 +141,10 @@
             <div class="jgcx-text-con" style="z-index: 1;left: -24px;position: relative">
 
 
-                <div style="width: 83%;margin: 107px auto auto 50px;">
+                <div style="width: 730px;margin: 127px 82px auto;">
                     <div class="flex-row" >
-                        <el-input style="width: 85%" placeholder="请输入品牌/机构/培训名称"></el-input>
-                        <el-button style="width: 15%"  @click="">查询</el-button>
+                        <el-input style="width: 630px" placeholder="请输入机构品牌/公司名称"></el-input>
+                        <el-button style="width: 100px"  @click="">查询</el-button>
                     </div>
                     <p class="jgcx-text">如果与您洽谈合作的机构在本系统中查询不到，请与我们电话联系，共同维护您的合法权益</p>
                     <p class="jgcx-text">联系电话：010-69730714</p>
@@ -183,7 +155,35 @@
 
     </div>
 
+    <div class="hzsq flex-col">
+        <div class="common-text1">
+            PROFESSIONAL DEMEANOR
+        </div>
+        <div class="common-text2">
+            合作申请
+        </div>
+        <div class="st-x" style="margin: 15px auto"></div>
 
+        <!--        <div class="hzsq-word">-->
+        <!--            <img src="../assets/hzsq_word.png" style="width: 412px;height: 102px"/>-->
+        <!--        </div>-->
+
+        <div class="hzsq-content flex-row" >
+            <div class="hzsq-img" >
+                <!--todo合作申请图片 -->
+            </div>
+            <div class="hzsq-text-con" style="z-index: 1;left: -24px;position: relative">
+
+
+                <div class="hzsq-text" style="margin: 105px 77px auto;">
+                    近几年，随着中国经济快速发展，全球汉语学习热潮已然兴起，国际中文教师的缺口数量也逐年增加；同时，为响应国家职业教育大会号召发展国际中文教育事业，中国文化信息协会汉语推广工作委员会着眼于全球化布局，为实现这一宏伟目标，现启动培训中心合作计划。
+                </div>
+                <el-button type="primary" style="margin:25px auto;" >立即申请</el-button>
+            </div>
+
+        </div>
+
+    </div>
     <div class="hzzs flex-col">
         <div class="common-text1">
             COOPERATION SHOW
@@ -197,19 +197,28 @@
 
             <div class="hzzs-side">
                 <img src="../assets/img_left.png" @click="curIv -= 1"/>
+
+<!--                <button type="button" class="hzzs-side-btn">-->
+<!--                    <i class="el-icon">-->
+<!--                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">-->
+<!--                            <path fill="currentColor" d="M609.408 149.376 277.76 489.6a32 32 0 0 0 0 44.672l331.648 340.352a29.12 29.12 0 0 0 41.728 0 30.592 30.592 0 0 0 0-42.752L339.264 511.936l311.872-319.872a30.592 30.592 0 0 0 0-42.688 29.12 29.12 0 0 0-41.728 0z"></path>-->
+<!--                        </svg>-->
+<!--                    </i>-->
+<!--                </button>-->
+
             </div>
 
             <div class="hzzs-content flex-row">
                 <div class="hzzs-item">
-                    <span v-if="articleList[curIv % 3]">
-                        <img  class="common-img common-img-transition" :src="articleList[curIv % 3].imgUrl"/>
+                    <span v-if="articleList[curIv % articleSize]">
+                        <img  class="common-img common-img-transition" :src="articleList[curIv % articleSize].imgUrl"/>
                         <div class="hzzs-item-bg">
                             <div class="hzzs-item-title single-line-break">
-                            {{articleList[curIv % 3].title}}
+                            {{articleList[curIv % articleSize].title}}
                             </div>
                             <div class="flex-row">
                                 <div class="hzzs-item-summary single-line-break">
-                                    {{articleList[curIv % 3].summary}}
+                                    {{articleList[curIv % articleSize].summary}}
                                 </div>
                                 <img src="../assets/hzzs-jt.png" style="height: 20px;width: 23px"/>
 <!--                                <div class="arrow-right" style="margin-left: auto;"></div>-->
@@ -218,15 +227,15 @@
                     </span>
                 </div>
                 <div class="hzzs-item">
-                    <span v-if="articleList[(curIv + 1) % 3]">
-                        <img class="common-img" :src="articleList[(curIv + 1) % 3].imgUrl"/>
+                    <span v-if="articleList[(curIv + 1) % articleSize]">
+                        <img class="common-img" :src="articleList[(curIv + 1) % articleSize].imgUrl"/>
                         <div class="hzzs-item-bg">
                             <div class="hzzs-item-title single-line-break">
-                            {{articleList[(curIv + 1) % 3].title}}
+                            {{articleList[(curIv + 1) % articleSize].title}}
                             </div>
                             <div class="flex-row">
                                 <div class="hzzs-item-summary single-line-break">
-                                    {{articleList[(curIv + 1) % 3].summary}}
+                                    {{articleList[(curIv + 1) % articleSize].summary}}
                                 </div>
                                 <img src="../assets/hzzs-jt.png" style="height: 20px;width: 23px"/>
 <!--                                <div class="arrow-right" style="margin-left: auto;"></div>-->
@@ -235,15 +244,15 @@
                     </span>
                 </div>
                 <div class="hzzs-item" style="margin-right: 20px">
-                    <span v-if="articleList[(curIv + 2) % 3]">
-                        <img class="common-img" :src="articleList[(curIv + 2) % 3].imgUrl"/>
+                    <span v-if="articleList[(curIv + 2) % articleSize]">
+                        <img class="common-img" :src="articleList[(curIv + 2) % articleSize].imgUrl"/>
                         <div class="hzzs-item-bg">
                             <div class="hzzs-item-title single-line-break">
-                            {{articleList[(curIv + 2) % 3].title}}
+                            {{articleList[(curIv + 2) % articleSize].title}}
                             </div>
                             <div class="flex-row">
                                 <div class="hzzs-item-summary single-line-break">
-                                    {{articleList[(curIv + 2) % 3].summary}}
+                                    {{articleList[(curIv + 2) % articleSize].summary}}
                                 </div>
                                 <img src="../assets/hzzs-jt.png" style="height: 20px;width: 23px"/>
 <!--                                <div class="arrow-right" style="margin-left: auto;"></div>-->
@@ -278,17 +287,26 @@
         </div>
         <div class="st-x" style="margin: 15px auto"></div>
 
-        <div class="flex-row" style="margin:35px auto">
+        <div class="flex-row" style="margin:35px auto 0 auto">
 
-            <div class="yqlj-item" v-for="(item,idx) in imgList">
-
+            <div class="yqlj-item" v-for="(item,idx) in imgList.slice(0,4)">
 
                 <a :href="item.redirectUrl"  target="_blank">
                     <img :src="item.imgUrl" class="common-img"/>
                 </a>
 
             </div>
+        </div>
 
+        <div class="flex-row" style="margin:25px auto 0 auto">
+
+            <div class="yqlj-item" v-for="(item,idx) in imgList.slice(4,8)">
+
+                <a :href="item.redirectUrl"  target="_blank">
+                    <img :src="item.imgUrl" class="common-img"/>
+                </a>
+
+            </div>
         </div>
 
 
@@ -327,7 +345,8 @@ export default {
       isShow: false,
       centerList:[], // 中心动态
       list:[],// 通知公告
-      articleList:[] // 合作展示、文章列表
+      articleList:[], // 合作展示、文章列表
+        articleSize:0
     });
     const router = useRouter();
     const lookMore = (path)=> {
@@ -367,7 +386,7 @@ export default {
       // 友链
       const bannerUrl="https://api.cptsol.cn/api/open/adList?type=2";
       // 合作展示即文章列表
-      const joinShowUrl="https://api.cptsol.cn/api/open/articleList?type=10&page=1&size=4";
+      const joinShowUrl="https://api.cptsol.cn/api/open/articleList?type=10&page=1&size=99";
       //通知公告
       const noticeUrl="https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=5";
       //中心动态
@@ -383,6 +402,8 @@ export default {
       (async function () {
         const res = await axios.get(joinShowUrl) //返回 {id:0}
         state.articleList = res.data.data;
+        state.articleSize = state.articleList.length;
+
       })();
       (async function () {
         const res = await axios.get(noticeUrl) //通知公告

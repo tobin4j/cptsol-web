@@ -44,7 +44,7 @@ export default {
     isSingle : false,
     hasTitle : true,
     hasModule : false,
-    hasImg : false,
+    hasImg : true,
     hasPubdate : true,
     canMove : false
   },
@@ -55,7 +55,7 @@ export default {
     isSingle : false,
     hasTitle : true,
     hasModule : false,
-    hasImg : false,
+    hasImg : true,
     hasPubdate : true,
     canMove : false
   },
@@ -90,7 +90,7 @@ export default {
     isSingle : false,
     hasTitle : true,
     hasModule : false,
-    hasImg : false,
+    hasImg : true,
     hasPubdate : true,
     canMove : false
   },
@@ -101,7 +101,7 @@ export default {
     isSingle : false,
     hasTitle : true,
     hasModule : false,
-    hasImg : false,
+    hasImg : true,
     hasPubdate : true,
     canMove : false
   },

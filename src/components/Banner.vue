@@ -1,5 +1,5 @@
 <template>
-  <el-carousel :interval="3000" arrow="always" class="swiper" v-if="isShow">
+  <el-carousel :interval="5000" arrow="always" class="swiper" v-if="isShow">
     <el-carousel-item v-for="item in list" :key="item">
       <a @click="clickImg(item.redirectUrl)"  target="_blank">
        <img :src="item.imgUrl" class="common-img"/>
@@ -16,24 +16,24 @@ export default {
   name:'Swiper',
   data() {
     return {   
-      swiperOption: {
-        loop: true,
-        autoplay: {
-          delay: 3000,
-          stopOnLastSlide: false,
-          disableOnInteraction: false
-        },
-        // 显示分页
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true //允许分页点击跳转
-        },
-        // 设置点击箭头
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        }
-      }
+      // swiperOption: {
+      //   loop: true,
+      //   autoplay: {
+      //     delay: 3000,
+      //     stopOnLastSlide: false,
+      //     disableOnInteraction: false
+      //   },
+      //   // 显示分页
+      //   pagination: {
+      //     el: '.swiper-pagination',
+      //     clickable: true //允许分页点击跳转
+      //   },
+      //   // 设置点击箭头
+      //   navigation: {
+      //     nextEl: '.swiper-button-next',
+      //     prevEl: '.swiper-button-prev'
+      //   }
+      // }
     }
   },
   computed: {
@@ -91,8 +91,13 @@ export default {
   height: 100vh;
   max-height: 1000px;
 }
-.el-carousel--horizontal{
-  /*overflow-x: visible;*/
+>>>.el-carousel__button {
+  height: 15px !important;
+  width: 15px !important;
+  border-radius: 50% !important;
+}
+>>>.el-carousel__indicator--horizontal {
+  padding: var(--el-carousel-indicator-padding-vertical) 8px;
 }
 >>>.el-carousel__container .el-carousel__arrow {
   width: 50px;

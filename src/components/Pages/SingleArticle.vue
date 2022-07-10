@@ -26,7 +26,7 @@ export default {
 
     },
     async mounted(){
-
+        window.scrollTo(0,0);
         const componentName = this.$route.params.cm;
 
         this.config = ArticleTypeConfig[componentName];
