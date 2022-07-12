@@ -291,7 +291,8 @@
     height: 350px;
     background: #D8D8D8;
     margin-top: 25px;
-    z-index: 2
+    z-index: 2;
+    background: url("https://cdn2.cptsol.cn/%E5%90%88%E4%BD%9C%E5%B1%95%E7%A4%BA-20220712114426.png");
   }
   .hzsq-word{
     position: absolute;
@@ -344,7 +345,8 @@
     height: 350px;
     background: #D8D8D8;
     margin-top: 25px;
-    z-index: 2
+    z-index: 2;
+    background: url("https://cdn2.cptsol.cn/%E6%9C%BA%E6%9E%84%E6%9F%A5%E8%AF%A2-20220712114426.png");
   }
   .jgcx-text-con{
     width: 900px;

@@ -6,7 +6,7 @@
                 <div class="app-name">
                     {{title}}
                 </div>
-                <div class="st-x" style="margin-bottom: 36px"></div>
+                <div class="st-x"></div>
             </div>
             <div class="article-search flex-row">
                 <el-input
@@ -16,7 +16,7 @@
                         <el-icon @click="search(1)" style="cursor: pointer" class="el-input__icon" ><search style="width: 30px;height: 30px"/></el-icon>
                     </template>
                 </el-input>
-                <img alt="logo" src="../../assets/refresh.png"  style="width: 21px;height: 21px;margin-top:12px;margin-left: 27px;cursor: pointer" @click="reset"/>
+                <img alt="logo" src="../../assets/refresh.png"  style="width: 20px;height: 20px;margin-top:15px;margin-left: 10px;cursor: pointer" @click="reset"/>
             </div>
         </div>
 
@@ -33,10 +33,10 @@
                             <div class="article-title single-line-break">
                                 {{item.title}}
                             </div>
-                            <div class="article-summary third-line-break">
+                            <div class="article-summary third-line-break" style="margin-top: 5px">
                                 {{item.summary}}
                             </div>
-                            <div class="more" style="position: absolute;bottom: 0" >
+                            <div class="more" style="position: absolute;bottom: 0;right: 0" >
                                 MORE
                                 <img src="../../assets/xjt.png"/>
                             </div>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="item-right">
                     <div class="item-date">{{item.pubdate ? item.pubdate.substring(5,11) : item.createTime.substring(5,11)}}</div>
-                    <div class="item-year">{{item.pubdate ? item.pubdate.substring(0,4) : item.createTime.substring(0,4)}}年</div>
+                    <div class="item-year">{{item.pubdate ? item.pubdate.substring(0,4) : item.createTime.substring(0,4)}}</div>
                 </div>
             </div>
 
@@ -59,7 +59,7 @@
                            @currentChange = "search"
                            @prevClick = "search"
                            @nextClick = "search"/>
-            <span>共{{total}}条，10条每页</span>
+<!--            <span>共{{total}}条，10条每页</span>-->
         </div>
     </div>
 </template>
@@ -112,7 +112,7 @@ export default {
 
     },
     async mounted(){
-
+        window.scrollTo(0,0);
         const componentName = this.$route.params.cm;
 
         this.config = ArticleTypeConfig[componentName];
@@ -138,12 +138,12 @@ export default {
             margin-top: 50px;
             .article-item{
                 text-align: left;
-                margin-top: 20px;
+                margin-top: 25px;
                 height: 250px;
                 cursor: pointer;
                 .item-right{
-                    width: 85px;
-                    margin-left: 52px;
+                    /*width: 85px;*/
+                    margin-left: 50px;
                 }
                 .item-left{
                     width: calc(100% - 134px);
@@ -194,19 +194,19 @@ export default {
                 .item-date{
                     text-align: center;
                     margin-top: 26px;
-                    height: 37px;
-                    font-size: 28px;
+                    /*height: 37px;*/
+                    font-size: 20px;
                     font-family: MicrosoftYaHei-Bold, MicrosoftYaHei;
-                    font-weight: bold;
-                    color: #666666;
+                    /*font-weight: bold;*/
+                    color: #333333;
                     line-height: 37px;
                 }
                 .item-year{
                     text-align: center;
-                    height: 26px;
-                    font-size: 20px;
+                    /*height: 26px;*/
+                    font-size: 28px;
                     font-family: MicrosoftYaHei;
-                    color: #999999;
+                    color: #333333;
                     line-height: 26px;
 
                     margin-top: 10px;
@@ -224,8 +224,13 @@ export default {
             margin-top: 11px;
             margin-left:auto;
             .el-input{
-                width:374px;
-                height: 47px;
+                width:400px;
+                height: 50px;
+
+            }
+            >>>.el-input__wrapper{
+                padding-left: 10px !important;
+                padding-right: 10px !important;
             }
             .el-icon{
                 width:20px !important;
@@ -251,6 +256,22 @@ export default {
             }
             .el-pagination{
                 margin-left: auto;
+                ::v-deep .btn-prev .el-icon{
+                    width: 20px;
+                    height: 20px;
+                    svg{
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+                ::v-deep .btn-next .el-icon{
+                    width: 20px;
+                    height: 20px;
+                    svg{
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
             }
             ::v-deep .el-pagination .el-pager .is-active{
                 background: #2F318B !important;

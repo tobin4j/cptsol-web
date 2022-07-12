@@ -120,11 +120,11 @@
   <Banner v-show="$route.path === '/index'"></Banner>
   <router-view :key="key"/>
   <Footer ></Footer>
-<!--  <el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop>-->
-  <el-backtop :bottom="360" :right="45">
-    <div class="backtop">
-      <img src="./assets/back.png" style="width: 70px;height: 70px"/>
-    </div>
+  <el-backtop :bottom="40" :right="40">
+<!--    <div>-->
+<!--      <img src="./assets/back.png" style="width: 50px;height: 50px"/>-->
+      <div class="backtop"></div>
+<!--    </div>-->
   </el-backtop>
 </template>
 
@@ -156,6 +156,10 @@ export default {
   methods: {
 
   },
+  mounted(){
+    // console.log(1111)
+    // window.scrollTo(0,0);
+  },
   components: {
     Top,
     Banner,
@@ -166,6 +170,41 @@ export default {
 
 <style scoped>
   @import '@/styles/app1.0.css';
+
+
+  .backtop{
+    display: block;
+    position: fixed;
+    right: 40px;
+    z-index: 98;
+    width: 50px;
+    height: 50px;
+    transition: ease all 0.3s;
+    background: #FFF;
+    border-radius: 50%;
+    border: 1px solid #2F318B;
+    padding: 0px;
+  }
+  .backtop:after {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: calc(50% - 3px);
+    left: calc(50% - 6px);
+    transform: rotate(-135deg);
+    border-bottom: 1px solid #2F318B;
+    border-right: 1px solid #2F318B;
+  }
+  .backtop:hover {
+    background: #2F318B;
+  }
+  .backtop:hover:after {
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+  }
+
   >>>.router-link-active+.menu-active{
     display:block;
   }

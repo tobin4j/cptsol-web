@@ -383,6 +383,7 @@ export default {
     })  
     };
     onMounted(async () => {
+
       // 友链
       const bannerUrl="https://api.cptsol.cn/api/open/adList?type=2";
       // 合作展示即文章列表
