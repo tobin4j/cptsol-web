@@ -348,40 +348,6 @@ export default {
       articleList:[], // 合作展示、文章列表
         articleSize:0
     });
-    const router = useRouter();
-    const lookMore = (path)=> {
-      router.push({
-        path: path
-      })
-    };
-    const lookDetails = (type,id)=> {
-      let name = '';
-      let comp = '';
-      if(type == 10 ){ // 合作展示详情
-        name = 'coopDetails';
-        comp = 74
-      }  
-      if(type == 2) { // 公告详情
-        name = 'details'
-        comp = 3
-      } 
-      if(type == 3) { // 中心动态详情
-        name = 'dynamicDetail'
-        comp = 4
-      } 
-      if(type == 7) { // 职业风采详情
-        name = 'jobStyleDetail'
-        comp = 71
-      } 
-      router.push({
-      name: name,
-      params: {
-        type: type,
-        id:id,
-        comp:comp
-      }
-    })  
-    };
     onMounted(async () => {
 
       // 友链
@@ -394,8 +360,6 @@ export default {
       const centerUrl = "https://api.cptsol.cn/api/open/articleList?type=3&page=1&size=5";
       //职业风采
       const jobLookUrl="https://api.cptsol.cn/api/open/articleList?type=7&page=1&size=5";
-      state.lookMore = lookMore;
-      state.lookDetails = lookDetails;
       (async function () {
         const res = await axios.get(bannerUrl) //返回 {id:0}
         state.imgList = res.data;
@@ -456,24 +420,6 @@ export default {
     leaver(){
       this.current = null;
       this.isvisible = false;
-    },
-    goPage(compName){
-      if(compName === 'coopApply') {
-        this.lookMore('/contact/coopApply')
-      }
-      if(compName === 'notice') { 
-        this.lookMore('/notice')
-      }
-      if(compName === 'centerDynamics') {
-        this.lookMore('/centerDynamics')
-      }
-      if(compName==='joblook') {
-        this.lookMore('/jobLook/jobStyle')
-      }
-      if(compName === 'cooperateShow') {
-        this.lookMore('/jobLook/cooperateShow')
-      }
-      //this.$parent.changeMenu(compName,activeTab)
     },
   },
   created () {

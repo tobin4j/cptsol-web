@@ -28,7 +28,7 @@
 
     width: 100%;
     z-index: 20;
-    position: fixed;
+    position: sticky;
     top: 0;
     height: 0;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0) 100%);

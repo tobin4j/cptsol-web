@@ -2,7 +2,12 @@
 import { createRouter,createWebHashHistory } from 'vue-router'
 const routes = [
     {path:'/',redirect:'/index'},
-    {path:'/index',component: ()=>import('../components/Main.vue')}, // 首页
+    {
+        path:'/index',
+        component: ()=>import('../components/Main.vue'),
+        meta: {
+            keepAlive: true
+        }}, // 首页
 
     {
         path: '/sa/:cm',

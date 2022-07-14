@@ -78,6 +78,7 @@
     color: #333333;
     line-height: 37px;
     text-align: center;
+    cursor: pointer;
   }
   .main-cards .zxdt-summary{
     margin-top: 25px;
@@ -221,7 +222,7 @@
     height: 250px;
     width: 90%;
     margin: 25px auto 0 auto;
-
+    cursor: pointer;
   }
 
 

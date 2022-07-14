@@ -19,15 +19,18 @@
           </li>
           <li><router-link to="/ial/zxdt" class="menu-text">中心动态</router-link><div class="menu-active" ></div></li>
           <li><router-link to="/ial/tzgg" class="menu-text">通知公告</router-link><div class="menu-active" ></div></li>
-
+          <li><a href="https://ks.cptsol.cn" class="menu-text" target="_blank">报名考试</a></li>
 <!--          <li><router-link to="/al/hyjl" class="menu-text">行业交流</router-link><div class="menu-active" ></div></li>-->
-
+          <li><router-link to="/ial/jyxx" class="menu-text">求职招聘</router-link><div class="menu-active" ></div></li>
           <li>
             <div class="flex-row has-select">
               <div>
                 <a class="menu-text"  :class="{'router-link-active':$route.path === '/ial/mjgd'
                  || $route.path === '/ial/zjtd'
                  || $route.path === '/ial/hyjl'
+                 || $route.path === '/ial/zyfc'
+                 || $route.path === '/ial/jxfx'
+                 || $route.path === '/ial/hzzs'
                  }">
                   行业交流
                 </a>
@@ -35,33 +38,34 @@
               </div>
               <div class="menu-jt"/>
             </div>
-            <div class="menu-select" style="height: 132px">
+            <div class="menu-select" style="height: 264px">
               <div class="menu-select-item" @click="$router.push({path:'/ial/hyjl'})">行业交流</div>
               <div class="menu-select-item" @click="$router.push({path:'/ial/mjgd'})">名家观点</div>
               <div class="menu-select-item" @click="$router.push({path:'/ial/zjtd'})">专家团队</div>
-            </div>
-          </li>
-
-          <li>
-            <div class="flex-row has-select">
-              <div>
-                <a class="menu-text" :class="{'router-link-active':$route.path === '/ial/zyfc'
-                 || $route.path === '/ial/jyxx'
-                 || $route.path === '/ial/jxfx'
-                 || $route.path === '/ial/hzzs' }">
-                  职业风采
-                </a>
-                <div class="menu-active"></div>
-              </div>
-              <div class="menu-jt"/>
-            </div>
-            <div class="menu-select" style="height: 176px">
               <div class="menu-select-item" @click="$router.push({path:'/ial/zyfc'})">职业风采</div>
-              <div class="menu-select-item" @click="$router.push({path:'/ial/jyxx'})">就业信息</div>
               <div class="menu-select-item" @click="$router.push({path:'/ial/jxfx'})">教学分享</div>
               <div class="menu-select-item" @click="$router.push({path:'/ial/hzzs'})">合作展示</div>
             </div>
           </li>
+
+<!--          <li>-->
+<!--            <div class="flex-row has-select">-->
+<!--              <div>-->
+<!--                <a class="menu-text" :class="{'router-link-active':$route.path === '/ial/zyfc'-->
+<!--                 || $route.path === '/ial/jyxx'-->
+<!--                 || $route.path === '/ial/jxfx'-->
+<!--                 || $route.path === '/ial/hzzs' }">-->
+<!--                  职业风采-->
+<!--                </a>-->
+<!--                <div class="menu-active"></div>-->
+<!--              </div>-->
+<!--              <div class="menu-jt"/>-->
+<!--            </div>-->
+<!--            <div class="menu-select" style="height: 176px">-->
+<!--              <div class="menu-select-item" @click="$router.push({path:'/ial/jyxx'})">就业信息</div>-->
+<!--              -->
+<!--            </div>-->
+<!--          </li>-->
 
           <li>
             <div class="flex-row has-select">
@@ -95,7 +99,7 @@
             </div>
           </li>
 
-          <li><a href="https://ks.cptsol.cn" class="menu-text" target="_blank">报名考试</a></li>
+
 
           <li>
             <div class="flex-row has-select">

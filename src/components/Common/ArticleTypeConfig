@@ -86,7 +86,7 @@ export default {
   'jyxx':{
     type : 8,
     cm : 'jyxx',
-    name : '就业信息',
+    name : '求职招聘',
     isSingle : false,
     hasTitle : true,
     hasModule : false,
