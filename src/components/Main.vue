@@ -3,7 +3,7 @@
 <div class="main">
 
 
-    <div class="main-cards" style="padding-top:50px;">
+    <div class="main-cards" >
 
         <div class="cards-item">
 
@@ -321,7 +321,6 @@
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 
-import { useRouter } from 'vue-router'
 export default {
 
   name: 'Main',
@@ -334,57 +333,17 @@ export default {
 
       current: 0,
 
-        timer:null
-    }
-  },
-  setup() {
-    const state = reactive({
-      imgList: [],
-      jobLookList:[],
-      isvisible: false,
-      isShow: false,
-      centerList:[], // 中心动态
-      list:[],// 通知公告
-      articleList:[], // 合作展示、文章列表
+        timer:null,
+
+        imgList: [],
+        jobLookList:[],
+        isvisible: false,
+        isShow: false,
+        centerList:[], // 中心动态
+        list:[],// 通知公告
+        articleList:[], // 合作展示、文章列表
         articleSize:0
-    });
-    onMounted(async () => {
-
-      // 友链
-      const bannerUrl="https://api.cptsol.cn/api/open/adList?type=2";
-      // 合作展示即文章列表
-      const joinShowUrl="https://api.cptsol.cn/api/open/articleList?type=10&page=1&size=99";
-      //通知公告
-      const noticeUrl="https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=5";
-      //中心动态
-      const centerUrl = "https://api.cptsol.cn/api/open/articleList?type=3&page=1&size=5";
-      //职业风采
-      const jobLookUrl="https://api.cptsol.cn/api/open/articleList?type=7&page=1&size=5";
-      (async function () {
-        const res = await axios.get(bannerUrl) //返回 {id:0}
-        state.imgList = res.data;
-      })();
-      (async function () {
-        const res = await axios.get(joinShowUrl) //返回 {id:0}
-        state.articleList = res.data.data;
-        state.articleSize = state.articleList.length;
-
-      })();
-      (async function () {
-        const res = await axios.get(noticeUrl) //通知公告
-        state.list = res.data.data;
-      })();
-      (async function () {
-        const res = await axios.get(centerUrl) //中心动态
-        state.centerList = res.data.data;
-      })();
-      (async function () {
-        const res = await axios.get(jobLookUrl) //职业风采
-        state.jobLookList = res.data.data;
-      })();
-
-    });
-    return state
+    }
   },
   methods: {
       goDetail(cm,item){
@@ -413,27 +372,44 @@ export default {
       }
       this.curCenterIdx +=  1;
     },
-    enters(index){
-      this.current = index;
-      this.isvisible = true;
-    },
-    leaver(){
-      this.current = null;
-      this.isvisible = false;
-    },
   },
-  created () {
-    // 生命钩子
-    axios.get("https://api.cptsol.cn/api/st/cd")
-      this.timer = setInterval(() => {
-          this.curIv += 1;
-      }, 3000);
+    async created () {
+        // 生命钩子
+        axios.get("https://api.cptsol.cn/api/st/cd")
+            this.timer = setInterval(() => {
+            this.curIv += 1;
+        }, 3000);
 
-  },
-  computed: {
-    // 计算属性
-  },
+        const bannerUrl="https://api.cptsol.cn/api/open/adList?type=2";
+        // 合作展示即文章列表
+        const joinShowUrl="https://api.cptsol.cn/api/open/articleList?type=10&page=1&size=99";
+        //通知公告
+        const noticeUrl="https://api.cptsol.cn/api/open/articleList?type=2&page=1&size=5";
+        //中心动态
+        const centerUrl = "https://api.cptsol.cn/api/open/articleList?type=3&page=1&size=5";
+        //职业风采
+        const jobLookUrl="https://api.cptsol.cn/api/open/articleList?type=7&page=1&size=5";
 
+        const res = await axios.get(bannerUrl) //返回 {id:0}
+        this.imgList = res.data;
+
+        const res2 = await axios.get(joinShowUrl) //返回 {id:0}
+        this.articleList = res2.data.data;
+        this.articleSize = this.articleList.length;
+
+        const res3 = await axios.get(noticeUrl) //通知公告
+        this.list = res3.data.data;
+
+        const res4 = await axios.get(centerUrl) //中心动态
+        this.centerList = res4.data.data;
+
+        const res5 = await axios.get(jobLookUrl) //职业风采
+        this.jobLookList = res5.data.data;
+    },
+    // async mounted(){
+    //     // 友链
+    //
+    // },
     beforeDestroy(){
       if (this.timer){
           clearInterval(this.timer)
