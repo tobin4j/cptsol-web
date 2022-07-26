@@ -8,7 +8,7 @@
         <div class="cards-item">
 
           <div class="flex-row">
-            <span class="cards-item-title-text">中心动态</span>
+            <span class="cards-item-title-text" @click="$router.push({path:'/ial/zxdt'})">中心动态</span>
             <div class="cards-item-title-tag flex-col" >
               <div class="cards-item-title-tag-new">
                 new
@@ -20,15 +20,15 @@
 
           <div v-if="centerList.length">
             <div class="zxdt-img-con">
-              <img alt="中心动态" class="common-img" :src="centerList[curCenterIdx].imgUrl" >
+              <img alt="中心动态" class="common-img" :src="centerList[curCenterIdx].imgUrl"  @click="goDetail('zxdt',centerList[curCenterIdx])">
             </div>
             <div class="zxdt-img-text" >
               — 中心动态 MESSAGE —
             </div>
             <div class="zxdt-title" @click="goDetail('zxdt',centerList[curCenterIdx])">
-              {{centerList[curCenterIdx].title}}
+              {{centerList[curCenterIdx].title.length > 27 ? (centerList[curCenterIdx].title).substr(0,26) + '...' : centerList[curCenterIdx].title}}
             </div>
-            <div class="zxdt-summary third-line-break" style="-webkit-line-clamp:2">
+            <div class="zxdt-summary third-line-break" style="-webkit-line-clamp:2" @click="goDetail('zxdt',centerList[curCenterIdx])">
               {{centerList[curCenterIdx].summary}}
             </div>
             <div class="zxdt-btn flex-row">
@@ -52,7 +52,7 @@
         <div class="cards-item" style="margin-left: 55px">
 
       <div class="flex-row">
-        <span class="cards-item-title-text">通知公告</span>
+        <span class="cards-item-title-text" @click="$router.push({path:'/ial/tzgg'})">通知公告</span>
         <div class="cards-item-title-tag flex-col" >
           <div class="cards-item-title-tag-new">
             new
@@ -88,15 +88,14 @@
         <div class="common-text1">
             PROFESSIONAL DEMEANOR
         </div>
-        <div class="common-text2">
+        <div class="common-text2" @click="$router.push({path:'/ial/zyfc'})">
                 职业风采
         </div>
         <div class="st-x" style="margin: 15px auto 25px auto"></div>
 
         <div class="zyfc-item flex-row" v-for="(item,idx) in jobLookList" @click="goDetail('zyfc',item)">
-            <div style="min-width: 85px;max-width: 85px">
-                <div class="zyfc-date">{{item.pubdate.substring(5,11)}}</div>
-                <div class="zyfc-year">{{item.pubdate.substring(0,4)}}</div>
+            <div class="zyfc-img" style="margin-left: 56px" >
+                <img :src="item.imgUrl" class="common-img" style="height: 250px;width: 400px;"/>
             </div>
             <div style="margin-left: 43px;min-width: 66%;max-width:66%;text-align: left">
                 <div class="zyfc-title single-line-break">
@@ -110,9 +109,11 @@
                     <img src="../assets/xjt.png"/>
                 </div>
             </div>
-            <div class="zyfc-img" style="margin-left: 56px" >
-                <img :src="item.imgUrl" class="common-img" style="height: 250px;width: 400px;"/>
-            </div>
+<!--            <div style="min-width: 85px;max-width: 85px">-->
+<!--                <div class="zyfc-date">{{item.pubdate.substring(5,11)}}</div>-->
+<!--                <div class="zyfc-year">{{item.pubdate.substring(0,4)}}</div>-->
+<!--            </div>-->
+
 
         </div>
 
@@ -178,7 +179,7 @@
                 <div class="hzsq-text" style="margin: 105px 77px auto;">
                     近几年，随着中国经济快速发展，全球汉语学习热潮已然兴起，国际中文教师的缺口数量也逐年增加；同时，为响应国家职业教育大会号召发展国际中文教育事业，中国文化信息协会汉语推广工作委员会着眼于全球化布局，为实现这一宏伟目标，现启动培训中心合作计划。
                 </div>
-                <el-button type="primary" style="margin:25px auto;" >立即申请</el-button>
+                <el-button type="primary" style="margin:25px auto;" @click="$router.push({path:'/sa/hzsq'})">立即申请</el-button>
             </div>
 
         </div>
@@ -188,7 +189,7 @@
         <div class="common-text1">
             COOPERATION SHOW
         </div>
-        <div class="common-text2">
+        <div class="common-text2" @click="$router.push({path:'/ial/hzzs'})">
             合作展示
         </div>
         <div class="st-x" style="margin: 15px auto"></div>
@@ -196,22 +197,13 @@
         <div class="flex-row" style="width: 100%;margin:35px auto 25px auto">
 
             <div class="hzzs-side">
-                <img src="../assets/img_left.png" @click="curIv -= 1"/>
-
-<!--                <button type="button" class="hzzs-side-btn">-->
-<!--                    <i class="el-icon">-->
-<!--                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">-->
-<!--                            <path fill="currentColor" d="M609.408 149.376 277.76 489.6a32 32 0 0 0 0 44.672l331.648 340.352a29.12 29.12 0 0 0 41.728 0 30.592 30.592 0 0 0 0-42.752L339.264 511.936l311.872-319.872a30.592 30.592 0 0 0 0-42.688 29.12 29.12 0 0 0-41.728 0z"></path>-->
-<!--                        </svg>-->
-<!--                    </i>-->
-<!--                </button>-->
-
+                <img src="../assets/img_left.png" style="margin-left: 100px" @click="curIv -= 1"/>
             </div>
 
             <div class="hzzs-content flex-row">
                 <div class="hzzs-item">
-                    <span v-if="articleList[curIv % articleSize]">
-                        <img  class="common-img common-img-transition" :src="articleList[curIv % articleSize].imgUrl"/>
+                    <span v-if="articleList[curIv % articleSize]" @click="goDetail('hzzs',articleList[curIv % articleSize])">
+                        <img  class="common-img common-img-transition" :src="articleList[curIv % articleSize].imgUrl" />
                         <div class="hzzs-item-bg">
                             <div class="hzzs-item-title single-line-break">
                             {{articleList[curIv % articleSize].title}}
@@ -227,8 +219,8 @@
                     </span>
                 </div>
                 <div class="hzzs-item">
-                    <span v-if="articleList[(curIv + 1) % articleSize]">
-                        <img class="common-img" :src="articleList[(curIv + 1) % articleSize].imgUrl"/>
+                    <span v-if="articleList[(curIv + 1) % articleSize]" @click="goDetail('hzzs',articleList[(curIv + 1) % articleSize])">
+                        <img class="common-img" :src="articleList[(curIv + 1) % articleSize].imgUrl" />
                         <div class="hzzs-item-bg">
                             <div class="hzzs-item-title single-line-break">
                             {{articleList[(curIv + 1) % articleSize].title}}
@@ -244,8 +236,8 @@
                     </span>
                 </div>
                 <div class="hzzs-item" style="margin-right: 20px">
-                    <span v-if="articleList[(curIv + 2) % articleSize]">
-                        <img class="common-img" :src="articleList[(curIv + 2) % articleSize].imgUrl"/>
+                    <span v-if="articleList[(curIv + 2) % articleSize]" @click="goDetail('hzzs',articleList[(curIv + 2) % articleSize])">
+                        <img class="common-img" :src="articleList[(curIv + 2) % articleSize].imgUrl" />
                         <div class="hzzs-item-bg">
                             <div class="hzzs-item-title single-line-break">
                             {{articleList[(curIv + 2) % articleSize].title}}
@@ -263,7 +255,7 @@
             </div>
 
             <div class="hzzs-side" style="margin-left: auto;">
-                <img src="../assets/img_right.png" @click="curIv += 1"/>
+                <img src="../assets/img_right.png" style="margin-right: 100px" @click="curIv += 1"/>
             </div>
 
 
@@ -272,7 +264,7 @@
         </div>
 
 
-            <el-button style="margin:0 auto;" type="primary" >MORE</el-button>
+            <el-button style="margin:0 auto;" type="primary" @click="$router.push({path:'/ial/hzzs'})">MORE</el-button>
 
 
 
@@ -334,6 +326,7 @@ export default {
       current: 0,
 
         timer:null,
+        zxdtTimer:null,
 
         imgList: [],
         jobLookList:[],
@@ -376,9 +369,13 @@ export default {
     async created () {
         // 生命钩子
         axios.get("https://api.cptsol.cn/api/st/cd")
-            this.timer = setInterval(() => {
+        this.timer = setInterval(() => {
             this.curIv += 1;
-        }, 3000);
+        }, 5000);
+        this.zxdtTimer = setInterval(() => {
+            this.goRight();
+        }, 5000);
+
 
         const bannerUrl="https://api.cptsol.cn/api/open/adList?type=2";
         // 合作展示即文章列表
@@ -414,6 +411,10 @@ export default {
       if (this.timer){
           clearInterval(this.timer)
           this.timer = null
+      }
+      if (this.zxdtTimer){
+          clearInterval(this.zxdtTimer)
+          this.zxdtTimer = null
       }
     }
 

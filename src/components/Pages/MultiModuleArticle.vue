@@ -1,7 +1,7 @@
 <template>
 <div class="app-area flex-row ma">
 
-    <div>
+    <div style="margin-left: calc((100% - 1220px) / 2);">
         <div class="modules-area ">
             <div  v-for="(item,idx) in moduleStruct">
                 <div class="module-name">
@@ -85,9 +85,9 @@ export default {
 .ma{
     .modules-area{
 
-        margin-left: 280px;
 
-        width: 181px;
+
+        width: 180px;
         background: #2F318B;
         border-radius: 3px;
 
@@ -98,13 +98,13 @@ export default {
     .mut-module-content{
         margin-left: 50px;
 
-        width: 1120px;
+        width: 990px;
     }
 
     .module-name{
 
 
-        width: 181px;
+        width: 180px;
         height: 46px;
         font-size: 16px;
         font-family: PingFang-SC-Regular, PingFang-SC;
@@ -126,7 +126,7 @@ export default {
     .module-title{
         /*margin-left: 48px;*/
 
-        width: 181px;
+        width: 180px;
         height: 46px;
 
 

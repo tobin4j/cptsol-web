@@ -27,7 +27,7 @@
                 <div class="item-left">
                     <div class="flex-row">
                         <div class="article-img">
-                            <img :src="item.imgUrl" class="common-img">
+                            <img :src="item.imgUrl" class="common-img" style="width: 280px;height: 175px;">
                         </div>
                         <div  class="article-main">
                             <div class="article-title single-line-break">
@@ -139,23 +139,23 @@ export default {
             .article-item{
                 text-align: left;
                 margin-top: 25px;
-                height: 250px;
+                height: 175px;
                 cursor: pointer;
                 .item-right{
                     /*width: 85px;*/
                     margin-left: 50px;
                 }
                 .item-left{
-                    width: calc(100% - 134px);
+                    width: calc(100% - 120px);
                 }
 
                 .article-img{
-                    width: 400px;
-                    height: 250px;
+                    width: 280px;
+                    height: 175px;
                     margin-right: 50px;
                 }
                 .article-main{
-                    width: calc(100% - 450px);
+                    width: calc(100% - 330px);
                     position: relative;
                 }
 
@@ -190,6 +190,15 @@ export default {
                         height: 9px;
                         margin: 6px auto 6px 8px;
                     }
+                }
+                .article-title:hover{
+                    color: #2F318B;
+                }
+                .article-summary:hover{
+                    color: #2F318B;
+                }
+                .more:hover{
+                    color: #2F318B;
                 }
                 .item-date{
                     text-align: center;
@@ -282,8 +291,8 @@ export default {
         }
     }
     .app-area{
-        margin-left: 100px;
-        margin-right: 100px;
+        margin-left: calc((100% - 1220px) / 2);
+        margin-right: calc((100% - 1220px) / 2);
         /*min-height: calc(100% - 400px + 68px);*/
     }
 

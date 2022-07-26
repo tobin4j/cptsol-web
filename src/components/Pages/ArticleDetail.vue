@@ -4,7 +4,7 @@
             {{title}}
         </div>
         <div class="detail-content" >
-            <div style="width: 1220px;" v-html="content"></div>
+            <div style="width: 1220px;overflow-x: auto;" v-html="content"></div>
         </div>
     </div>
 </template>

@@ -40,7 +40,7 @@ export default {
   'hyjl':{
     type : 4,
     cm : 'hyjl',
-    name : '行业交流',
+    name : '行业动态',
     isSingle : false,
     hasTitle : true,
     hasModule : false,

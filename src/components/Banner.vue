@@ -96,4 +96,10 @@ export default {
   height: 20px;
 
 }
+>>>.el-carousel__arrow--right{
+  right: 50px;
+}
+>>>.el-carousel__arrow--left{
+  left: 50px;
+}
 </style>

@@ -4,8 +4,8 @@
         <div class="app-name">
             {{title}}
         </div>
-        <div class="st-x" style="margin-bottom: 36px"></div>
-        <div class="app-content" style="width: 1220px;" v-html="content"></div>
+        <div class="st-x" style="margin-bottom: 40px"></div>
+        <div class="app-content" style="width: 1220px;overflow-x: auto;" v-html="content"></div>
     </div>
 </template>
 

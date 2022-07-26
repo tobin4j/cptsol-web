@@ -23,6 +23,7 @@
     color: #333333;
     line-height: 37px;
     float: left;
+    cursor: pointer;
   }
   .main-cards .cards-item-title-tag{
     width: 45px;
@@ -58,6 +59,7 @@
     /*width: 800px;*/
     height: 500px;
     overflow: hidden;
+    cursor: pointer;
   }
   .main-cards .zxdt-img-text{
     /*width: 238px;*/
@@ -90,6 +92,13 @@
     font-family: MicrosoftYaHei;
     color: #666666;
     line-height: 36px;
+    cursor: pointer;
+  }
+  .main-cards .zxdt-title:hover{
+    color: #2F318B;
+  }
+  .main-cards .zxdt-summary:hover{
+    color: #2F318B;
   }
   .main-cards .zxdt-btn{
     margin-top: 3px;
@@ -217,6 +226,7 @@
     color: #333333;
     line-height: 37px;
     margin: 0px auto;
+    cursor: pointer;
   }
   .zyfc-item{
 
@@ -260,6 +270,15 @@
     font-family: MicrosoftYaHei;
     color: #666666;
     line-height: 36px;
+  }
+  .zyfc-title:hover{
+    color: #2F318B;
+  }
+  .zyfc-summary:hover{
+    color: #2F318B;
+  }
+  .zyfc-more:hover{
+    color: #2F318B;
   }
   .zyfc-more{
     height: 21px;
@@ -432,7 +451,7 @@
   .hzzs-side{
     width: 191px;
     height: 313px;
-    background: #D8D8D8;
+    background: #fcfcfc;
     opacity: 0.25;
     /*border: 1px solid #979797;*/
   }
@@ -477,6 +496,8 @@
     background: #D8D8D8;
     height: 313px;
     margin-left: 25px;
+    cursor: pointer;
+
   }
   .hzzs .el-button{
     width: 140px;
