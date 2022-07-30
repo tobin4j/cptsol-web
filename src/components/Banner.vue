@@ -1,11 +1,18 @@
 <template>
-  <el-carousel :interval="5000" arrow="always" class="swiper" v-if="isShow">
-    <el-carousel-item v-for="item in list" :key="item">
-      <a @click="clickImg(item.redirectUrl)"  target="_blank">
-       <img :src="item.imgUrl" class="common-img"/>
-      </a>
-    </el-carousel-item>
-  </el-carousel>
+
+    <el-carousel :interval="5000" arrow="always" class="swiper" v-if="isShow">
+      <el-carousel-item v-for="item in list" :key="item">
+        <a @click="clickImg(item.redirectUrl)"  target="_blank">
+          <img :src="item.imgUrl" class="common-img"/>
+        </a>
+      </el-carousel-item>
+    </el-carousel>
+    <div v-else  class="no-data">
+
+    </div>
+
+
+
 </template>
 
 <script>
@@ -41,6 +48,7 @@ export default {
       (async function () {
         const res = await axios.get(api)
         state.list = res.data
+        state.isShow = false
         state.isShow = true
       })();
     })
@@ -72,6 +80,12 @@ export default {
 >>>.el-carousel__container {
   height: 100vh;
   max-height: 1000px;
+}
+.no-data {
+  height: 100vh;
+  max-height: 1000px;
+  background-color: white;
+  /*  background-image: url("https://cdn2.cptsol.cn/default-20220726170600.png");*/
 }
 >>>.el-carousel__button {
   height: 15px !important;

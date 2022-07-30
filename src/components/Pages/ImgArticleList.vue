@@ -24,7 +24,7 @@
         <div class="article-list">
 
             <div class="article-item flex-row" v-for="(item,idx) in list" @click="goDetail(item)">
-                <div class="item-left">
+                <div  :class="{'item-left':config.hasPubdate,'item-all':!config.hasPubdate}">
                     <div class="flex-row">
                         <div class="article-img">
                             <img :src="item.imgUrl" class="common-img" style="width: 280px;height: 175px;">
@@ -44,7 +44,7 @@
                     </div>
 
                 </div>
-                <div class="item-right">
+                <div class="item-right" v-if="config.hasPubdate">
                     <div class="item-date">{{item.pubdate ? item.pubdate.substring(5,11) : item.createTime.substring(5,11)}}</div>
                     <div class="item-year">{{item.pubdate ? item.pubdate.substring(0,4) : item.createTime.substring(0,4)}}</div>
                 </div>
@@ -148,7 +148,9 @@ export default {
                 .item-left{
                     width: calc(100% - 120px);
                 }
-
+                item-all{
+                    width: 890px !important;
+                }
                 .article-img{
                     width: 280px;
                     height: 175px;

@@ -94,10 +94,10 @@
         <div class="st-x" style="margin: 15px auto 25px auto"></div>
 
         <div class="zyfc-item flex-row" v-for="(item,idx) in jobLookList" @click="goDetail('zyfc',item)">
-            <div class="zyfc-img" style="margin-left: 56px" >
+            <div class="zyfc-img"  >
                 <img :src="item.imgUrl" class="common-img" style="height: 250px;width: 400px;"/>
             </div>
-            <div style="margin-left: 43px;min-width: 66%;max-width:66%;text-align: left">
+            <div style="margin-left: 50px;width: 800px;text-align: left">
                 <div class="zyfc-title single-line-break">
                     {{item.title}}
                 </div>

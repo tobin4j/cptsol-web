@@ -45,8 +45,9 @@ export default {
     hasTitle : true,
     hasModule : false,
     hasImg : true,
-    hasPubdate : true,
-    canMove : false
+    hasPubdate : false,
+    canMove : false,
+    hasSummary : true
   },
   'mjgd':{
     type : 5,
@@ -56,8 +57,9 @@ export default {
     hasTitle : true,
     hasModule : false,
     hasImg : true,
-    hasPubdate : true,
-    canMove : false
+    hasPubdate : false,
+    canMove : false,
+    hasSummary : true
   },
   'zjtd':{
     type : 6,
@@ -79,7 +81,7 @@ export default {
     hasTitle : true,
     hasModule : false,
     hasImg : true,
-    hasPubdate : true,
+    hasPubdate : false,
     canMove : false,
     hasSummary : true
   },
@@ -102,8 +104,9 @@ export default {
     hasTitle : true,
     hasModule : false,
     hasImg : true,
-    hasPubdate : true,
-    canMove : false
+    hasPubdate : false,
+    canMove : false,
+    hasSummary : true
   },
   'hzzs':{
     type : 10,

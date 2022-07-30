@@ -1,6 +1,6 @@
 <template>
   <transition name="el-fade-in-linear">
-    <div class="header" :class="{'no-main-header':$route.path !== '/index','main-header':$route.path === '/index'}" v-show="showHeader">
+    <div class="header" :class="{'no-main-header':$route.path !== '/index','main-header':$route.path === '/index'}" >
     <div class="header-container clearfix flex-row" >
 
       <div class="logo" @click="goMain">
@@ -18,20 +18,21 @@
             <router-link to="/sa/zxjs" class="menu-text">中心介绍</router-link>
             <div class="menu-active" ></div>
           </li>
-          <li><router-link to="/ial/zxdt" class="menu-text">中心动态</router-link><div class="menu-active" ></div></li>
-          <li><router-link to="/ial/tzgg" class="menu-text">通知公告</router-link><div class="menu-active" ></div></li>
+          <li><router-link to="/ial/zxdt" class="menu-text" :class="{'router-link-active':$route.path.indexOf('zxdt') !== -1}">中心动态</router-link><div class="menu-active" ></div></li>
+          <li><router-link to="/ial/tzgg" class="menu-text" :class="{'router-link-active':$route.path.indexOf('tzgg') !== -1}">通知公告</router-link><div class="menu-active" ></div></li>
           <li><a href="https://ks.cptsol.cn" class="menu-text" target="_blank">报名考试</a></li>
 <!--          <li><router-link to="/al/hyjl" class="menu-text">行业交流</router-link><div class="menu-active" ></div></li>-->
-          <li><router-link to="/ial/jyxx" class="menu-text">求职招聘</router-link><div class="menu-active" ></div></li>
+          <li><router-link to="/ial/jyxx" class="menu-text" :class="{'router-link-active':$route.path.indexOf('jyxx') !== -1}">求职招聘</router-link><div class="menu-active" ></div></li>
           <li>
             <div class="flex-row has-select">
               <div>
-                <a class="menu-text"  :class="{'router-link-active':$route.path === '/ial/mjgd'
-                 || $route.path === '/ial/zjtd'
-                 || $route.path === '/ial/hyjl'
-                 || $route.path === '/ial/zyfc'
-                 || $route.path === '/ial/jxfx'
-                 || $route.path === '/ial/hzzs'
+                <a class="menu-text"  :class="{'router-link-active':
+                  $route.path.indexOf('mjgd') !== -1
+                 || $route.path.indexOf('zjtd') !== -1
+                 || $route.path.indexOf('hyjl') !== -1
+                 || $route.path.indexOf('zyfc') !== -1
+                 || $route.path.indexOf('jxfx') !== -1
+                 || $route.path.indexOf('hzzs') !== -1
                  }">
                   行业交流
                 </a>
@@ -53,15 +54,17 @@
           <li>
             <div class="flex-row has-select">
               <div>
-                <a class="menu-text" :class="{'router-link-active':$route.path === '/sa/ksjs'
-                 || $route.path === '/sa/ksfw'
-                 || $route.path === '/sa/ksjg'
-                 || $route.path === '/mma/ksbz'
-                 || $route.path === '/mma/ztsl'
-                 || $route.path === '/sma/ksys'
-                 || $route.path === '/rp'
+                <a class="menu-text" :class="{'router-link-active':
+                  $route.path === '/rp'
                  || $route.path === '/tp'
-                 || $route.path === '/cap' }">
+                 || $route.path === '/cap'
+                 || $route.path.indexOf('ksjs') !== -1
+                 || $route.path.indexOf('ksfw') !== -1
+                 || $route.path.indexOf('ksjg') !== -1
+                 || $route.path.indexOf('ksbz') !== -1
+                 || $route.path.indexOf('ztsl') !== -1
+                 || $route.path.indexOf('ksys') !== -1
+                  }">
                   考试指南
                 </a>
                 <div class="menu-active"></div>
@@ -87,9 +90,11 @@
           <li>
             <div class="flex-row has-select">
               <div>
-                <a class="menu-text" :class="{'router-link-active':$route.path === '/sa/hzsq'
-                 || $route.path === '/sa/lxwm'
-                 || $route.path === '/ial/hzzs' }">
+                <a class="menu-text" :class="{'router-link-active':
+                  $route.path.indexOf('hzsq') !== -1
+                 || $route.path.indexOf('lxwm') !== -1
+                 || $route.path.indexOf('hzzs') !== -1
+                 }">
                   联系我们
                 </a>
                 <div class="menu-active"></div>
@@ -168,7 +173,7 @@ export default {
     }
   },
   created(){
-    window.addEventListener('scroll', this.handleScroll, true);
+    // window.addEventListener('scroll', this.handleScroll, true);
   },
   components: {
     Top,
